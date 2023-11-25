@@ -11,6 +11,17 @@
 		F05ED9102B1167EE00948809 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED90F2B1167EE00948809 /* ContentView.swift */; };
 		F05ED9122B1167EF00948809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05ED9112B1167EF00948809 /* Assets.xcassets */; };
 		F05ED9152B1167EF00948809 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05ED9142B1167EF00948809 /* Preview Assets.xcassets */; };
+		F05ED91F2B11687200948809 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED91E2B11687200948809 /* ListView.swift */; };
+		F05ED9212B116B6700948809 /* ListViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9202B116B6700948809 /* ListViewRow.swift */; };
+		F05ED9232B116C6C00948809 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9222B116C6C00948809 /* Activity.swift */; };
+		F05ED9262B11775100948809 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9252B11775100948809 /* Extensions+String.swift */; };
+		F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */; };
+		F05ED92B2B117F1E00948809 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED92A2B117F1E00948809 /* Theme.swift */; };
+		F05ED92D2B11861C00948809 /* AddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED92C2B11861C00948809 /* AddRoutineView.swift */; };
+		F0A186062B11B56A009A2829 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186052B11B56A009A2829 /* ListViewModel.swift */; };
+		F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186072B11C392009A2829 /* CustomTimePickers.swift */; };
+		F0A1860A2B11C923009A2829 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186092B11C923009A2829 /* Presets.swift */; };
+		F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1860B2B11C9AE009A2829 /* Time.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +30,17 @@
 		F05ED90F2B1167EE00948809 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F05ED9112B1167EF00948809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F05ED9142B1167EF00948809 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F05ED91E2B11687200948809 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		F05ED9202B116B6700948809 /* ListViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewRow.swift; sourceTree = "<group>"; };
+		F05ED9222B116C6C00948809 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		F05ED9252B11775100948809 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
+		F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+TimeInterval.swift"; sourceTree = "<group>"; };
+		F05ED92A2B117F1E00948809 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		F05ED92C2B11861C00948809 /* AddRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineView.swift; sourceTree = "<group>"; };
+		F0A186052B11B56A009A2829 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		F0A186072B11C392009A2829 /* CustomTimePickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePickers.swift; sourceTree = "<group>"; };
+		F0A186092B11C923009A2829 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
+		F0A1860B2B11C9AE009A2829 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +73,11 @@
 		F05ED90C2B1167EE00948809 /* EarlyBird */ = {
 			isa = PBXGroup;
 			children = (
+				F05ED9292B117EEB00948809 /* Components */,
+				F05ED9242B11774600948809 /* Extensions */,
+				F05ED91C2B11680D00948809 /* Models */,
+				F05ED91D2B11681200948809 /* ViewModels */,
+				F05ED91B2B11680800948809 /* Views */,
 				F05ED90D2B1167EE00948809 /* EarlyBirdApp.swift */,
 				F05ED90F2B1167EE00948809 /* ContentView.swift */,
 				F05ED9112B1167EF00948809 /* Assets.xcassets */,
@@ -65,6 +92,52 @@
 				F05ED9142B1167EF00948809 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F05ED91B2B11680800948809 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F05ED91E2B11687200948809 /* ListView.swift */,
+				F05ED9202B116B6700948809 /* ListViewRow.swift */,
+				F05ED92C2B11861C00948809 /* AddRoutineView.swift */,
+				F0A186072B11C392009A2829 /* CustomTimePickers.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F05ED91C2B11680D00948809 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F05ED9222B116C6C00948809 /* Activity.swift */,
+				F0A186092B11C923009A2829 /* Presets.swift */,
+				F0A1860B2B11C9AE009A2829 /* Time.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F05ED91D2B11681200948809 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F0A186052B11B56A009A2829 /* ListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F05ED9242B11774600948809 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F05ED9252B11775100948809 /* Extensions+String.swift */,
+				F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F05ED9292B117EEB00948809 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F05ED92A2B117F1E00948809 /* Theme.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +210,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A186062B11B56A009A2829 /* ListViewModel.swift in Sources */,
+				F05ED9232B116C6C00948809 /* Activity.swift in Sources */,
+				F05ED92B2B117F1E00948809 /* Theme.swift in Sources */,
+				F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */,
 				F05ED9102B1167EE00948809 /* ContentView.swift in Sources */,
 				F05ED90E2B1167EE00948809 /* EarlyBirdApp.swift in Sources */,
+				F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */,
+				F05ED91F2B11687200948809 /* ListView.swift in Sources */,
+				F05ED9262B11775100948809 /* Extensions+String.swift in Sources */,
+				F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */,
+				F05ED92D2B11861C00948809 /* AddRoutineView.swift in Sources */,
+				F0A1860A2B11C923009A2829 /* Presets.swift in Sources */,
+				F05ED9212B116B6700948809 /* ListViewRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
