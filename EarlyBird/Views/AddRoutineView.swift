@@ -34,21 +34,34 @@ struct AddRoutineView: View {
                     .frame(height: 55)
                     .background(.white)
                     .cornerRadius(.mediumSize)
-                Button("Custom") {
+            
+                Button(action: {
                     withAnimation {
                         showCustomSelect.toggle()
                     }
-                }
-                // preset
-                VStack(alignment: .leading) {
-                    Text("Presets")
-                    ScrollView {
-                        HStack {
-                            Text("1 Min")
-                        }
-                    }
-                }.background(.white)
+                }, label: {
+                    Text("⏱️ Custom".uppercased())
+                        .foregroundColor(.white)
+                        .frame(height: 55)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.yellow.gradient)
+                        .cornerRadius(.mediumSize)
+                })
                 
+                Toggle(isOn: $showCustomSelect, label: {
+                    Text("블라블라")
+                })
+                
+//                // preset
+//                VStack(alignment: .leading) {
+//                    Text("Presets")
+//                    ScrollView {
+//                        HStack {
+//                            Text("1 Min")
+//                        }
+//                    }
+//                }.background(.white)
+//                
                 if showCustomSelect {
                     CustomTimePickers(hour: $hour, min: $min, sec: $sec)
                 }
@@ -59,11 +72,12 @@ struct AddRoutineView: View {
                         .foregroundColor(.white)
                         .frame(height: 55)
                         .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
+                        .background(Color.accentColor.gradient)
                         .cornerRadius(.mediumSize)
                 })
             }
         }
+        .padding()
         .navigationTitle("Add Routine")
         .background(Color(.systemGroupedBackground))
     }
