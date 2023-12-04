@@ -33,19 +33,19 @@ struct ListView: View {
                     .onMove(perform: listViewModel.moveItem)
     
                 }
-                .listStyle(.plain)
+                .listStyle(.insetGrouped)
             }
             
             VStack(spacing: .extraLargeSize) {
                 HStack {
                     Text("Duration")
                     Spacer()
-                    Text("45 min")
+                    Text(listViewModel.duration.getString())
                 }
                 HStack {
                     Text("🥱 YOU NEED TO WAKE UP")
                     Spacer()
-                    Text("10:00 pm")
+                    Text(listViewModel.calculatedTime)
                 }
 
             }

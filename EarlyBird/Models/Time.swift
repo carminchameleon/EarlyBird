@@ -8,7 +8,7 @@
 import Foundation
 
 enum Time: String {
-    case hours = "hours"
+    case hours = "hr"
     case minutes = "min"
     case seconds = "sec"
 }

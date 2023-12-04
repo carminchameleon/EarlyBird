@@ -22,13 +22,13 @@ extension TimeInterval {
             var components: [String] = []
             
             if hours > 0 {
-                components.append("\(hours) \(Time.hours.rawValue.uppercased())")
+                components.append("\(hours) \(Time.hours.rawValue)")
             }
             if minutes > 0 {
-                components.append("\(minutes) \(Time.minutes.rawValue.uppercased())")
+                components.append("\(minutes) \(Time.minutes.rawValue)")
             }
             if seconds > 0 {
-                components.append("\(seconds) \(Time.seconds.rawValue.uppercased())")
+                components.append("\(seconds) \(Time.seconds.rawValue)")
             }
             
             return components.joined(separator: " ")
