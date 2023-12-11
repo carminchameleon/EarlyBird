@@ -9,49 +9,21 @@ import SwiftUI
 
 struct ListView: View {
     @EnvironmentObject var listViewModel: ListViewModel
+    @State private var isShowingSheet = false
     
     var body: some View {
         VStack {
-            VStack(spacing: .extraLargeSize) {
-                HStack {
-                    Text("💼 START WORK")
-                    Spacer()
-                    Text("8:00 AM")
-                }
-            }
-            .padding(.horizontal, .extraLargeSize)
-            .bold()
-            .padding(.vertical, .largeSize)
-
+            List {
             
-            VStack {
-                List {
+                Section(header:TimelineView()) {
                     ForEach(listViewModel.activities) { item in
                         ListViewRow(item: item)
                     }
                     .onDelete(perform: listViewModel.deleteItem)
                     .onMove(perform: listViewModel.moveItem)
-    
                 }
-                .listStyle(.insetGrouped)
             }
-            
-            VStack(spacing: .extraLargeSize) {
-                HStack {
-                    Text("Duration")
-                    Spacer()
-                    Text(listViewModel.duration.getString())
-                }
-                HStack {
-                    Text("🥱 YOU NEED TO WAKE UP")
-                    Spacer()
-                    Text(listViewModel.calculatedTime)
-                }
-
-            }
-            .padding(.horizontal, .extraLargeSize)
-            .bold()
-            .padding(.vertical, .largeSize)
+            .listStyle(.grouped)
         }
    
         .navigationTitle("Morning Routine")
@@ -61,11 +33,21 @@ struct ListView: View {
                 EditButton()
             }
             ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink("Add") {
-                    AddRoutineView()
+                Button("Add") {
+                    isShowingSheet.toggle()
                 }
+
             }
         }
+        .sheet(isPresented: $isShowingSheet, content: {
+//            AddRoutineView()
+            AddRoutineView1(isShowingSheet: $isShowingSheet)
+        })
+        
+    }
+    
+    func didDismiss() {
+        isShowingSheet.toggle()
     }
 }
 
@@ -74,4 +56,3 @@ struct ListView: View {
         ListView()
     }.environmentObject(ListViewModel())
 }
-

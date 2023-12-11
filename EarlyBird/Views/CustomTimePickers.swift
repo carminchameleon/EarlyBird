@@ -24,8 +24,6 @@ struct CustomTimePickers: View {
                     }
                 }
             }
-            Text(":")
-                .font(.title)
             VStack {
                 Text(Time.minutes.rawValue.uppercased())
                     .padding(.horizontal, .largeSize)
@@ -36,8 +34,6 @@ struct CustomTimePickers: View {
                     }
                 }
             }
-            Text(":")
-                .font(.title)
             VStack {
                 Text(Time.seconds.rawValue.uppercased())
                     .padding(.horizontal, .largeSize)
@@ -49,10 +45,8 @@ struct CustomTimePickers: View {
                 }
             }
         }
-        .padding()
         .frame(height: 160)
         .pickerStyle(WheelPickerStyle())
-        .background(.white)
         .cornerRadius(.mediumSize)
     }
 }

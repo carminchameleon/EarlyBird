@@ -51,17 +51,8 @@ struct AddRoutineView: View {
                 Toggle(isOn: $showCustomSelect, label: {
                     Text("블라블라")
                 })
-                
-//                // preset
-//                VStack(alignment: .leading) {
-//                    Text("Presets")
-//                    ScrollView {
-//                        HStack {
-//                            Text("1 Min")
-//                        }
-//                    }
-//                }.background(.white)
-//                
+ 
+                Text(String(min))
                 if showCustomSelect {
                     CustomTimePickers(hour: $hour, min: $min, sec: $sec)
                 }
@@ -86,6 +77,7 @@ struct AddRoutineView: View {
 // 두글자 이상
 // 시간 선택도 해야 함
 func saveButtonTapped() {
+    print("save button is tapped")
 }
 
 

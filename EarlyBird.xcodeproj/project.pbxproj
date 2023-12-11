@@ -22,6 +22,8 @@
 		F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186072B11C392009A2829 /* CustomTimePickers.swift */; };
 		F0A1860A2B11C923009A2829 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186092B11C923009A2829 /* Presets.swift */; };
 		F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1860B2B11C9AE009A2829 /* Time.swift */; };
+		F0FD9C932B207C63008D4428 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C922B207C63008D4428 /* TimelineView.swift */; };
+		F0FD9C952B208630008D4428 /* AddRoutineView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C942B208630008D4428 /* AddRoutineView1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		F0A186072B11C392009A2829 /* CustomTimePickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePickers.swift; sourceTree = "<group>"; };
 		F0A186092B11C923009A2829 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		F0A1860B2B11C9AE009A2829 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		F0FD9C922B207C63008D4428 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		F0FD9C942B208630008D4428 /* AddRoutineView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineView1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 				F05ED9202B116B6700948809 /* ListViewRow.swift */,
 				F05ED92C2B11861C00948809 /* AddRoutineView.swift */,
 				F0A186072B11C392009A2829 /* CustomTimePickers.swift */,
+				F0FD9C922B207C63008D4428 /* TimelineView.swift */,
+				F0FD9C942B208630008D4428 /* AddRoutineView1.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,6 +229,8 @@
 				F05ED92D2B11861C00948809 /* AddRoutineView.swift in Sources */,
 				F0A1860A2B11C923009A2829 /* Presets.swift in Sources */,
 				F05ED9212B116B6700948809 /* ListViewRow.swift in Sources */,
+				F0FD9C932B207C63008D4428 /* TimelineView.swift in Sources */,
+				F0FD9C952B208630008D4428 /* AddRoutineView1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

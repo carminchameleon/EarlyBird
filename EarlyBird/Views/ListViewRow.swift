@@ -13,10 +13,10 @@ struct ListViewRow: View {
     var body: some View {
         HStack {
             Text(item.title)
-                .font(.title2)
+                .font(.headline)
             Spacer()
             Text(item.duration.getString())
-                .font(.title3)
+                .font(.caption)
         }
         .padding(.vertical, .smallSize)
     }
