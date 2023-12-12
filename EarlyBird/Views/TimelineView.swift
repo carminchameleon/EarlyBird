@@ -11,34 +11,26 @@ struct TimelineView: View {
     @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
-        HStack {
-            
-            VStack {
-                Text("🥱")
-                    .font(.title)
-                Text(listViewModel.calculatedTime)
+        VStack(alignment: .leading) {
+            Text("⏰ Wake Up")
+            Group {
+                HStack(alignment: .center, spacing: 0) {
+                    Text(listViewModel.calculatedTime.getNumberOfTime())
+                        .font(.largeTitle)
+                        
+                    Text(listViewModel.calculatedTime.getDayOfTime())
+                        .font(.title)
+                }
+                .bold()
+                .padding()   
             }
-            
-            Spacer()
-            
-            VStack {
-                Text("⏳")
-                Text(listViewModel.duration.getString())
-            }
-            .font(.footnote)
-            .foregroundStyle(Color(UIColor.secondaryLabel))
-            
-            Spacer()
-            
-            VStack {
-                Text("🧳")
-                    .font(.title)
-                Text("8:00 AM")
-            }
-            
-            
+            .frame(maxWidth: .infinity)
+            .overlay(
+                RoundedRectangle(cornerRadius: .mediumSize)
+                    .inset(by: 1)
+                    .stroke(Color(UIColor.secondarySystemBackground), lineWidth: 1)
+            )
         }
-        .padding()
     }
 }
 
@@ -46,5 +38,3 @@ struct TimelineView: View {
     TimelineView()
         .environmentObject(ListViewModel())
 }
-
-

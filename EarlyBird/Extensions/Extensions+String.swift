@@ -11,7 +11,6 @@ extension String {
     
     func convertToTimeInterval(_ sting: String) -> TimeInterval? {
         var timeInterval: TimeInterval = 0
-
         // "HR", "MIN", "SEC"을 제거하고 문자열을 분리
         let components = sting.components(separatedBy: " ")
 
@@ -39,7 +38,36 @@ extension String {
 
         return timeInterval
     }
+    
+    func convertToDate() -> Date? {
+        var dateFormmater: DateFormatter {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .none
+            formatter.timeStyle = .short
+            return formatter
+        }
+        
+        return dateFormmater.date(from: self)
+    }
 
+    
+    func getNumberOfTime() -> String {
+        var result = ""
+        if !self.isEmpty {
+           result = String(self.dropLast(2))
+        }
+        return result
+    }
+    
+    func getDayOfTime() -> String {
+        var result = ""
+        if !self.isEmpty {
+            result = String(self.suffix(2)).lowercased()
+        }
+        return result
+    }
+    
+    
 }
 
 

@@ -14,16 +14,18 @@ class ListViewModel: ObservableObject {
             print(activities)
         }
     }
-    @Published var standardTime = "8:00 AM"
+    @Published var standardTime = "8:00 am"
+    
+    @Published var endPoint = Date()
     @Published var duration: TimeInterval = 0
     @Published var isAdd: Bool = false
-    var cancellables: Set<AnyCancellable> = []
     @Published var calculatedTime = ""
-    
+    var cancellables: Set<AnyCancellable> = []
+
+
     init() {
         getActivities()
 //        addActivitySubscriber()
-        
         addActivitiesSubscriber()
         addDurationSubscriber()
     }
@@ -43,7 +45,6 @@ class ListViewModel: ObservableObject {
             .publisher
             .reduce(0, { $0 + $1.duration })
             .sink {[weak self] value in
-                print(value)
                 self?.duration = value
             }
             .store(in: &cancellables)
@@ -53,7 +54,6 @@ class ListViewModel: ObservableObject {
         $activities.map { activities in
             // activities 리스트를 전체 다 받을 예정임
             let duration = activities.reduce(0,{ $0 + $1.duration })
-            print(duration)
             return duration
         }.sink {[weak self] returnedValue in
             guard let self = self else { return }
@@ -74,6 +74,7 @@ class ListViewModel: ObservableObject {
                     let formatter = DateFormatter()
                     formatter.dateStyle = .none
                     formatter.timeStyle = .short
+                    
                     return formatter
                 }
                 
@@ -85,16 +86,18 @@ class ListViewModel: ObservableObject {
                     // Calendar 객체를 생성
                     let calendar = Calendar.current
                     // 현재 날짜로부터 특정 시간 후
-                    guard let standardDate = calendar.date(bySettingHour: calendar.component(.hour, from: timeDate), minute: calendar.component(.minute, from: timeDate), second: calendar.component(.second, from: timeDate), of: now) else { return }
-
-                    print(standardDate)
-                    
+                    guard let standardDate = calendar.date(bySettingHour: calendar.component(.hour, from: timeDate),
+                                                           minute: calendar.component(.minute, from: timeDate),
+                                                           second: calendar.component(.second, from: timeDate),
+                                                           of: now) else { return }
                     // 몇시간 몇
                     let resultDate = standardDate.addingTimeInterval( isAdd ? duration : -duration)
                     let resultString = dateFormmater.string(from: resultDate)
                     self.calculatedTime = resultString
                 }
             }.store(in: &cancellables)
+        
+        
     }
 
     

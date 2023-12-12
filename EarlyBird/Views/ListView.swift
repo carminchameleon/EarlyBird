@@ -10,23 +10,45 @@ import SwiftUI
 struct ListView: View {
     @EnvironmentObject var listViewModel: ListViewModel
     @State private var isShowingSheet = false
+
     
     var body: some View {
         VStack {
-            List {
+            TimelineView()
+                .padding(.bottom, 70)
             
-                Section(header:TimelineView()) {
-                    ForEach(listViewModel.activities) { item in
-                        ListViewRow(item: item)
-                    }
-                    .onDelete(perform: listViewModel.deleteItem)
-                    .onMove(perform: listViewModel.moveItem)
+            HStack {
+                HStack {
+                    Text("⏳ Duration")
+                        .foregroundStyle(Color(uiColor: .systemGray))
+                    Text(listViewModel.duration.getString())
+                }
+
+                Spacer()
+                
+                HStack {
+                    Text("✅ End Time")
+                        .foregroundStyle(Color(uiColor: .systemGray))
+//                    Text(listViewModel.duration.getString())
+                    
+                    DatePicker("End time", selection: listViewModel.standardTime.convertToDate(), displayedComponents: .hourAndMinute)
                 }
             }
-            .listStyle(.grouped)
+            .font(.subheadline)
+
+            
+            List {
+                ForEach(listViewModel.activities) { item in
+                    ListViewRow(item: item)
+                }
+                .onDelete(perform: listViewModel.deleteItem)
+                .onMove(perform: listViewModel.moveItem)
+            }
+            .listStyle(.plain)
+
         }
-   
-        .navigationTitle("Morning Routine")
+        .padding(.extraLargeSize)
+        .navigationTitle("Working Routine")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -36,7 +58,6 @@ struct ListView: View {
                 Button("Add") {
                     isShowingSheet.toggle()
                 }
-
             }
         }
         .sheet(isPresented: $isShowingSheet, content: {
