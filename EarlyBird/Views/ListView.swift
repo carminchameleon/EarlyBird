@@ -13,67 +13,57 @@ struct ListView: View {
 
     
     var body: some View {
-        VStack {
-            TimelineView()
-                .padding(.bottom, 70)
-            
-            HStack {
-                HStack {
-                    Text("⏳ Duration")
-                        .foregroundStyle(Color(uiColor: .systemGray))
-                    Text(listViewModel.duration.getString())
+        ZStack(alignment: .bottomTrailing) {
+            VStack {
+                TimelineView()
+                    .padding(.bottom, 50)
+                TimeControlView()
+                List {
+                    ForEach(listViewModel.activities) { item in
+                        ListViewRow(item: item)
+                    }
+                    .onDelete(perform: listViewModel.deleteItem)
+                    .onMove(perform: listViewModel.moveItem)
                 }
-
-                Spacer()
-                
-                HStack {
-                    Text("✅ End Time")
-                        .foregroundStyle(Color(uiColor: .systemGray))
-//                    Text(listViewModel.duration.getString())
-                    
-                    DatePicker("End time", selection: listViewModel.standardTime.convertToDate(), displayedComponents: .hourAndMinute)
-                }
+                .listStyle(.plain)
             }
-            .font(.subheadline)
-
             
-            List {
-                ForEach(listViewModel.activities) { item in
-                    ListViewRow(item: item)
-                }
-                .onDelete(perform: listViewModel.deleteItem)
-                .onMove(perform: listViewModel.moveItem)
-            }
-            .listStyle(.plain)
-
+            AddRoutineButton()
         }
-        .padding(.extraLargeSize)
+  
         .navigationTitle("Working Routine")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                EditButton()
-            }
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Add") {
-                    isShowingSheet.toggle()
-                }
+                EditButton()
             }
         }
         .sheet(isPresented: $isShowingSheet, content: {
-//            AddRoutineView()
             AddRoutineView1(isShowingSheet: $isShowingSheet)
         })
         
     }
-    
-    func didDismiss() {
-        isShowingSheet.toggle()
-    }
+
 }
 
 #Preview {
     NavigationStack {
         ListView()
     }.environmentObject(ListViewModel())
+}
+
+struct AddRoutineButton: View {
+    var body: some View {
+        Button {
+        } label: {
+            Image(systemName: "plus")
+                .font(.headline)
+                .bold()
+                .padding(.smallSize)
+                .background(Color(uiColor: .label))
+                .foregroundColor(Color(uiColor: .systemBackground))
+                .clipShape(Circle())
+        }
+        .padding()
+    }
 }

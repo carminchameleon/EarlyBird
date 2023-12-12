@@ -12,11 +12,16 @@ struct ListViewRow: View {
     
     var body: some View {
         HStack {
-            Text(item.title)
-                .font(.headline)
-            Spacer()
-            Text(item.duration.getString())
-                .font(.caption)
+            Toggle(isOn: .constant(true), label: {
+                VStack(alignment: .leading) {
+                    Text(item.title)
+                        .font(.callout)
+                    Text(item.duration.getString())
+                        .font(.callout)
+                        .foregroundStyle(Color(uiColor: .systemGray))
+                }
+            })
+
         }
         .padding(.vertical, .smallSize)
     }

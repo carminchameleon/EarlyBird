@@ -16,13 +16,12 @@ struct TimelineView: View {
             Group {
                 HStack(alignment: .center, spacing: 0) {
                     Text(listViewModel.calculatedTime.getNumberOfTime())
-                        .font(.largeTitle)
+                        .font(.largeTitle.weight(.semibold))
                         
                     Text(listViewModel.calculatedTime.getDayOfTime())
-                        .font(.title)
+                        .font(.title.weight(.semibold))
                 }
-                .bold()
-                .padding()   
+                .padding()
             }
             .frame(maxWidth: .infinity)
             .overlay(
@@ -31,6 +30,7 @@ struct TimelineView: View {
                     .stroke(Color(UIColor.secondarySystemBackground), lineWidth: 1)
             )
         }
+        .padding()
     }
 }
 

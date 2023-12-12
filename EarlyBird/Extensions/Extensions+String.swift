@@ -7,6 +7,12 @@
 
 import Foundation
 
+// TODO: - 주석 달 것!!!
+// convert to time
+// convert to date
+// getNumber from time string
+// get am/pm from time string
+
 extension String {
     
     func convertToTimeInterval(_ sting: String) -> TimeInterval? {
@@ -39,6 +45,7 @@ extension String {
         return timeInterval
     }
     
+    // String -> 08:20AM
     func convertToDate() -> Date? {
         var dateFormmater: DateFormatter {
             let formatter = DateFormatter()
@@ -46,16 +53,15 @@ extension String {
             formatter.timeStyle = .short
             return formatter
         }
-        
         return dateFormmater.date(from: self)
     }
-
     
     func getNumberOfTime() -> String {
         var result = ""
         if !self.isEmpty {
            result = String(self.dropLast(2))
         }
+        
         return result
     }
     
@@ -64,6 +70,7 @@ extension String {
         if !self.isEmpty {
             result = String(self.suffix(2)).lowercased()
         }
+        
         return result
     }
     

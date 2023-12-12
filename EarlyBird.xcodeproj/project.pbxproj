@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F0256F102B288DAE00487995 /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0256F0F2B288DAE00487995 /* Extension+Date.swift */; };
+		F0256F122B289B3A00487995 /* TimeControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0256F112B289B3A00487995 /* TimeControlView.swift */; };
 		F05ED90E2B1167EE00948809 /* EarlyBirdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED90D2B1167EE00948809 /* EarlyBirdApp.swift */; };
 		F05ED9102B1167EE00948809 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED90F2B1167EE00948809 /* ContentView.swift */; };
 		F05ED9122B1167EF00948809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05ED9112B1167EF00948809 /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F0256F0F2B288DAE00487995 /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
+		F0256F112B289B3A00487995 /* TimeControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeControlView.swift; sourceTree = "<group>"; };
 		F05ED90A2B1167EE00948809 /* EarlyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarlyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F05ED90D2B1167EE00948809 /* EarlyBirdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyBirdApp.swift; sourceTree = "<group>"; };
 		F05ED90F2B1167EE00948809 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				F0A186072B11C392009A2829 /* CustomTimePickers.swift */,
 				F0FD9C922B207C63008D4428 /* TimelineView.swift */,
 				F0FD9C942B208630008D4428 /* AddRoutineView1.swift */,
+				F0256F112B289B3A00487995 /* TimeControlView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			children = (
 				F05ED9252B11775100948809 /* Extensions+String.swift */,
 				F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */,
+				F0256F0F2B288DAE00487995 /* Extension+Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -217,10 +223,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0A186062B11B56A009A2829 /* ListViewModel.swift in Sources */,
+				F0256F122B289B3A00487995 /* TimeControlView.swift in Sources */,
 				F05ED9232B116C6C00948809 /* Activity.swift in Sources */,
 				F05ED92B2B117F1E00948809 /* Theme.swift in Sources */,
 				F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */,
 				F05ED9102B1167EE00948809 /* ContentView.swift in Sources */,
+				F0256F102B288DAE00487995 /* Extension+Date.swift in Sources */,
 				F05ED90E2B1167EE00948809 /* EarlyBirdApp.swift in Sources */,
 				F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */,
 				F05ED91F2B11687200948809 /* ListView.swift in Sources */,
