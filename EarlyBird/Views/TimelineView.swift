@@ -17,7 +17,7 @@ struct TimelineView: View {
                 HStack(alignment: .center, spacing: 0) {
                     Text(listViewModel.calculatedTime.getNumberOfTime())
                         .font(.largeTitle.weight(.semibold))
-                        
+                    
                     Text(listViewModel.calculatedTime.getDayOfTime())
                         .font(.title.weight(.semibold))
                 }
@@ -27,10 +27,9 @@ struct TimelineView: View {
             .overlay(
                 RoundedRectangle(cornerRadius: .mediumSize)
                     .inset(by: 1)
-                    .stroke(Color(UIColor.secondarySystemBackground), lineWidth: 1)
+                    .stroke(Color(UIColor.secondarySystemBackground), lineWidth: 3)
             )
-        }
-        .padding()
+        }.padding(.horizontal)
     }
 }
 

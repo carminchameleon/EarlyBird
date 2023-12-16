@@ -20,15 +20,21 @@ struct TimeControlView: View {
             
             Spacer()
             
-            HStack(alignment: .center, spacing: 0){
+            HStack {
                 Text("✅ End Time")
                     .foregroundStyle(Color(uiColor: .systemGray))
                 DatePicker("",selection: $listViewModel.endPoint, displayedComponents: .hourAndMinute)
-                    .datePickerStyle(.automatic)
+                    .datePickerStyle(CompactDatePickerStyle())
+                    .clipped()
+                    .labelsHidden()
             }
         }
         .padding(.horizontal)
         .font(.subheadline)
+        .scaledToFit()
+        .minimumScaleFactor(0.5)
+        .lineLimit(1)
+
     }
 }
 

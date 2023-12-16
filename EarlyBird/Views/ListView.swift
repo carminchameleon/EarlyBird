@@ -14,47 +14,47 @@ struct ListView: View {
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            VStack {
+            VStack(spacing: .largeSize) {
                 TimelineView()
-                    .padding(.bottom, 50)
                 TimeControlView()
+                
                 List {
                     ForEach(listViewModel.activities) { item in
-                        ListViewRow(item: item)
+                        Button(action: {
+                            print("on tapped")
+                        }, label: {
+                            ListViewRow(item: item) { item in
+                                listViewModel.updateToggleState(item: item)
+                            }
+                        })
                     }
+                    
                     .onDelete(perform: listViewModel.deleteItem)
                     .onMove(perform: listViewModel.moveItem)
                 }
                 .listStyle(.plain)
             }
-            
-            AddRoutineButton()
+            AddRoutineButton
         }
   
         .navigationTitle("Working Routine")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                EditButton()
-            }
-        }
+//        .toolbar {
+//            ToolbarItem(placement: .topBarTrailing) {
+//                EditButton()
+//            }
+//        }
         .sheet(isPresented: $isShowingSheet, content: {
-            AddRoutineView1(isShowingSheet: $isShowingSheet)
+            NavigationStack {
+                AddRoutineView(isShowingSheet: $isShowingSheet)
+            }
         })
         
     }
 
-}
-
-#Preview {
-    NavigationStack {
-        ListView()
-    }.environmentObject(ListViewModel())
-}
-
-struct AddRoutineButton: View {
-    var body: some View {
+    var AddRoutineButton: some View {
         Button {
+            isShowingSheet.toggle()
         } label: {
             Image(systemName: "plus")
                 .font(.headline)
@@ -66,4 +66,10 @@ struct AddRoutineButton: View {
         }
         .padding()
     }
+}
+
+#Preview {
+    NavigationStack {
+        ListView()
+    }.environmentObject(ListViewModel())
 }

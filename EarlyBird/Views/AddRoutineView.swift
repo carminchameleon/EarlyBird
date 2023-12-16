@@ -1,88 +1,146 @@
 //
-//  AddRoutineView.swift
+//  AddRoutineView1.swift
 //  EarlyBird
 //
-//  Created by Eunji Hwang on 25/11/2023.
+//  Created by Eunji Hwang on 6/12/2023.
 //
 
 import SwiftUI
 
-enum DisplayTime: String {
-    case hours = "hours"
-    case minutes = "min"
-    case seconds = "sec"
-}
-
 struct AddRoutineView: View {
-    @Environment (\.dismiss) var dismiss
-    @State var showCustomSelect: Bool = false
-
+    @Binding var isShowingSheet: Bool
+    @State var textFieldValue: String = "" {
+        didSet {
+            print(textFieldValue)
+        }
+    }
+    
     @State var hour: Int = 00
     @State var min: Int = 00 {
         didSet {
             print(min)
         }
     }
-    @State var sec: Int = 00
+
     
-    @State var textFieldValue: String = ""
     var body: some View {
         ScrollView {
-            VStack(spacing: .superLargeSize) {
-                TextField("Add your routine", text: $textFieldValue)
+            VStack(spacing: .largeSize) {
+                TextField("Routine Name", text: $textFieldValue)
+                    .font(.title3)
+                    .bold()
+                    .multilineTextAlignment(.center)
                     .padding(.horizontal)
                     .frame(height: 55)
-                    .background(.white)
+                    .background(Color(UIColor.secondarySystemFill))
                     .cornerRadius(.mediumSize)
-            
-                Button(action: {
-                    withAnimation {
-                        showCustomSelect.toggle()
-                    }
-                }, label: {
-                    Text("⏱️ Custom".uppercased())
-                        .foregroundColor(.white)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.yellow.gradient)
-                        .cornerRadius(.mediumSize)
-                })
                 
-                Toggle(isOn: $showCustomSelect, label: {
-                    Text("블라블라")
-                })
- 
-                Text(String(min))
-                if showCustomSelect {
-                    CustomTimePickers(hour: $hour, min: $min, sec: $sec)
+                GroupBox {
+                    CustomTimePickers(hour: $hour, min: $min)
                 }
-                
-                
-                Button(action: saveButtonTapped, label: {
-                    Text("save".uppercased())
-                        .foregroundColor(.white)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor.gradient)
-                        .cornerRadius(.mediumSize)
-                })
+
             }
         }
         .padding()
         .navigationTitle("Add Routine")
-        .background(Color(.systemGroupedBackground))
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Cancel") {
+                    isShowingSheet.toggle()
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    isShowingSheet.toggle()
+                }, label: {
+                    Text("Done")
+                })
+                .disabled(true)
+            }
+        }.tint(.orange)
     }
 }
 
-// 두글자 이상
-// 시간 선택도 해야 함
-func saveButtonTapped() {
-    print("save button is tapped")
+#Preview {
+    AddRoutineView(isShowingSheet: .constant(true))
 }
 
 
 
+struct CustomDatePicker1: View {
+    @Binding var hourSelection: Int
+    @Binding var minuteSelection: Int
+    
+    static private let maxHours = 24
+    static private let maxMinutes = 60
+    private let hours = [Int](0...Self.maxHours)
+    private let minutes = [Int](0...Self.maxMinutes)
+    
+    var body: some View {
+        GeometryReader { geometry in
+            HStack(spacing: .zero) {
+                Picker(selection: $hourSelection, label: Text("")) {
+                    ForEach(hours, id: \.self) { value in
+                        Text("\(value) hr")
+                            .tag(value)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(width: geometry.size.width / 2, alignment: .center)
+                Picker(selection: $minuteSelection, label: Text("")) {
+                    ForEach(minutes, id: \.self) { value in
+                        Text("\(value) min")
+                            .tag(value)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
+                .pickerStyle(.wheel)
+                .frame(width: geometry.size.width / 2, alignment: .center)
+            }
+        }
+    }
+}
 
-#Preview {
-    AddRoutineView()
+
+struct CustomDatePicker: View {
+    @Binding var hourSelection: Int
+    @Binding var minuteSelection: Int
+    
+    static private let maxHours = 23
+    static private let maxMinutes = 60
+    private let hours = [Int](0...Self.maxHours)
+    private let minutes = [Int](0...Self.maxMinutes)
+    
+    var body: some View {
+        GeometryReader { geometry in
+            HStack(alignment: .center) {
+                Picker(selection: $hourSelection, label: Text("")) {
+                    ForEach(hours, id: \.self) { value in
+                        Text("\(value)")
+                            .tag(value)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(width: geometry.size.width / 2, alignment: .center)
+                .overlay(alignment: .center) {
+                    Text("hours")
+                        .padding(.leading, 70)
+                }
+
+                Picker(selection: $minuteSelection, label: Text("")) {
+                    ForEach(minutes, id: \.self) { value in
+                        Text("\(value)")
+                            .tag(value)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(width: geometry.size.width / 2, alignment: .center)
+                .overlay(alignment: .center) {
+                    Text("mins")
+                        .padding(.leading, 70)
+                }
+            }
+        }
+    }
 }

@@ -68,7 +68,7 @@ extension String {
     func getDayOfTime() -> String {
         var result = ""
         if !self.isEmpty {
-            result = String(self.suffix(2)).lowercased()
+            result = String(self.suffix(2))
         }
         
         return result

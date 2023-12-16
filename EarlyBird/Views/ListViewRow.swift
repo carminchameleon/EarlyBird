@@ -10,9 +10,11 @@ import SwiftUI
 struct ListViewRow: View {
     @State var item: Activity
     
+    var updateToggleStatus: (Activity) -> Void
+    
     var body: some View {
         HStack {
-            Toggle(isOn: .constant(true), label: {
+            Toggle(isOn: $item.isOn, label: {
                 VStack(alignment: .leading) {
                     Text(item.title)
                         .font(.callout)
@@ -21,12 +23,19 @@ struct ListViewRow: View {
                         .foregroundStyle(Color(uiColor: .systemGray))
                 }
             })
-
+            .onChange(of: item.isOn, {
+                updateToggleStatus(item)
+            })
+            
         }
         .padding(.vertical, .smallSize)
     }
 }
+// 이 내부에서 값이 바뀌면, 그것을 업데이트 해야 하는데...
+
 
 #Preview {
-    ListViewRow(item: Activity(title: "Drink Hot Water", duration: 60))
+    ListViewRow(item: Activity(title: "Drink Hot Water", duration: 60)) { _ in
+        
+    }
 }
