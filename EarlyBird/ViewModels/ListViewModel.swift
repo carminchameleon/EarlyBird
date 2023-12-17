@@ -14,8 +14,10 @@ class ListViewModel: ObservableObject {
     @Published var duration: TimeInterval = 0
     @Published var isAdd: Bool = false
     @Published var calculatedTime = ""
-    var cancellables: Set<AnyCancellable> = []
+    @Published var selectedItem: Activity? = nil
 
+    var cancellables: Set<AnyCancellable> = []
+    
     init() {
         getActivities()
         addActivitiesSubscriber()
@@ -39,7 +41,6 @@ class ListViewModel: ObservableObject {
         $activities.map { activities in
             // activities 리스트를 전체 다 받을 예정임
             let duration = activities.filter { $0.isOn }.reduce(0,{ $0 + $1.duration })
-            print(duration)
             return duration
         }.sink {[weak self] returnedValue in
             guard let self = self else { return }
@@ -97,7 +98,7 @@ class ListViewModel: ObservableObject {
     }
     
     func updateItem(indexSet: IndexSet){
-        
+       
     }
     
     func updateToggleState(item: Activity){
@@ -108,7 +109,14 @@ class ListViewModel: ObservableObject {
     
     
     func addItem(item: Activity) {
-       
+        activities.append(item)
+    }
+    
+    func updateActivity(item: Activity) {
+        
+        if let index = activities.firstIndex(where: {  $0.id == item.id  }) {
+            activities[index] = item
+        }
     }
     
     // update activity data

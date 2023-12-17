@@ -19,7 +19,7 @@ extension String {
         var timeInterval: TimeInterval = 0
         // "HR", "MIN", "SEC"을 제거하고 문자열을 분리
         let components = sting.components(separatedBy: " ")
-
+        
         for component in components {
             // 각 부분에서 숫자를 추출
             if let value = Int(component), value > 0 {
@@ -41,9 +41,10 @@ extension String {
                 }
             }
         }
-
+        
         return timeInterval
     }
+    
     
     // String -> 08:20AM
     func convertToDate() -> Date? {

@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct ListViewRow: View {
-    @State var item: Activity
+    @Binding var item: Activity
+    
+    init(item: Binding<Activity>, updateToggleStatus: @escaping ((Activity)->Void)) {
+        self._item = item
+        self.updateToggleStatus = updateToggleStatus
+    }
     
     var updateToggleStatus: (Activity) -> Void
     
@@ -26,16 +31,12 @@ struct ListViewRow: View {
             .onChange(of: item.isOn, {
                 updateToggleStatus(item)
             })
-            
         }
         .padding(.vertical, .smallSize)
     }
 }
-// 이 내부에서 값이 바뀌면, 그것을 업데이트 해야 하는데...
-
 
 #Preview {
-    ListViewRow(item: Activity(title: "Drink Hot Water", duration: 60)) { _ in
-        
+    ListViewRow(item: .constant(Activity(title: "drink something", duration: 10))) { _ in        
     }
 }

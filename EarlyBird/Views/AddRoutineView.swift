@@ -9,19 +9,20 @@ import SwiftUI
 
 struct AddRoutineView: View {
     @Binding var isShowingSheet: Bool
-    @State var textFieldValue: String = "" {
-        didSet {
-            print(textFieldValue)
-        }
-    }
+    
+    @State var textFieldValue: String = ""
     
     @State var hour: Int = 00
-    @State var min: Int = 00 {
-        didSet {
-            print(min)
-        }
+    
+    @State var min: Int = 00
+    
+    enum FocusedField {
+          case title
     }
-
+    
+    @FocusState private var focusedField: FocusedField?
+    
+    var addActivity: (Activity) -> Void
     
     var body: some View {
         ScrollView {
@@ -32,13 +33,13 @@ struct AddRoutineView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
                     .frame(height: 55)
-                    .background(Color(UIColor.secondarySystemFill))
+                    .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(.mediumSize)
+                    .focused($focusedField, equals: .title)
                 
                 GroupBox {
                     CustomTimePickers(hour: $hour, min: $min)
                 }
-
             }
         }
         .padding()
@@ -52,18 +53,38 @@ struct AddRoutineView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    isShowingSheet.toggle()
+                    saveButtonTapped()
                 }, label: {
-                    Text("Done")
+                    Text("Save")
                 })
-                .disabled(true)
+                .disabled(canNotSubmit())
             }
-        }.tint(.orange)
+        }
+        .tint(.orange)
+        .onAppear {
+            focusedField = .title
+        }
+
     }
+
+    func canNotSubmit() -> Bool {
+        let title = textFieldValue.trimmingCharacters(in: .whitespaces)
+        return title.count == 0 || (min == 0 && hour == 00)
+    }
+    
+    func saveButtonTapped() {
+        let title = textFieldValue.trimmingCharacters(in: .whitespaces)
+        let duration = Double(hour * 3600 + min * 60)
+        let activity = Activity(title: title, duration: duration)
+        addActivity(activity)
+        isShowingSheet.toggle()
+    }
+    
 }
 
 #Preview {
-    AddRoutineView(isShowingSheet: .constant(true))
+    AddRoutineView(isShowingSheet: .constant(true)) { _ in
+    }
 }
 
 

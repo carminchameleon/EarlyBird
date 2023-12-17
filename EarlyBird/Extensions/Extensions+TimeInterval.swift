@@ -33,4 +33,16 @@ extension TimeInterval {
             
             return components.joined(separator: " ")
         }
+
+    
+}
+
+extension Double {
+    func getTime() -> (hours: Int, minutes: Int) {
+        let hours = Int(self) / 3600
+        let minutes = (Int(self) % 3600) / 60
+
+        return (hours, minutes)
+        
+    }
 }

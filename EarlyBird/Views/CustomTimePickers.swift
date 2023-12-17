@@ -14,19 +14,26 @@ struct CustomTimePickers: View {
     var body: some View {
         HStack {
             VStack {
-                Text(Time.hours.rawValue.uppercased())
+                Text("Hours")
+                    .font(.subheadline)
+                    .fontDesign(.rounded)
                     .padding(.horizontal, .largeSize)
+                    .foregroundStyle(Color(uiColor: UIColor.systemGray))
+                    
                 Picker("", selection: $hour){
-                    ForEach(0..<23, id: \.self) { i in
+                    ForEach(0..<24, id: \.self) { i in
                         Text("\(i)").tag(i)
                     }
                 }
             }
             VStack {
-                Text(Time.minutes.rawValue.uppercased())
+                Text("Minutes")
+                    .font(.subheadline)
+                    .fontDesign(.rounded)
                     .padding(.horizontal, .largeSize)
+                    .foregroundStyle(Color(uiColor: UIColor.systemGray))
                 Picker("", selection: $min){
-                    ForEach(0..<60, id: \.self) { i in
+                    ForEach(0..<61, id: \.self) { i in
                         Text("\(i)").tag(i)
                     }
                 }
