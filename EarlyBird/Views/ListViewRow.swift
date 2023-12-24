@@ -29,7 +29,10 @@ struct ListViewRow: View {
                 }
             })
             .onChange(of: item.isOn, {
-                updateToggleStatus(item)
+                withAnimation(.easeInOut(duration: 20)) {
+                    updateToggleStatus(item)
+                }
+
             })
         }
         .padding(.vertical, .smallSize)
@@ -37,6 +40,6 @@ struct ListViewRow: View {
 }
 
 #Preview {
-    ListViewRow(item: .constant(Activity(title: "drink something", duration: 10))) { _ in        
+    ListViewRow(item: .constant(Activity(title: "drink something", duration: 10))) { _ in
     }
 }

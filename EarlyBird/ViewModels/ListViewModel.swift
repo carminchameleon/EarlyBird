@@ -10,32 +10,44 @@ import Combine
 
 class ListViewModel: ObservableObject {
     @Published var activities: [Activity] = []
-    @Published var endPoint = Date()
-    @Published var duration: TimeInterval = 0
-    @Published var isAdd: Bool = false
+    
+    @Published var standardTime = Date()
+    @Published var standardLabel = "✅ End Time"
+    
     @Published var calculatedTime = ""
-    @Published var selectedItem: Activity? = nil
+    @Published var calculatedLabel = "⏰ Wake Up"
+    
+    @Published var isAdd: Bool = false
+    
+    var sortOption = SortOption.manual
 
-    var cancellables: Set<AnyCancellable> = []
+    var sortOrder = SortOrder.ascend
+
+    
+    @Published var selectedItem: Activity? = nil
+    @Published var duration: TimeInterval = 0
+
+    
+    var cancelBag = CancelBag()
     
     init() {
         getActivities()
         addActivitiesSubscriber()
         addDurationSubscriber()
-        addEndPointSubscriber()
+
     }
     
     func getActivities() {
         let initialList: [Activity] = [
-            Activity(title: "Drink Hot Water", duration: 60),
-            Activity(title: "Organize bed", duration: 60),
-            Activity(title: "Yoga", duration: 2400),
-            Activity(title: "Morning Page", duration: 2400),
+            
+            Activity(title: "A _ Yoga", duration: 1200),
+            Activity(title: "B - Drink Hot Water", duration: 60),
+            Activity(title: "C _ Organize bed", duration: 90),
+            Activity(title: "D _ Morning Page", duration: 2400),
         ]
         activities.append(contentsOf: initialList)
     }
     
-    // activity에 따라서 duration을 업데이트
     
     func addActivitiesSubscriber() {
         $activities.map { activities in
@@ -45,26 +57,18 @@ class ListViewModel: ObservableObject {
         }.sink {[weak self] returnedValue in
             guard let self = self else { return }
             self.duration = returnedValue
-        }.store(in: &cancellables)
+        }.store(in: cancelBag)
     }
     
     func addDurationSubscriber() {
-        $duration.combineLatest($endPoint, $isAdd)
+        $duration.combineLatest($standardTime, $isAdd)
             .receive(on: DispatchQueue.main)
-            .sink {[weak self] (duration, endpoint, isAdd) in
-                self?.updateCalculateTime(endPoint: endpoint, duration: duration, isAdd: isAdd)
-            }.store(in: &cancellables)
+            .sink {[weak self] (duration, standardTime, isAdd) in
+                self?.updateCalculateTime(standardTime: standardTime, duration: duration, isAdd: isAdd)
+            }.store(in: cancelBag)
     }
     
-    func addEndPointSubscriber() {
-        $endPoint.combineLatest($duration, $isAdd)
-            .receive(on: DispatchQueue.main)
-            .sink {[weak self] (endPoint, duration, isAdd) in
-                self?.updateCalculateTime(endPoint: endPoint, duration: duration, isAdd: isAdd)
-            }.store(in: &cancellables)
-    }
-    
-    func updateCalculateTime(endPoint: Date, duration: TimeInterval, isAdd: Bool) {
+    func updateCalculateTime(standardTime: Date, duration: TimeInterval, isAdd: Bool) {
         var dateFormmater: DateFormatter {
             let formatter = DateFormatter()
             formatter.dateStyle = .none
@@ -72,9 +76,11 @@ class ListViewModel: ObservableObject {
             return formatter
         }
         
-        let resultDate = endPoint.addingTimeInterval( isAdd ? duration : -duration )
+        let resultDate = standardTime.addingTimeInterval( isAdd ? duration : -duration )
         calculatedTime = dateFormmater.string(from: resultDate)
     }
+    
+
     /**
     1. activity에 따라서 duration을 바꾼다.
      2. duration에 따라서 예상 시간을 바꾼다.
@@ -94,30 +100,90 @@ class ListViewModel: ObservableObject {
     }
     
     func moveItem(from: IndexSet, to: Int) {
+        sortOption = .manual
+        sortOrder = .ascend
         activities.move(fromOffsets: from, toOffset: to)
+        
     }
-    
-    func updateItem(indexSet: IndexSet){
-       
-    }
-    
+        
     func updateToggleState(item: Activity){
         if let index = activities.firstIndex(where: { $0.id == item.id }) {
             activities[index] = item.updateToggle()
         }
+        sortActivityList()
     }
-    
     
     func addItem(item: Activity) {
         activities.append(item)
+        sortActivityList()
+    }
+    
+    func sortActivityList() {
+        let newList = getSortedList(sortOption, sortOrder)
+        activities = newList
     }
     
     func updateActivity(item: Activity) {
-        
         if let index = activities.firstIndex(where: {  $0.id == item.id  }) {
             activities[index] = item
         }
+        sortActivityList()
     }
     
-    // update activity data
+    // change standard time
+    func switchButtonTapped() {
+        guard let existCalculatedTime = calculatedTime.convertToDate() else { return }
+        standardTime = existCalculatedTime
+        isAdd.toggle()
+        
+        let existCalculatedLabel = calculatedLabel
+        let existStandardLabel = standardLabel
+        
+        standardLabel = existCalculatedLabel
+        calculatedLabel = existStandardLabel
+    }
+    
+    func updateSortOption(_ newOption: SortOption) {
+        self.sortOption = newOption
+        activities = getSortedList(newOption, sortOrder)
+    }
+    
+    func updateSortOrder(_ newOrder: SortOrder) {
+        self.sortOrder = newOrder
+        activities = getSortedList(sortOption, newOrder)
+    }
+    
+    
+    func getSortedList(_ sortOption: SortOption,_ sortOrder: SortOrder ) -> [Activity] {
+        var list = activities
+        switch sortOption {
+        case .manual:
+            break
+        case .title:
+            switch sortOrder {
+            case .ascend:
+                list = list.sorted { $0.title < $1.title }
+            case .descend:
+                list = list.sorted { $0.title > $1.title }
+            }
+            
+        case .active:
+            switch sortOrder {
+            case .ascend:
+                list = list.sorted { $0.isOn && !$1.isOn }
+            case .descend:
+                list = list.sorted { !$0.isOn && $1.isOn }
+            }
+            
+        case .duration:
+            switch sortOrder {
+            case .ascend:
+                list = list.sorted { $0.duration < $1.duration }
+            case .descend:
+                list = list.sorted { $0.duration > $1.duration }
+            }
+        }
+        
+        return list
+    }
 }

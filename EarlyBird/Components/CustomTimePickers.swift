@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CustomTimePickers: View {
-    @Binding var hour: Int
-    @Binding var min: Int
+    @Binding var hours: Int
+    @Binding var mins: Int
     
     var body: some View {
         HStack {
@@ -20,7 +20,7 @@ struct CustomTimePickers: View {
                     .padding(.horizontal, .largeSize)
                     .foregroundStyle(Color(uiColor: UIColor.systemGray))
                     
-                Picker("", selection: $hour){
+                Picker("", selection: $hours){
                     ForEach(0..<24, id: \.self) { i in
                         Text("\(i)").tag(i)
                     }
@@ -32,7 +32,7 @@ struct CustomTimePickers: View {
                     .fontDesign(.rounded)
                     .padding(.horizontal, .largeSize)
                     .foregroundStyle(Color(uiColor: UIColor.systemGray))
-                Picker("", selection: $min){
+                Picker("", selection: $mins){
                     ForEach(0..<61, id: \.self) { i in
                         Text("\(i)").tag(i)
                     }
@@ -47,5 +47,5 @@ struct CustomTimePickers: View {
 
 
 #Preview {
-    CustomTimePickers(hour: .constant(0), min: .constant(30))
+    CustomTimePickers(hours: .constant(0), mins: .constant(30))
 }

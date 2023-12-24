@@ -21,9 +21,9 @@ struct TimeControlView: View {
             Spacer()
             
             HStack {
-                Text("✅ End Time")
+                Text(listViewModel.standardLabel)
                     .foregroundStyle(Color(uiColor: .systemGray))
-                DatePicker("",selection: $listViewModel.endPoint, displayedComponents: .hourAndMinute)
+                DatePicker("",selection: $listViewModel.standardTime, displayedComponents: .hourAndMinute)
                     .datePickerStyle(CompactDatePickerStyle())
                     .clipped()
                     .labelsHidden()

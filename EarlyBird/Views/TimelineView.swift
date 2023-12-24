@@ -12,7 +12,22 @@ struct TimelineView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("⏰ Wake Up")
+            HStack {
+                Text(listViewModel.calculatedLabel)
+                Spacer()
+                Button {
+                    withAnimation(.snappy) {
+                        listViewModel.switchButtonTapped()
+                    }
+                } label: {
+                    Image(systemName: "arrow.left.arrow.right")
+                        .font(.caption)
+                    Text("Switch")
+                }
+                .foregroundColor(.accentColor)
+
+            }
+
             Group {
                 HStack(alignment: .center, spacing: 0) {
                     Text(listViewModel.calculatedTime.getNumberOfTime())
@@ -24,11 +39,13 @@ struct TimelineView: View {
                 .padding()
             }
             .frame(maxWidth: .infinity)
-            .overlay(
-                RoundedRectangle(cornerRadius: .mediumSize)
-                    .inset(by: 1)
-                    .stroke(Color(UIColor.secondarySystemBackground), lineWidth: 3)
-            )
+            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 8))
+
+//            .overlay(
+//                RoundedRectangle(cornerRadius: .mediumSize)
+//                    .inset(by: 1)
+//                    .stroke(Color(UIColor.secondarySystemBackground), lineWidth: 3)
+//            )
         }.padding(.horizontal)
     }
 }

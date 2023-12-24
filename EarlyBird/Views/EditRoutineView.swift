@@ -14,7 +14,7 @@ class EditRoutineViewModel: ObservableObject {
     
     @Published var hours: Int = 00
     
-    @Published var min: Int = 00
+    @Published var mins: Int = 00
     
     @Published var isOn = true
     
@@ -24,14 +24,14 @@ class EditRoutineViewModel: ObservableObject {
         self.item = item
         self.textFieldValue = item?.title ?? ""
         self.hours = item?.duration.getTime().hours ?? 0
-        self.min = item?.duration.getTime().minutes ?? 0
+        self.mins = item?.duration.getTime().minutes ?? 0
         self.isOn = item?.isOn ?? true
         self.updateActivity = updateActivity
     }
     
     func handleSaveButtonTapped() {
         let title = textFieldValue.trimmingCharacters(in: .whitespaces)
-        let duration = Double(hours * 3600 + min * 60)
+        let duration = Double(hours * 3600 + mins * 60)
         item = item?.updateActivity(newTitle: title, newDuration: duration, isOn: isOn)
         if let item = item {
             updateActivity(item)
@@ -41,6 +41,8 @@ class EditRoutineViewModel: ObservableObject {
 
 struct EditRoutineView: View {
     @Binding var isShowingSheet: Bool
+    
+    @State var isShowingAlert: Bool = false
     
     @StateObject var vm: EditRoutineViewModel
 
@@ -65,7 +67,7 @@ struct EditRoutineView: View {
                     .focused($focusedField, equals: .title)
 
                 GroupBox {
-                    CustomTimePickers(hour: $vm.hours, min: $vm.min)
+                    CustomTimePickers(hours: $vm.hours, mins: $vm.mins)
                 }
                 
                 GroupBox {
@@ -74,12 +76,16 @@ struct EditRoutineView: View {
                             .bold()
                     })
                 }
+                PresetList(isShowingSheet: $isShowingSheet, isShowingAlert: $isShowingAlert, textFieldValue: $vm.textFieldValue, hours: $vm.hours, mins: $vm.mins) { _ in
+                    vm.handleSaveButtonTapped()
+                }
             }
         }
         .padding()
         .navigationTitle("Edit Routine")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            
             ToolbarItem(placement: .topBarLeading) {
                 Button("Cancel") {
                     isShowingSheet.toggle()
@@ -92,7 +98,7 @@ struct EditRoutineView: View {
                 }, label: {
                     Text("Save")
                 })
-                .disabled((vm.textFieldValue.count == 0) || (vm.min == 0 && vm.hours == 00))
+                .disabled((vm.textFieldValue.count == 0) || (vm.mins == 0 && vm.hours == 00))
             }
         }.tint(.orange)
     }
