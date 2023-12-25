@@ -28,3 +28,12 @@ struct Activity: Identifiable {
         return Activity(id: id, title: title, duration: duration, isOn: isOn)
     }
 }
+
+extension Activity {
+    static let mockedActivity = [
+        Activity(title: "1 _ Yoga", duration: 1200),
+        Activity(title: "2 - Drink Hot Water", duration: 60),
+        Activity(title: "3 _ Organize bed", duration: 120),
+        Activity(title: "4 _ Morning Page", duration: 2400),
+    ]
+}

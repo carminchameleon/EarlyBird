@@ -43,8 +43,7 @@ extension String {
         }
         
         return timeInterval
-    }
-    
+    }    
     
     // String -> 08:20AM
     func convertToDate() -> Date? {

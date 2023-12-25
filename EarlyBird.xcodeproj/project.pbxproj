@@ -13,26 +13,30 @@
 		F0256F122B289B3A00487995 /* TimeControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0256F112B289B3A00487995 /* TimeControlView.swift */; };
 		F05D78B12B2DCF4A00B026F3 /* HalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D78B02B2DCF4A00B026F3 /* HalfSheet.swift */; };
 		F05ED90E2B1167EE00948809 /* EarlyBirdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED90D2B1167EE00948809 /* EarlyBirdApp.swift */; };
-		F05ED9102B1167EE00948809 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED90F2B1167EE00948809 /* ContentView.swift */; };
 		F05ED9122B1167EF00948809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05ED9112B1167EF00948809 /* Assets.xcassets */; };
 		F05ED9152B1167EF00948809 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05ED9142B1167EF00948809 /* Preview Assets.xcassets */; };
-		F05ED91F2B11687200948809 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED91E2B11687200948809 /* ListView.swift */; };
-		F05ED9212B116B6700948809 /* ListViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9202B116B6700948809 /* ListViewRow.swift */; };
+		F05ED91F2B11687200948809 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED91E2B11687200948809 /* ActivityListView.swift */; };
+		F05ED9212B116B6700948809 /* ActivityRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9202B116B6700948809 /* ActivityRow.swift */; };
 		F05ED9232B116C6C00948809 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9222B116C6C00948809 /* Activity.swift */; };
 		F05ED9262B11775100948809 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9252B11775100948809 /* Extensions+String.swift */; };
 		F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */; };
 		F05ED92B2B117F1E00948809 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED92A2B117F1E00948809 /* Theme.swift */; };
-		F071CB4A2B2EA78D00663A61 /* EditRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F071CB492B2EA78D00663A61 /* EditRoutineView.swift */; };
+		F071CB4A2B2EA78D00663A61 /* EditActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F071CB492B2EA78D00663A61 /* EditActivityView.swift */; };
 		F08C86F32B36ACCF0090B55B /* PresetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F22B36ACCF0090B55B /* PresetList.swift */; };
 		F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F42B37B3E60090B55B /* SortMenu.swift */; };
 		F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */; };
-		F0A186062B11B56A009A2829 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186052B11B56A009A2829 /* ListViewModel.swift */; };
+		F0A186062B11B56A009A2829 /* ActivityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186052B11B56A009A2829 /* ActivityListViewModel.swift */; };
 		F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186072B11C392009A2829 /* CustomTimePickers.swift */; };
 		F0A1860A2B11C923009A2829 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186092B11C923009A2829 /* Presets.swift */; };
 		F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1860B2B11C9AE009A2829 /* Time.swift */; };
 		F0CBC6F92B384FE90092A7AA /* RoutineSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC6F82B384FE90092A7AA /* RoutineSettingViewModel.swift */; };
+		F0CBC6FB2B38530D0092A7AA /* DailyRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC6FA2B38530D0092A7AA /* DailyRoutine.swift */; };
+		F0CBC6FD2B38537B0092A7AA /* RoutineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC6FC2B38537B0092A7AA /* RoutineListView.swift */; };
+		F0CBC6FF2B3853D70092A7AA /* RoutineListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC6FE2B3853D70092A7AA /* RoutineListViewModel.swift */; };
+		F0CBC7062B38565E0092A7AA /* EditActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7052B38565E0092A7AA /* EditActivityViewModel.swift */; };
+		F0CBC7082B3857140092A7AA /* RoutineRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7072B3857140092A7AA /* RoutineRow.swift */; };
 		F0FD9C932B207C63008D4428 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C922B207C63008D4428 /* TimelineView.swift */; };
-		F0FD9C952B208630008D4428 /* AddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C942B208630008D4428 /* AddRoutineView.swift */; };
+		F0FD9C952B208630008D4428 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C942B208630008D4428 /* AddActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,26 +47,30 @@
 		F05D78B02B2DCF4A00B026F3 /* HalfSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheet.swift; sourceTree = "<group>"; };
 		F05ED90A2B1167EE00948809 /* EarlyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarlyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F05ED90D2B1167EE00948809 /* EarlyBirdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyBirdApp.swift; sourceTree = "<group>"; };
-		F05ED90F2B1167EE00948809 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F05ED9112B1167EF00948809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F05ED9142B1167EF00948809 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F05ED91E2B11687200948809 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		F05ED9202B116B6700948809 /* ListViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewRow.swift; sourceTree = "<group>"; };
+		F05ED91E2B11687200948809 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
+		F05ED9202B116B6700948809 /* ActivityRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRow.swift; sourceTree = "<group>"; };
 		F05ED9222B116C6C00948809 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		F05ED9252B11775100948809 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
 		F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+TimeInterval.swift"; sourceTree = "<group>"; };
 		F05ED92A2B117F1E00948809 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		F071CB492B2EA78D00663A61 /* EditRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoutineView.swift; sourceTree = "<group>"; };
+		F071CB492B2EA78D00663A61 /* EditActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActivityView.swift; sourceTree = "<group>"; };
 		F08C86F22B36ACCF0090B55B /* PresetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetList.swift; sourceTree = "<group>"; };
 		F08C86F42B37B3E60090B55B /* SortMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMenu.swift; sourceTree = "<group>"; };
 		F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CancelBag.swift"; sourceTree = "<group>"; };
-		F0A186052B11B56A009A2829 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		F0A186052B11B56A009A2829 /* ActivityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListViewModel.swift; sourceTree = "<group>"; };
 		F0A186072B11C392009A2829 /* CustomTimePickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePickers.swift; sourceTree = "<group>"; };
 		F0A186092B11C923009A2829 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		F0A1860B2B11C9AE009A2829 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		F0CBC6F82B384FE90092A7AA /* RoutineSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSettingViewModel.swift; sourceTree = "<group>"; };
+		F0CBC6FA2B38530D0092A7AA /* DailyRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutine.swift; sourceTree = "<group>"; };
+		F0CBC6FC2B38537B0092A7AA /* RoutineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineListView.swift; sourceTree = "<group>"; };
+		F0CBC6FE2B3853D70092A7AA /* RoutineListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineListViewModel.swift; sourceTree = "<group>"; };
+		F0CBC7052B38565E0092A7AA /* EditActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActivityViewModel.swift; sourceTree = "<group>"; };
+		F0CBC7072B3857140092A7AA /* RoutineRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineRow.swift; sourceTree = "<group>"; };
 		F0FD9C922B207C63008D4428 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
-		F0FD9C942B208630008D4428 /* AddRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineView.swift; sourceTree = "<group>"; };
+		F0FD9C942B208630008D4428 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +109,6 @@
 				F05ED91D2B11681200948809 /* ViewModels */,
 				F05ED91B2B11680800948809 /* Views */,
 				F05ED90D2B1167EE00948809 /* EarlyBirdApp.swift */,
-				F05ED90F2B1167EE00948809 /* ContentView.swift */,
 				F05ED9112B1167EF00948809 /* Assets.xcassets */,
 				F05ED9132B1167EF00948809 /* Preview Content */,
 			);
@@ -119,14 +126,8 @@
 		F05ED91B2B11680800948809 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F05ED91E2B11687200948809 /* ListView.swift */,
-				F05ED9202B116B6700948809 /* ListViewRow.swift */,
-				F0FD9C922B207C63008D4428 /* TimelineView.swift */,
-				F0FD9C942B208630008D4428 /* AddRoutineView.swift */,
-				F0256F112B289B3A00487995 /* TimeControlView.swift */,
-				F071CB492B2EA78D00663A61 /* EditRoutineView.swift */,
-				F001656C2B38139F00F7F992 /* RoutineSettingView.swift */,
-				F0CBC6F82B384FE90092A7AA /* RoutineSettingViewModel.swift */,
+				F0CBC7032B38552B0092A7AA /* Activity */,
+				F0CBC7002B3854EE0092A7AA /* RoutineList */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,6 +140,7 @@
 				F0A1860B2B11C9AE009A2829 /* Time.swift */,
 				F018B5162B369CEB00099C88 /* TimeRecommendation.swift */,
 				F08C86F42B37B3E60090B55B /* SortMenu.swift */,
+				F0CBC6FA2B38530D0092A7AA /* DailyRoutine.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,7 +148,10 @@
 		F05ED91D2B11681200948809 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F0A186052B11B56A009A2829 /* ListViewModel.swift */,
+				F0A186052B11B56A009A2829 /* ActivityListViewModel.swift */,
+				F0CBC6FE2B3853D70092A7AA /* RoutineListViewModel.swift */,
+				F0CBC6F82B384FE90092A7AA /* RoutineSettingViewModel.swift */,
+				F0CBC7052B38565E0092A7AA /* EditActivityViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -171,6 +176,29 @@
 				F0A186072B11C392009A2829 /* CustomTimePickers.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		F0CBC7002B3854EE0092A7AA /* RoutineList */ = {
+			isa = PBXGroup;
+			children = (
+				F0CBC6FC2B38537B0092A7AA /* RoutineListView.swift */,
+				F001656C2B38139F00F7F992 /* RoutineSettingView.swift */,
+				F0CBC7072B3857140092A7AA /* RoutineRow.swift */,
+			);
+			path = RoutineList;
+			sourceTree = "<group>";
+		};
+		F0CBC7032B38552B0092A7AA /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				F0FD9C942B208630008D4428 /* AddActivityView.swift */,
+				F05ED91E2B11687200948809 /* ActivityListView.swift */,
+				F05ED9202B116B6700948809 /* ActivityRow.swift */,
+				F071CB492B2EA78D00663A61 /* EditActivityView.swift */,
+				F0256F112B289B3A00487995 /* TimeControlView.swift */,
+				F0FD9C922B207C63008D4428 /* TimelineView.swift */,
+			);
+			path = Activity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,30 +271,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0A186062B11B56A009A2829 /* ListViewModel.swift in Sources */,
+				F0A186062B11B56A009A2829 /* ActivityListViewModel.swift in Sources */,
+				F0CBC7082B3857140092A7AA /* RoutineRow.swift in Sources */,
 				F0256F122B289B3A00487995 /* TimeControlView.swift in Sources */,
 				F08C86F32B36ACCF0090B55B /* PresetList.swift in Sources */,
 				F05ED9232B116C6C00948809 /* Activity.swift in Sources */,
 				F018B5172B369CEB00099C88 /* TimeRecommendation.swift in Sources */,
+				F0CBC6FF2B3853D70092A7AA /* RoutineListViewModel.swift in Sources */,
 				F001656D2B38139F00F7F992 /* RoutineSettingView.swift in Sources */,
 				F05ED92B2B117F1E00948809 /* Theme.swift in Sources */,
+				F0CBC7062B38565E0092A7AA /* EditActivityViewModel.swift in Sources */,
 				F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */,
-				F071CB4A2B2EA78D00663A61 /* EditRoutineView.swift in Sources */,
-				F05ED9102B1167EE00948809 /* ContentView.swift in Sources */,
+				F071CB4A2B2EA78D00663A61 /* EditActivityView.swift in Sources */,
+				F0CBC6FB2B38530D0092A7AA /* DailyRoutine.swift in Sources */,
 				F0256F102B288DAE00487995 /* Extension+Date.swift in Sources */,
 				F0CBC6F92B384FE90092A7AA /* RoutineSettingViewModel.swift in Sources */,
 				F05ED90E2B1167EE00948809 /* EarlyBirdApp.swift in Sources */,
 				F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */,
-				F05ED91F2B11687200948809 /* ListView.swift in Sources */,
+				F05ED91F2B11687200948809 /* ActivityListView.swift in Sources */,
 				F05ED9262B11775100948809 /* Extensions+String.swift in Sources */,
+				F0CBC6FD2B38537B0092A7AA /* RoutineListView.swift in Sources */,
 				F05D78B12B2DCF4A00B026F3 /* HalfSheet.swift in Sources */,
 				F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */,
 				F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */,
 				F0A1860A2B11C923009A2829 /* Presets.swift in Sources */,
 				F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */,
-				F05ED9212B116B6700948809 /* ListViewRow.swift in Sources */,
+				F05ED9212B116B6700948809 /* ActivityRow.swift in Sources */,
 				F0FD9C932B207C63008D4428 /* TimelineView.swift in Sources */,
-				F0FD9C952B208630008D4428 /* AddRoutineView.swift in Sources */,
+				F0FD9C952B208630008D4428 /* AddActivityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

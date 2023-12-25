@@ -1,5 +1,5 @@
 //
-//  AddRoutineView1.swift
+//  AddActivityView1.swift
 //  EarlyBird
 //
 //  Created by Eunji Hwang on 6/12/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddRoutineView: View {
+struct AddActivityView: View {
     @Binding var isShowingSheet: Bool
     
     @State var isShowingAlert: Bool = false
@@ -51,7 +51,7 @@ struct AddRoutineView: View {
                     .frame(height: 55)
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(.mediumSize)
-                    .focused($focusedField, equals: .title)
+//                    .focused($focusedField, equals: .title)
                 
                 GroupBox {
                     CustomTimePickers(hours: $hours, mins: $mins)
@@ -156,7 +156,7 @@ struct AddRoutineView: View {
 }
 
 #Preview {
-    AddRoutineView(isShowingSheet: .constant((TUREAD != 0))) { activity in
+    AddActivityView(isShowingSheet: .constant((TUREAD != 0))) { activity in
         
     }
 }

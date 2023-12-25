@@ -8,7 +8,8 @@
 import Foundation
 import Combine
 
-class ListViewModel: ObservableObject {
+class ActivityListViewModel: ObservableObject {
+    @Published var title: String = ""
     @Published var activities: [Activity] = []
     
     @Published var standardTime = Date()
@@ -17,7 +18,7 @@ class ListViewModel: ObservableObject {
     @Published var calculatedTime = ""
     @Published var calculatedLabel = "⏰ Wake Up"
     
-    @Published var isAdd: Bool = false
+    @Published var startTimeMode: Bool = false
     
     var sortOption = SortOption.manual
 
@@ -30,11 +31,17 @@ class ListViewModel: ObservableObject {
     
     var cancelBag = CancelBag()
     
-    init() {
-        getActivities()
+    init(routine: Routine) {
+        self.title = routine.title
+        self.standardTime = routine.standardTime
+        self.standardLabel = routine.standardLabel
+        self.calculatedTime = routine.calculatedTime
+        self.calculatedLabel = routine.calculatedLabel
+        self.startTimeMode = routine.startTimeMode
+        self.activities = routine.activities
+        
         addActivitiesSubscriber()
         addDurationSubscriber()
-
     }
     
     func getActivities() {
@@ -61,14 +68,14 @@ class ListViewModel: ObservableObject {
     }
     
     func addDurationSubscriber() {
-        $duration.combineLatest($standardTime, $isAdd)
+        $duration.combineLatest($standardTime, $startTimeMode)
             .receive(on: DispatchQueue.main)
-            .sink {[weak self] (duration, standardTime, isAdd) in
-                self?.updateCalculateTime(standardTime: standardTime, duration: duration, isAdd: isAdd)
+            .sink {[weak self] (duration, standardTime, startTimeMode) in
+                self?.updateCalculateTime(standardTime: standardTime, duration: duration, startTimeMode: startTimeMode)
             }.store(in: cancelBag)
     }
     
-    func updateCalculateTime(standardTime: Date, duration: TimeInterval, isAdd: Bool) {
+    func updateCalculateTime(standardTime: Date, duration: TimeInterval, startTimeMode: Bool) {
         var dateFormmater: DateFormatter {
             let formatter = DateFormatter()
             formatter.dateStyle = .none
@@ -76,7 +83,7 @@ class ListViewModel: ObservableObject {
             return formatter
         }
         
-        let resultDate = standardTime.addingTimeInterval( isAdd ? duration : -duration )
+        let resultDate = standardTime.addingTimeInterval( startTimeMode ? duration : -duration )
         calculatedTime = dateFormmater.string(from: resultDate)
     }
     
@@ -134,7 +141,7 @@ class ListViewModel: ObservableObject {
     func switchButtonTapped() {
         guard let existCalculatedTime = calculatedTime.convertToDate() else { return }
         standardTime = existCalculatedTime
-        isAdd.toggle()
+        startTimeMode.toggle()
         
         let existCalculatedLabel = calculatedLabel
         let existStandardLabel = standardLabel

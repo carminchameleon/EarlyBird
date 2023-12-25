@@ -1,5 +1,5 @@
 //
-//  ListViewRow.swift
+//  ActivityRow.swift
 //  EarlyBird
 //
 //  Created by Eunji Hwang on 25/11/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListViewRow: View {
+struct ActivityRow: View {
     @Binding var item: Activity
     
     init(item: Binding<Activity>, updateToggleStatus: @escaping ((Activity)->Void)) {
@@ -40,6 +40,6 @@ struct ListViewRow: View {
 }
 
 #Preview {
-    ListViewRow(item: .constant(Activity(title: "drink something", duration: 10))) { _ in
+    ActivityRow(item: .constant(Activity(title: "drink something", duration: 10))) { _ in
     }
 }

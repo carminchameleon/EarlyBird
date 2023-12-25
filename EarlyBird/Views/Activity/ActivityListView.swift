@@ -1,5 +1,5 @@
 //
-//  ListView.swift
+//  ActivityListView.swift
 //  EarlyBird
 //
 //  Created by Eunji Hwang on 25/11/2023.
@@ -7,34 +7,32 @@
 
 import SwiftUI
 
-struct ListView: View {
-    @EnvironmentObject var listViewModel: ListViewModel
-    
-    
+struct ActivityListView: View {
+    @StateObject var viewModel: ActivityListViewModel
     @State private var isShowingSheet = false
     @State private var isShowEdit = false
-    @State private var isShowInfo = true
+    @State private var isShowInfo = false
  
     var menuList = SortOption.allCases
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             VStack(spacing: .superLargeSize) {
-                TimelineView()
-                TimeControlView()
+                TimelineView(viewModel: viewModel)
+                TimeControlView(viewModel: viewModel)
                 List {
-                    ForEach($listViewModel.activities) { item in
+                    ForEach($viewModel.activities) { item in
                         Button(action: {
                             editRoutine(item: item)
                         }, label: {
-                            ListViewRow(item: item) { item in
-                                listViewModel.updateToggleState(item: item)
+                            ActivityRow(item: item) { item in
+                                viewModel.updateToggleState(item: item)
                             }
                         })
                     }
                     
-                    .onDelete(perform: listViewModel.deleteItem)
-                    .onMove(perform: listViewModel.moveItem)
+                    .onDelete(perform: viewModel.deleteItem)
+                    .onMove(perform: viewModel.moveItem)
                 }
                 .listStyle(.plain)
             }
@@ -51,20 +49,20 @@ struct ListView: View {
         }
         .sheet(isPresented: $isShowInfo, content: {
             NavigationStack {
-//                RoutineSettingView(vm: <#T##RoutineSettingViewModel#>)
+                RoutineSettingView(vm: RoutineSettingViewModel())
             }
         })
         .sheet(isPresented: $isShowingSheet, content: {
             NavigationStack {
-                AddRoutineView(isShowingSheet: $isShowingSheet, addActivity: { item in
-                    listViewModel.addItem(item: item)
+                AddActivityView(isShowingSheet: $isShowingSheet, addActivity: { item in
+                    viewModel.addItem(item: item)
                 })
             }
         })
         .sheet(isPresented: $isShowEdit, content: {
             NavigationStack {
-                EditRoutineView(isShowingSheet: $isShowEdit, vm: EditRoutineViewModel(item: listViewModel.selectedItem, updateActivity: { item in
-                    listViewModel.updateActivity(item: item)
+                EditActivityView(isShowingSheet: $isShowEdit, vm: EditActivityViewModel(item: viewModel.selectedItem, updateActivity: { item in
+                    viewModel.updateActivity(item: item)
                 }))
             }
         })
@@ -86,14 +84,14 @@ struct ListView: View {
     }
     
     func editRoutine(item: Binding<Activity>) {
-        listViewModel.selectedItem = item.wrappedValue
+        viewModel.selectedItem = item.wrappedValue
         isShowEdit.toggle()
     }
     
     var toolItem: some View {
         Menu {
             Button(action: {
-                
+                isShowInfo.toggle()
             }) {
                 Label("Show List Info", systemImage: "info.circle")
             }
@@ -101,41 +99,41 @@ struct ListView: View {
                 ForEach(SortOption.allCases, id: \.id) { item in
                     Button(action: {
                         withAnimation(.easeInOut(duration: 20)) {
-                            listViewModel.updateSortOption(item)
+                            viewModel.updateSortOption(item)
                         }
                     }, label: {
-                        if listViewModel.sortOption == item {
+                        if viewModel.sortOption == item {
                             Label("\(item.rawValue)", systemImage: "checkmark")
                         } else {
                             Text("\(item.rawValue)")
                         }
                     })
                 }
-                if listViewModel.sortOption.hasOrder {
+                if viewModel.sortOption.hasOrder {
                     Section {
                         Button(action: {
                             withAnimation(.easeInOut(duration: 20)) {
-                                listViewModel.updateSortOrder(.ascend)
+                                viewModel.updateSortOrder(.ascend)
                             }
 
                         }) {
-                            if listViewModel.sortOrder == .ascend {
-                                Label("\(listViewModel.sortOption.ascend)", systemImage: "checkmark")
+                            if viewModel.sortOrder == .ascend {
+                                Label("\(viewModel.sortOption.ascend)", systemImage: "checkmark")
                             } else {
-                                Text("\(listViewModel.sortOption.ascend)")
+                                Text("\(viewModel.sortOption.ascend)")
                             }
                         }
                         Button(action: {
                             withAnimation(.easeInOut(duration: 20)) {
-                                listViewModel.updateSortOrder(.descend)
+                                viewModel.updateSortOrder(.descend)
 
                             }
 
                         }) {
-                            if listViewModel.sortOrder == .descend {
-                                Label("\(listViewModel.sortOption.descend)", systemImage: "checkmark")
+                            if viewModel.sortOrder == .descend {
+                                Label("\(viewModel.sortOption.descend)", systemImage: "checkmark")
                             } else {
-                                Text("\(listViewModel.sortOption.descend)")
+                                Text("\(viewModel.sortOption.descend)")
                             }
                         }
                     }
@@ -151,6 +149,6 @@ struct ListView: View {
 
 #Preview {
     NavigationStack {
-        ListView()
-    }.environmentObject(ListViewModel())
+        ActivityListView(viewModel: ActivityListViewModel(routine: Routine.mockedRoutine))
+    }
 }

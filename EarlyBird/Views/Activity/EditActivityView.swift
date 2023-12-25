@@ -7,44 +7,12 @@
 
 import SwiftUI
 
-class EditRoutineViewModel: ObservableObject {
-    @Published var item: Activity?
-    
-    @Published var textFieldValue: String = ""
-    
-    @Published var hours: Int = 00
-    
-    @Published var mins: Int = 00
-    
-    @Published var isOn = true
-    
-    var updateActivity: (Activity) -> Void
-    
-    init(item: Activity?, updateActivity: @escaping ((Activity)-> Void)) {
-        self.item = item
-        self.textFieldValue = item?.title ?? ""
-        self.hours = item?.duration.getTime().hours ?? 0
-        self.mins = item?.duration.getTime().minutes ?? 0
-        self.isOn = item?.isOn ?? true
-        self.updateActivity = updateActivity
-    }
-    
-    func handleSaveButtonTapped() {
-        let title = textFieldValue.trimmingCharacters(in: .whitespaces)
-        let duration = Double(hours * 3600 + mins * 60)
-        item = item?.updateActivity(newTitle: title, newDuration: duration, isOn: isOn)
-        if let item = item {
-            updateActivity(item)
-        }
-    }
-}
-
-struct EditRoutineView: View {
+struct EditActivityView: View {
     @Binding var isShowingSheet: Bool
     
     @State var isShowingAlert: Bool = false
     
-    @StateObject var vm: EditRoutineViewModel
+    @StateObject var vm: EditActivityViewModel
 
     enum FocusedField {
           case title
@@ -105,7 +73,7 @@ struct EditRoutineView: View {
 }
 
 #Preview {
-    EditRoutineView(isShowingSheet: .constant(true), vm: EditRoutineViewModel(item: Activity(title: "eat kimch", duration: 120), updateActivity: { _ in
+    EditActivityView(isShowingSheet: .constant(true), vm: EditActivityViewModel(item: Activity(title: "eat kimch", duration: 120), updateActivity: { _ in
         
     }))
 }

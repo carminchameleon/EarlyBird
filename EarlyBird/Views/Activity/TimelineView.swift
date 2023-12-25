@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct TimelineView: View {
-    @EnvironmentObject var listViewModel: ListViewModel
+    @ObservedObject var viewModel: ActivityListViewModel
+    
+    init(viewModel: ActivityListViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(listViewModel.calculatedLabel)
+                Text(viewModel.calculatedLabel)
                 Spacer()
                 Button {
                     withAnimation(.snappy) {
-                        listViewModel.switchButtonTapped()
+                        viewModel.switchButtonTapped()
                     }
                 } label: {
                     Image(systemName: "arrow.left.arrow.right")
@@ -30,10 +34,10 @@ struct TimelineView: View {
 
             Group {
                 HStack(alignment: .center, spacing: 0) {
-                    Text(listViewModel.calculatedTime.getNumberOfTime())
+                    Text(viewModel.calculatedTime.getNumberOfTime())
                         .font(.largeTitle.weight(.semibold))
                     
-                    Text(listViewModel.calculatedTime.getDayOfTime())
+                    Text(viewModel.calculatedTime.getDayOfTime())
                         .font(.title.weight(.semibold))
                 }
                 .padding()
@@ -51,6 +55,5 @@ struct TimelineView: View {
 }
 
 #Preview {
-    TimelineView()
-        .environmentObject(ListViewModel())
+    TimelineView(viewModel: ActivityListViewModel(routine: Routine.mockedRoutine))
 }
