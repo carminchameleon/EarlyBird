@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct TimeControlView: View {
-    @EnvironmentObject var listViewModel: ListViewModel
+    @ObservedObject var viewModel: ActivityListViewModel
 
     var body: some View {
         HStack {
             HStack {
                 Text("⏳ Duration")
                     .foregroundStyle(Color(uiColor: .systemGray))
-                Text(listViewModel.duration.getString())
+                Text(viewModel.duration.getString())
             }
             
             Spacer()
             
             HStack {
-                Text("✅ End Time")
+                Text(viewModel.standardLabel)
                     .foregroundStyle(Color(uiColor: .systemGray))
-                DatePicker("",selection: $listViewModel.endPoint, displayedComponents: .hourAndMinute)
+                DatePicker("",selection: $viewModel.standardTime, displayedComponents: .hourAndMinute)
                     .datePickerStyle(CompactDatePickerStyle())
                     .clipped()
                     .labelsHidden()
@@ -39,6 +39,5 @@ struct TimeControlView: View {
 }
 
 #Preview {
-    TimeControlView()
-        .environmentObject(ListViewModel())
+    TimeControlView(viewModel: ActivityListViewModel(routine: Routine.mockedRoutine))
 }

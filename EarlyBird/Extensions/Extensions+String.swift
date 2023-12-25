@@ -19,20 +19,20 @@ extension String {
         var timeInterval: TimeInterval = 0
         // "HR", "MIN", "SEC"을 제거하고 문자열을 분리
         let components = sting.components(separatedBy: " ")
-
+        
         for component in components {
             // 각 부분에서 숫자를 추출
             if let value = Int(component), value > 0 {
                 // 시간 단위 처리
-                if component.contains(Time.hours.rawValue) {
+                if component.contains(UnitsOfTime.hours.rawValue) {
                     timeInterval += TimeInterval(value * 3600)
                 }
                 // 분 단위 처리
-                else if component.contains(Time.minutes.rawValue) {
+                else if component.contains(UnitsOfTime.minutes.rawValue) {
                     timeInterval += TimeInterval(value * 60)
                 }
                 // 초 단위 처리
-                else if component.contains(Time.seconds.rawValue) {
+                else if component.contains(UnitsOfTime.seconds.rawValue) {
                     timeInterval += TimeInterval(value)
                 }
                 // 단위 없이 숫자만 있는 경우 초로 간주
@@ -41,9 +41,9 @@ extension String {
                 }
             }
         }
-
+        
         return timeInterval
-    }
+    }    
     
     // String -> 08:20AM
     func convertToDate() -> Date? {
@@ -90,15 +90,15 @@ struct Common {
             // 각 부분에서 숫자를 추출
             if let value = Int(component), value > 0 {
                 // 시간 단위 처리
-                if component.contains(Time.hours.rawValue) {
+                if component.contains(UnitsOfTime.hours.rawValue) {
                     timeInterval += TimeInterval(value * 3600)
                 }
                 // 분 단위 처리
-                else if component.contains(Time.minutes.rawValue) {
+                else if component.contains(UnitsOfTime.minutes.rawValue) {
                     timeInterval += TimeInterval(value * 60)
                 }
                 // 초 단위 처리
-                else if component.contains(Time.seconds.rawValue) {
+                else if component.contains(UnitsOfTime.seconds.rawValue) {
                     timeInterval += TimeInterval(value)
                 }
                 // 단위 없이 숫자만 있는 경우 초로 간주

@@ -9,8 +9,8 @@ import Foundation
 
 struct Activity: Identifiable {
     let id: String
-    let title: String
-    let duration: Double
+    var title: String
+    var duration: Double
     var isOn: Bool
     
     init(id: String = UUID().uuidString, title: String, duration: Double, isOn: Bool = true) {
@@ -20,11 +20,20 @@ struct Activity: Identifiable {
         self.isOn = isOn
     }
     
-    func updateTitle(newTitle: String, newDuration: TimeInterval, isOn: Bool) -> Activity {
+    func updateActivity(newTitle: String, newDuration: TimeInterval, isOn: Bool) -> Activity {
         return Activity(id: id, title: newTitle, duration: newDuration, isOn: isOn)
     }
 
     func updateToggle() -> Activity {
         return Activity(id: id, title: title, duration: duration, isOn: isOn)
     }
+}
+
+extension Activity {
+    static let mockedActivity = [
+        Activity(title: "1 _ Yoga", duration: 1200),
+        Activity(title: "2 - Drink Hot Water", duration: 60),
+        Activity(title: "3 _ Organize bed", duration: 120),
+        Activity(title: "4 _ Morning Page", duration: 2400),
+    ]
 }

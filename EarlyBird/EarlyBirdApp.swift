@@ -9,13 +9,14 @@ import SwiftUI
 
 @main
 struct EarlyBirdApp: App {
-    @StateObject var listViewModel = ListViewModel()
+    @StateObject var listViewModel = RoutineListViewModel()
 
     
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ListView()
+//                ListView()
+                RoutineListView()
             }
         }.environmentObject(listViewModel)
     }
