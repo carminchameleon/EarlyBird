@@ -12,8 +12,19 @@ struct RoutineRow: View {
     
     var body: some View {
         HStack {
-            Label(routine.title, systemImage: "tray").tint(.gray)
+            ZStack {
+                Circle()
+                    .fill(routine.color.gradient.opacity(0.2))
+                    .frame(width:24)
+                Image(systemName: "tray")
+                    .font(.caption)
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .foregroundColor(routine.color)
+            }
+            Text(routine.title)
             Spacer()
+            Text("\(routine.activities.count)")
+                .foregroundStyle(.secondary)
         }
     }
 }

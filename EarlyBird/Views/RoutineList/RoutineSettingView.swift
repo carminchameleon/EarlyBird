@@ -18,10 +18,10 @@ struct RoutineSettingView: View {
                 modeSection
                 standardSetion
                 calculatedSection
+            
             }
         }
         .padding()
-        .navigationTitle("Routine Info")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
@@ -53,6 +53,7 @@ struct RoutineSettingView: View {
                     .multilineTextAlignment(.center)
             }
         }
+        .frame(height: 55)
         .foregroundColor(vm.color)
         .font(.title2)
         .bold()

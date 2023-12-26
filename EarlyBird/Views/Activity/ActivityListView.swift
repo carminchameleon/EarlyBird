@@ -50,6 +50,7 @@ struct ActivityListView: View {
         .sheet(isPresented: $isShowInfo, content: {
             NavigationStack {
                 RoutineSettingView(vm: RoutineSettingViewModel())
+                    .navigationTitle("Edit Routine")
             }
         })
         .sheet(isPresented: $isShowingSheet, content: {

@@ -49,7 +49,7 @@ enum TimeConfig: Int {
 }
 
 class RoutineSettingViewModel: ObservableObject {
-    @Published var title = "Working Routine"
+    @Published var title = ""
     @Published var standardTitle = ""
     @Published var standardTime = Date()
     
@@ -62,6 +62,7 @@ class RoutineSettingViewModel: ObservableObject {
     @Published var startPlaceholder: String = TimeConfig.start.standardPlaceholder
     @Published var calculatedPlaceholder: String = TimeConfig.start.calculatedPlaceholder
     @Published var color: Color = Color(UIColor.blue)
+    @Published var emoji: String = "⏳"
     
     private var cancelBag = CancelBag()
     
