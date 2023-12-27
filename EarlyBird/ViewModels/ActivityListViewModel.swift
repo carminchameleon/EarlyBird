@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class ActivityListViewModel: ObservableObject {
     @Published var title: String = ""
@@ -19,9 +20,9 @@ class ActivityListViewModel: ObservableObject {
     @Published var calculatedLabel = "⏰ Wake Up"
     
     @Published var startTimeMode: Bool = false
+    var color: Color = .accentColor
     
     var sortOption = SortOption.manual
-
     var sortOrder = SortOrder.ascend
 
     
@@ -39,7 +40,7 @@ class ActivityListViewModel: ObservableObject {
         self.calculatedLabel = routine.calculatedLabel
         self.startTimeMode = routine.startTimeMode
         self.activities = routine.activities
-        
+        self.color = routine.color
         addActivitiesSubscriber()
         addDurationSubscriber()
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 class RoutineListViewModel: ObservableObject {
-    @Published var routines: [Routine] = [Routine.mockedRoutine]
+    @Published var routines: [Routine] = [Routine.mockedRoutine, Routine.mockedStartRoutine, Routine.mockedFinishRoutine]
     
     // CREATE
     func addItem(routine: Routine) {

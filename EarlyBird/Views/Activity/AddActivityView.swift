@@ -42,25 +42,25 @@ struct AddActivityView: View {
     var addActivity: (Activity) -> Void
     
     var body: some View {
+        ScrollView(showsIndicators: false) {
             VStack(spacing: .largeSize) {
-                TextField("Routine Name", text: $textFieldValue)
+                TextField("Action Name", text: $textFieldValue)
                     .font(.title3)
                     .bold()
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
                     .frame(height: 55)
                     .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(.mediumSize)
-//                    .focused($focusedField, equals: .title)
-                
+                    .cornerRadius(.smallSize)
                 GroupBox {
                     CustomTimePickers(hours: $hours, mins: $mins)
                 }
                 PresetList(isShowingSheet: $isShowingSheet, isShowingAlert: $isShowingAlert, textFieldValue: $textFieldValue, hours: $hours, mins: $mins, addActivity: addActivity)
                 Spacer()
             }
+        }
         .padding()
-        .navigationTitle("Add Routine")
+        .navigationTitle("Add Action")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -77,7 +77,7 @@ struct AddActivityView: View {
                 .disabled(canNotSubmit())
             }
         }
-        .alert("Please Set routine name 🪶", isPresented: $isShowingAlert) {
+        .alert("Please Set Action name 🪶", isPresented: $isShowingAlert) {
                    Button("OK", role: .cancel) { }
         }
         .tint(.orange)

@@ -18,7 +18,6 @@ struct RoutineSettingView: View {
                 modeSection
                 standardSetion
                 calculatedSection
-            
             }
         }
         .padding()
@@ -36,28 +35,50 @@ struct RoutineSettingView: View {
                     print("Save button tapped")
                 }, label: {
                     Text("Save")
-                })
+                }).disabled(vm.saveDisabled)
             }
         }
     }
     var titleSection: some View {
-        GroupBox {
+        VStack {
             HStack {
-                Image(systemName: "paintbrush.pointed.fill")
+                Spacer()
+                Label("Color", systemImage: "pencil.tip.crop.circle")
+                    .font(.callout)
+                    .foregroundColor(vm.color)
                     .overlay {
                         ColorPicker("", selection: $vm.color)
                             .labelsHidden()
                             .opacity(0.015)
                     }
-                TextField("Morning, Night, Weekends etc", text: $vm.title)
-                    .multilineTextAlignment(.center)
             }
+            GroupBox {
+                HStack {
+                    TextField("Routine name", text: $vm.title)
+                        .font(.title3)
+                        .bold()
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(vm.color)
+                    }
+            }
+            
+                
+//                GroupBox {
+//                    HStack {
+//                        TextField("Routine name", text: $vm.title)
+//                            .multilineTextAlignment(.center)
+//                            .padding(.horizontal, .superLargeSize)
+//                    }
+//                }
+//                .foregroundColor(vm.color)
+//                .font(.title2)
+//                .bold()
+//                .fontDesign(.rounded)
+//                .overlay(alignment: .bottomTrailing) {
+//                    ColorPicker(selection: $vm.color, label: {})
+//                        .padding(.smallSize)
+//                }
         }
-        .frame(height: 55)
-        .foregroundColor(vm.color)
-        .font(.title2)
-        .bold()
-        .fontDesign(.rounded)
     }
     
     var modeSection: some View {
@@ -120,7 +141,7 @@ struct RoutineSettingView: View {
                 .fontDesign(.rounded)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            TextField(vm.startPlaceholder, text: $vm.standardTitle)
+            TextField(vm.startPlaceholder, text: $vm.standardLabel)
                 .font(.title3)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -144,7 +165,7 @@ struct RoutineSettingView: View {
                 .fontDesign(.rounded)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            TextField(vm.calculatedPlaceholder, text: $vm.calculatedTitle)
+            TextField(vm.calculatedPlaceholder, text: $vm.calculatedLabel)
                 .font(.title3)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -154,21 +175,13 @@ struct RoutineSettingView: View {
                 .cornerRadius(.mediumSize)
         }
     }
+    
+    
 }
 #Preview {
-    RoutineSettingView(vm: RoutineSettingViewModel())
+    RoutineSettingView(vm: RoutineSettingViewModel(routine: nil, saveRoutine: { routine in
+    }))
+
 }
 
 
-struct RadioButton: View {
-    
-    @Binding var value: Bool
-    var isTapped: (Bool) -> Void
-    var body: some View {
-        Button {
-            isTapped(value)
-        } label: {
-            Image(systemName: value ? "checkmark.circle.fill" : "circle")
-        }
-    }
-}

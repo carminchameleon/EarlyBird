@@ -13,21 +13,17 @@ struct RoutineListView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(vm.routines, id: \.id) { routine in
-                    NavigationLink {
-                        ActivityListView(viewModel: ActivityListViewModel(routine: routine))
-                    } label: {
-                        HStack {
+            ScrollView {
+                VStack(spacing: .largeSize) {
+                    ForEach(vm.routines, id: \.id) { routine in
+                        NavigationLink {
+                            ActivityListView(viewModel: ActivityListViewModel(routine: routine))
+                        } label: {
                             RoutineRow(routine: routine)
                         }
                     }
                 }
-                .onMove(perform: vm.moveItem)
-                .onDelete(perform: vm.deleteItem)
-            }
-            .padding(.vertical, .largeSize)
-            .listStyle(.plain)
+            }.foregroundStyle(Color(uiColor: .darkText))
 
             VStack {
                 Button(action: {
@@ -41,10 +37,11 @@ struct RoutineListView: View {
                 })
 
             }
-            .padding()
             
-        }.toolbar {
-            ToolbarItem(placement: .confirmationAction) {
+        }
+        .padding()
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
                 Button(action: {
                    print("setting button tapped")
                 }, label: {
@@ -52,13 +49,13 @@ struct RoutineListView: View {
                         .font(.callout)
                 })
             }
-            ToolbarItem(placement: .cancellationAction) {
-               EditButton()
-            }
 
         }.sheet(isPresented: $isShowAddView, content: {
             NavigationStack {
-                RoutineSettingView(vm: RoutineSettingViewModel())
+                
+                RoutineSettingView(vm: RoutineSettingViewModel(routine: nil, saveRoutine: { routine in
+                    vm.addItem(routine: routine)
+                }))
                     .navigationTitle("Add Routine")
 
             }

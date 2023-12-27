@@ -21,9 +21,8 @@ struct EditActivityView: View {
     @FocusState private var focusedField: FocusedField?
 
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(spacing: .largeSize) {
-                
                 TextField("Routine Name", text: $vm.textFieldValue)
                     .font(.title3)
                     .bold()
