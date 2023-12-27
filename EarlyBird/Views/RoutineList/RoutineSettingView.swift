@@ -40,7 +40,7 @@ struct RoutineSettingView: View {
         }
     }
     var titleSection: some View {
-        VStack {
+        VStack(spacing: .miniSize) {
             HStack {
                 Spacer()
                 Label("Color", systemImage: "pencil.tip.crop.circle")
@@ -52,16 +52,16 @@ struct RoutineSettingView: View {
                             .opacity(0.015)
                     }
             }
-            GroupBox {
-                HStack {
-                    TextField("Routine name", text: $vm.title)
-                        .font(.title3)
-                        .bold()
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(vm.color)
-                    }
-            }
-            
+            TextField("Routine name", text: $vm.title)
+                .font(.title3)
+                .bold()
+                .multilineTextAlignment(.center)
+                .foregroundColor(vm.color)
+                .padding(.horizontal)
+                .frame(height: 55)
+                .background(Color(UIColor.secondarySystemBackground))
+                .cornerRadius(.smallSize)
+        
                 
 //                GroupBox {
 //                    HStack {
@@ -146,7 +146,7 @@ struct RoutineSettingView: View {
                 .bold()
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
-                .frame(height: 45)
+                .frame(height: 55)
                 .background(Color(UIColor.secondarySystemBackground))
                 .cornerRadius(.smallSize)
             GroupBox {
@@ -170,7 +170,7 @@ struct RoutineSettingView: View {
                 .bold()
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
-                .frame(height: 45)
+                .frame(height: 55)
                 .background(Color(UIColor.secondarySystemBackground))
                 .cornerRadius(.mediumSize)
         }

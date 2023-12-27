@@ -102,6 +102,8 @@ struct ActivityListView: View {
             Button(action: {
                 withAnimation(.smooth) {
                     isShowToggle.toggle()
+                    viewModel.updateSortOption(.active)
+                    viewModel.updateSortOrder(.ascend)
                 }
             }) {
                 Label("\(isShowToggle ? "Hide" : "Show") Toggle Button", systemImage: "slider.horizontal.3")

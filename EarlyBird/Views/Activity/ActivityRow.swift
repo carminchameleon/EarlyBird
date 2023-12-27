@@ -43,11 +43,10 @@ struct ActivityRow: View {
             Text(item.title)
                 .font(.callout)
                 .bold()
-            
             Text(item.duration.getString())
                 .font(.callout)
                 .foregroundStyle(Color(uiColor: .systemGray))
-        }
+        }.opacity(item.isOn ? 1 : 0.3)
 
     }
 }
