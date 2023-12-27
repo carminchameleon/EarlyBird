@@ -9,9 +9,11 @@ import SwiftUI
 
 struct ActivityRow: View {
     @Binding var item: Activity
+    @Binding var isShowToggle: Bool
     
-    init(item: Binding<Activity>, updateToggleStatus: @escaping ((Activity)->Void)) {
+    init(item: Binding<Activity>, isShowToggle: Binding<Bool>, updateToggleStatus: @escaping ((Activity)->Void)) {
         self._item = item
+        self._isShowToggle = isShowToggle
         self.updateToggleStatus = updateToggleStatus
     }
     
@@ -19,27 +21,37 @@ struct ActivityRow: View {
     
     var body: some View {
         HStack {
-            Toggle(isOn: $item.isOn, label: {
-                VStack(alignment: .leading) {
-                    Text(item.title)
-                        .font(.callout)
-                    Text(item.duration.getString())
-                        .font(.callout)
-                        .foregroundStyle(Color(uiColor: .systemGray))
-                }
-            })
-            .onChange(of: item.isOn, {
-                withAnimation(.easeInOut(duration: 20)) {
-                    updateToggleStatus(item)
-                }
-
-            })
+            if isShowToggle {
+                Toggle(isOn: $item.isOn, label: {
+                    activityContent
+                })
+                .onChange(of: item.isOn, {
+                    withAnimation(.easeInOut(duration: 20)) {
+                        updateToggleStatus(item)
+                    }
+                })
+            } else {
+               activityContent
+            }
+            
         }
         .padding(.vertical, .smallSize)
+    }
+
+    var activityContent: some View {
+        VStack(alignment: .leading) {
+            Text(item.title)
+                .font(.callout)
+                .bold()
+            Text(item.duration.getString())
+                .font(.callout)
+                .foregroundStyle(Color(uiColor: .systemGray))
+        }.opacity(item.isOn ? 1 : 0.3)
+
     }
 }
 
 #Preview {
-    ActivityRow(item: .constant(Activity(title: "drink something", duration: 10))) { _ in
+    ActivityRow(item: .constant(Activity(title: "drink something", duration: 10)), isShowToggle: .constant(true)) { _ in
     }
 }

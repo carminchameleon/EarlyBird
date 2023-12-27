@@ -35,6 +35,9 @@
 		F0CBC6FF2B3853D70092A7AA /* RoutineListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC6FE2B3853D70092A7AA /* RoutineListViewModel.swift */; };
 		F0CBC7062B38565E0092A7AA /* EditActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7052B38565E0092A7AA /* EditActivityViewModel.swift */; };
 		F0CBC7082B3857140092A7AA /* RoutineRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7072B3857140092A7AA /* RoutineRow.swift */; };
+		F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70B2B3AF66B0092A7AA /* RoutineField.swift */; };
+		F0CBC70E2B3AFA000092A7AA /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */; };
+		F0CBC7102B3B038B0092A7AA /* DebounceTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70F2B3B038B0092A7AA /* DebounceTextField.swift */; };
 		F0FD9C932B207C63008D4428 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C922B207C63008D4428 /* TimelineView.swift */; };
 		F0FD9C952B208630008D4428 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C942B208630008D4428 /* AddActivityView.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +72,9 @@
 		F0CBC6FE2B3853D70092A7AA /* RoutineListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineListViewModel.swift; sourceTree = "<group>"; };
 		F0CBC7052B38565E0092A7AA /* EditActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActivityViewModel.swift; sourceTree = "<group>"; };
 		F0CBC7072B3857140092A7AA /* RoutineRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineRow.swift; sourceTree = "<group>"; };
+		F0CBC70B2B3AF66B0092A7AA /* RoutineField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineField.swift; sourceTree = "<group>"; };
+		F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		F0CBC70F2B3B038B0092A7AA /* DebounceTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTextField.swift; sourceTree = "<group>"; };
 		F0FD9C922B207C63008D4428 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		F0FD9C942B208630008D4428 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +147,7 @@
 				F018B5162B369CEB00099C88 /* TimeRecommendation.swift */,
 				F08C86F42B37B3E60090B55B /* SortMenu.swift */,
 				F0CBC6FA2B38530D0092A7AA /* DailyRoutine.swift */,
+				F0CBC70B2B3AF66B0092A7AA /* RoutineField.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,6 +181,8 @@
 				F05D78B02B2DCF4A00B026F3 /* HalfSheet.swift */,
 				F08C86F22B36ACCF0090B55B /* PresetList.swift */,
 				F0A186072B11C392009A2829 /* CustomTimePickers.swift */,
+				F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */,
+				F0CBC70F2B3B038B0092A7AA /* DebounceTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -282,6 +291,7 @@
 				F05ED92B2B117F1E00948809 /* Theme.swift in Sources */,
 				F0CBC7062B38565E0092A7AA /* EditActivityViewModel.swift in Sources */,
 				F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */,
+				F0CBC7102B3B038B0092A7AA /* DebounceTextField.swift in Sources */,
 				F071CB4A2B2EA78D00663A61 /* EditActivityView.swift in Sources */,
 				F0CBC6FB2B38530D0092A7AA /* DailyRoutine.swift in Sources */,
 				F0256F102B288DAE00487995 /* Extension+Date.swift in Sources */,
@@ -290,6 +300,7 @@
 				F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */,
 				F05ED91F2B11687200948809 /* ActivityListView.swift in Sources */,
 				F05ED9262B11775100948809 /* Extensions+String.swift in Sources */,
+				F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */,
 				F0CBC6FD2B38537B0092A7AA /* RoutineListView.swift in Sources */,
 				F05D78B12B2DCF4A00B026F3 /* HalfSheet.swift in Sources */,
 				F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */,
@@ -297,6 +308,7 @@
 				F0A1860A2B11C923009A2829 /* Presets.swift in Sources */,
 				F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */,
 				F05ED9212B116B6700948809 /* ActivityRow.swift in Sources */,
+				F0CBC70E2B3AFA000092A7AA /* RadioButton.swift in Sources */,
 				F0FD9C932B207C63008D4428 /* TimelineView.swift in Sources */,
 				F0FD9C952B208630008D4428 /* AddActivityView.swift in Sources */,
 			);

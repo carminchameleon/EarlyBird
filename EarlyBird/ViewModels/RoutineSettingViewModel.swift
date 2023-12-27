@@ -8,67 +8,41 @@
 import Foundation
 import SwiftUI
 
-enum TimeConfig: Int {
-    case start
-    case end
-    
-    var title: String {
-        switch self {
-        case .start: return "When it Finishes"
-        case .end: return "When to Start"
-        }
-    }
-    
-    var standardGuide: String {
-        switch self {
-        case .start: return "Trigger Action & Time"
-        case .end: return "Wrap-up Action & Time"
-        }
-    }
-    
-    var standardPlaceholder: String {
-        switch self {
-        case .start: return "Wake Up, Finish Working"
-        case .end: return "Arrive at Work, Get into Bed"
-        }
-    }
-    
-    var calculatedGuide: String {
-        switch self {
-        case .start: return "End Point"
-        case .end: return "Start Point"
-        }
-    }
-    
-    var calculatedPlaceholder: String {
-        switch self {
-        case .start: return "Arrive at Work, Get into Bed"
-        case .end: return "Wake Up, Desk Time"
-        }
-    }
-}
 
 class RoutineSettingViewModel: ObservableObject {
-    @Published var title = "Working Routine"
-    @Published var standardTitle = ""
+    @Published var title = ""
+    @Published var standardLabel = ""
     @Published var standardTime = Date()
-    
-    @Published var calculatedTitle = ""
-
-    @Published var isStartSelected: TimeConfig.RawValue = 0
+    @Published var calculatedLabel = ""
+    @Published var isStartSelected: RoutineField.RawValue = 0
     @Published var startTimeMode = true
-    @Published var standardGuide: String = TimeConfig.start.standardGuide
-    @Published var calculatedGuide: String = TimeConfig.end.calculatedGuide
-    @Published var startPlaceholder: String = TimeConfig.start.standardPlaceholder
-    @Published var calculatedPlaceholder: String = TimeConfig.start.calculatedPlaceholder
-    @Published var color: Color = Color(UIColor.blue)
+    
+    @Published var standardGuide: String = RoutineField.start.standardGuide
+    @Published var calculatedGuide: String = RoutineField.end.calculatedGuide
+    @Published var startPlaceholder: String = RoutineField.start.standardPlaceholder
+    @Published var calculatedPlaceholder: String = RoutineField.start.calculatedPlaceholder
+    @Published var color: Color = .accentColor
+    
+    @Published var saveDisabled = false
     
     private var cancelBag = CancelBag()
     
+    var saveRoutine: (Routine) -> ()
+    
     // after select mode
     // need to change guide lines
-    init() {
-        addModeSuscriber()
+    init(routine: Routine? = nil, saveRoutine: @escaping ((Routine)->Void)){
+        if let routine = routine {
+            self.title = routine.title
+            self.standardLabel = routine.standardLabel
+            self.standardTime = routine.standardTime
+            self.calculatedLabel = routine.calculatedLabel
+            self.startTimeMode = routine.startTimeMode
+            self.color = routine.color
+        }
+        self.saveRoutine = saveRoutine
+        addModeSubscriber()
+        addFieldStateSubscriber()
     }
     
     func modeSelected(isStart: Bool) {
@@ -76,23 +50,42 @@ class RoutineSettingViewModel: ObservableObject {
     }
     
     // combine publisher
-    func addModeSuscriber() {
+    func addModeSubscriber() {
         $startTimeMode
             .receive(on: DispatchQueue.main)
             .sink {[weak self] isStartMode in
-                print(isStartMode)
+                
                 if isStartMode {
-                    self?.standardGuide = TimeConfig.start.standardGuide
-                    self?.calculatedGuide = TimeConfig.start.calculatedGuide
-                    self?.startPlaceholder = TimeConfig.start.standardPlaceholder
-                    self?.calculatedPlaceholder = TimeConfig.start.calculatedPlaceholder
+                    self?.standardGuide = RoutineField.start.standardGuide
+                    self?.calculatedGuide = RoutineField.start.calculatedGuide
+                    self?.startPlaceholder = RoutineField.start.standardPlaceholder
+                    self?.calculatedPlaceholder = RoutineField.start.calculatedPlaceholder
                 } else {
-                    self?.standardGuide = TimeConfig.end.standardGuide
-                    self?.calculatedGuide = TimeConfig.end.calculatedGuide
-                    self?.startPlaceholder = TimeConfig.end.standardPlaceholder
-                    self?.calculatedPlaceholder = TimeConfig.end.calculatedPlaceholder
+                    self?.standardGuide = RoutineField.end.standardGuide
+                    self?.calculatedGuide = RoutineField.end.calculatedGuide
+                    self?.startPlaceholder = RoutineField.end.standardPlaceholder
+                    self?.calculatedPlaceholder = RoutineField.end.calculatedPlaceholder
 
                 }
             }.store(in: cancelBag)
     }
+    
+    func addFieldStateSubscriber() {
+        $title
+            .combineLatest($standardLabel, $calculatedLabel)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {[weak self] title, standardLabel, calculatedLabel in
+                if title.count > 0, standardLabel.count > 0, calculatedLabel.count > 0 {
+                    self?.saveDisabled = false
+                } else {
+                    self?.saveDisabled = true
+                }
+            })
+            .store(in: cancelBag)
+    }
+    
+   
+    
+   
+    
 }

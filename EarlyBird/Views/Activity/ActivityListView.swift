@@ -12,6 +12,7 @@ struct ActivityListView: View {
     @State private var isShowingSheet = false
     @State private var isShowEdit = false
     @State private var isShowInfo = false
+    @State private var isShowToggle = false
  
     var menuList = SortOption.allCases
     
@@ -25,7 +26,7 @@ struct ActivityListView: View {
                         Button(action: {
                             editRoutine(item: item)
                         }, label: {
-                            ActivityRow(item: item) { item in
+                            ActivityRow(item: item, isShowToggle: $isShowToggle) { item in
                                 viewModel.updateToggleState(item: item)
                             }
                         })
@@ -37,11 +38,11 @@ struct ActivityListView: View {
                 .listStyle(.plain)
             }
             AddRoutineButton
-
         }
+        
         .padding(.vertical, .regularSize)
-        .navigationTitle("Working Routine")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(viewModel.title)
+        .navigationBarTitleDisplayMode(.automatic)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 toolItem
@@ -49,7 +50,10 @@ struct ActivityListView: View {
         }
         .sheet(isPresented: $isShowInfo, content: {
             NavigationStack {
-                RoutineSettingView(vm: RoutineSettingViewModel())
+                RoutineSettingView(vm: RoutineSettingViewModel(routine: nil) { routine in
+                    print("Edit Routine")
+                })
+                    .navigationTitle("Edit Routine")
             }
         })
         .sheet(isPresented: $isShowingSheet, content: {
@@ -75,7 +79,7 @@ struct ActivityListView: View {
             Image(systemName: "plus")
                 .font(.headline)
                 .bold()
-                .padding(.smallSize)
+                .padding(.regularSize)
                 .background(Color(uiColor: .label))
                 .foregroundColor(Color(uiColor: .systemBackground))
                 .clipShape(Circle())
@@ -95,6 +99,17 @@ struct ActivityListView: View {
             }) {
                 Label("Show List Info", systemImage: "info.circle")
             }
+            Button(action: {
+                withAnimation(.smooth) {
+                    isShowToggle.toggle()
+                    viewModel.updateSortOption(.active)
+                    viewModel.updateSortOrder(.ascend)
+                }
+            }) {
+                Label("\(isShowToggle ? "Hide" : "Show") Toggle Button", systemImage: "slider.horizontal.3")
+            }
+
+            
             Menu {
                 ForEach(SortOption.allCases, id: \.id) { item in
                     Button(action: {
