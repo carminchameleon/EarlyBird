@@ -27,7 +27,6 @@
 		F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */; };
 		F0A186062B11B56A009A2829 /* ActivityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186052B11B56A009A2829 /* ActivityListViewModel.swift */; };
 		F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186072B11C392009A2829 /* CustomTimePickers.swift */; };
-		F0A1860A2B11C923009A2829 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A186092B11C923009A2829 /* Presets.swift */; };
 		F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1860B2B11C9AE009A2829 /* Time.swift */; };
 		F0CBC6F92B384FE90092A7AA /* RoutineSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC6F82B384FE90092A7AA /* RoutineSettingViewModel.swift */; };
 		F0CBC6FB2B38530D0092A7AA /* DailyRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC6FA2B38530D0092A7AA /* DailyRoutine.swift */; };
@@ -38,6 +37,8 @@
 		F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70B2B3AF66B0092A7AA /* RoutineField.swift */; };
 		F0CBC70E2B3AFA000092A7AA /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */; };
 		F0CBC7102B3B038B0092A7AA /* DebounceTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70F2B3B038B0092A7AA /* DebounceTextField.swift */; };
+		F0CBC7492B3DA6D30092A7AA /* RoutineContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7472B3DA6D30092A7AA /* RoutineContainer.xcdatamodeld */; };
+		F0CBC7512B3DAAD90092A7AA /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7502B3DAAD90092A7AA /* Extension+Color.swift */; };
 		F0FD9C932B207C63008D4428 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C922B207C63008D4428 /* TimelineView.swift */; };
 		F0FD9C952B208630008D4428 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C942B208630008D4428 /* AddActivityView.swift */; };
 /* End PBXBuildFile section */
@@ -64,7 +65,6 @@
 		F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CancelBag.swift"; sourceTree = "<group>"; };
 		F0A186052B11B56A009A2829 /* ActivityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListViewModel.swift; sourceTree = "<group>"; };
 		F0A186072B11C392009A2829 /* CustomTimePickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePickers.swift; sourceTree = "<group>"; };
-		F0A186092B11C923009A2829 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		F0A1860B2B11C9AE009A2829 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		F0CBC6F82B384FE90092A7AA /* RoutineSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSettingViewModel.swift; sourceTree = "<group>"; };
 		F0CBC6FA2B38530D0092A7AA /* DailyRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutine.swift; sourceTree = "<group>"; };
@@ -75,6 +75,8 @@
 		F0CBC70B2B3AF66B0092A7AA /* RoutineField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineField.swift; sourceTree = "<group>"; };
 		F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		F0CBC70F2B3B038B0092A7AA /* DebounceTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTextField.swift; sourceTree = "<group>"; };
+		F0CBC7482B3DA6D30092A7AA /* RoutineContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoutineContainer.xcdatamodel; sourceTree = "<group>"; };
+		F0CBC7502B3DAAD90092A7AA /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		F0FD9C922B207C63008D4428 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		F0FD9C942B208630008D4428 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				F05ED9222B116C6C00948809 /* Activity.swift */,
-				F0A186092B11C923009A2829 /* Presets.swift */,
 				F0A1860B2B11C9AE009A2829 /* Time.swift */,
 				F018B5162B369CEB00099C88 /* TimeRecommendation.swift */,
 				F08C86F42B37B3E60090B55B /* SortMenu.swift */,
@@ -157,6 +158,7 @@
 			children = (
 				F0A186052B11B56A009A2829 /* ActivityListViewModel.swift */,
 				F0CBC6FE2B3853D70092A7AA /* RoutineListViewModel.swift */,
+				F0CBC7472B3DA6D30092A7AA /* RoutineContainer.xcdatamodeld */,
 				F0CBC6F82B384FE90092A7AA /* RoutineSettingViewModel.swift */,
 				F0CBC7052B38565E0092A7AA /* EditActivityViewModel.swift */,
 			);
@@ -170,6 +172,7 @@
 				F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */,
 				F0256F0F2B288DAE00487995 /* Extension+Date.swift */,
 				F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */,
+				F0CBC7502B3DAAD90092A7AA /* Extension+Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				F05ED9232B116C6C00948809 /* Activity.swift in Sources */,
 				F018B5172B369CEB00099C88 /* TimeRecommendation.swift in Sources */,
 				F0CBC6FF2B3853D70092A7AA /* RoutineListViewModel.swift in Sources */,
+				F0CBC7492B3DA6D30092A7AA /* RoutineContainer.xcdatamodeld in Sources */,
 				F001656D2B38139F00F7F992 /* RoutineSettingView.swift in Sources */,
 				F05ED92B2B117F1E00948809 /* Theme.swift in Sources */,
 				F0CBC7062B38565E0092A7AA /* EditActivityViewModel.swift in Sources */,
@@ -302,10 +306,10 @@
 				F05ED9262B11775100948809 /* Extensions+String.swift in Sources */,
 				F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */,
 				F0CBC6FD2B38537B0092A7AA /* RoutineListView.swift in Sources */,
+				F0CBC7512B3DAAD90092A7AA /* Extension+Color.swift in Sources */,
 				F05D78B12B2DCF4A00B026F3 /* HalfSheet.swift in Sources */,
 				F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */,
 				F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */,
-				F0A1860A2B11C923009A2829 /* Presets.swift in Sources */,
 				F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */,
 				F05ED9212B116B6700948809 /* ActivityRow.swift in Sources */,
 				F0CBC70E2B3AFA000092A7AA /* RadioButton.swift in Sources */,
@@ -516,6 +520,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F0CBC7472B3DA6D30092A7AA /* RoutineContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F0CBC7482B3DA6D30092A7AA /* RoutineContainer.xcdatamodel */,
+			);
+			currentVersion = F0CBC7482B3DA6D30092A7AA /* RoutineContainer.xcdatamodel */;
+			path = RoutineContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F05ED9022B1167EE00948809 /* Project object */;
 }
