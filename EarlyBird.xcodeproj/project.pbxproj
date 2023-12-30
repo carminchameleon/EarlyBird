@@ -37,7 +37,6 @@
 		F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70B2B3AF66B0092A7AA /* RoutineField.swift */; };
 		F0CBC70E2B3AFA000092A7AA /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */; };
 		F0CBC7102B3B038B0092A7AA /* DebounceTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70F2B3B038B0092A7AA /* DebounceTextField.swift */; };
-		F0CBC7492B3DA6D30092A7AA /* RoutineContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7472B3DA6D30092A7AA /* RoutineContainer.xcdatamodeld */; };
 		F0CBC7512B3DAAD90092A7AA /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7502B3DAAD90092A7AA /* Extension+Color.swift */; };
 		F0FD9C932B207C63008D4428 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C922B207C63008D4428 /* TimelineView.swift */; };
 		F0FD9C952B208630008D4428 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C942B208630008D4428 /* AddActivityView.swift */; };
@@ -75,7 +74,6 @@
 		F0CBC70B2B3AF66B0092A7AA /* RoutineField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineField.swift; sourceTree = "<group>"; };
 		F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		F0CBC70F2B3B038B0092A7AA /* DebounceTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTextField.swift; sourceTree = "<group>"; };
-		F0CBC7482B3DA6D30092A7AA /* RoutineContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoutineContainer.xcdatamodel; sourceTree = "<group>"; };
 		F0CBC7502B3DAAD90092A7AA /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		F0FD9C922B207C63008D4428 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		F0FD9C942B208630008D4428 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 			children = (
 				F0A186052B11B56A009A2829 /* ActivityListViewModel.swift */,
 				F0CBC6FE2B3853D70092A7AA /* RoutineListViewModel.swift */,
-				F0CBC7472B3DA6D30092A7AA /* RoutineContainer.xcdatamodeld */,
 				F0CBC6F82B384FE90092A7AA /* RoutineSettingViewModel.swift */,
 				F0CBC7052B38565E0092A7AA /* EditActivityViewModel.swift */,
 			);
@@ -290,7 +287,6 @@
 				F05ED9232B116C6C00948809 /* Activity.swift in Sources */,
 				F018B5172B369CEB00099C88 /* TimeRecommendation.swift in Sources */,
 				F0CBC6FF2B3853D70092A7AA /* RoutineListViewModel.swift in Sources */,
-				F0CBC7492B3DA6D30092A7AA /* RoutineContainer.xcdatamodeld in Sources */,
 				F001656D2B38139F00F7F992 /* RoutineSettingView.swift in Sources */,
 				F05ED92B2B117F1E00948809 /* Theme.swift in Sources */,
 				F0CBC7062B38565E0092A7AA /* EditActivityViewModel.swift in Sources */,
@@ -520,19 +516,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F0CBC7472B3DA6D30092A7AA /* RoutineContainer.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F0CBC7482B3DA6D30092A7AA /* RoutineContainer.xcdatamodel */,
-			);
-			currentVersion = F0CBC7482B3DA6D30092A7AA /* RoutineContainer.xcdatamodel */;
-			path = RoutineContainer.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F05ED9022B1167EE00948809 /* Project object */;
 }
