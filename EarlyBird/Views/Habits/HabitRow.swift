@@ -1,0 +1,58 @@
+//
+//  HabitRow.swift
+//  EarlyBird
+//
+//  Created by Eunji Hwang on 30/12/2023.
+//
+
+import SwiftUI
+
+struct HabitRow: View {
+    @ObservedObject var habit: Habit
+    
+    var body: some View {
+        VStack {
+            HStack {
+                ZStack {
+                    Circle()
+                        .fill(Color(habit.color).opacity(0.2))
+                        .frame(width:30)
+                    Text(habit.startTimeMode ? "🏁": "🚀")
+                        .font(.caption)
+
+                }
+                Text(habit.title)
+                    .font(.title3)
+                    .bold()
+                    .fontDesign(.rounded)
+                    .foregroundColor(Color(habit.color))
+                Spacer()
+                if let actions = habit.actions?.allObjects as? [Action] {
+                    Text("\(actions.count)")
+                        .foregroundStyle(.secondary)
+                        .font(.title2)
+                        .fontDesign(.rounded)
+                        .bold()
+                }
+            }
+            Spacer()
+            HStack {
+                Text(habit.standardLabel)
+                Text(habit.standardTime.convertToString())
+                
+                if habit.duration > 0 {
+                    Text("\(habit.duration)")
+                }
+                Spacer()
+            }
+            .font(.caption)
+            .fontWeight(.semibold)
+            .foregroundStyle(.secondary)
+        }
+        .padding(.vertical, .smallSize)
+        .frame(height: 90)
+//        .background(Color(uiColor: .secondarySystemBackground))
+//        .cornerRadius(.largeSize)
+    }
+}
+

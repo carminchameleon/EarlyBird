@@ -1,15 +1,15 @@
 //
-//  RoutineInfoView.swift
+//  HabitDetailView.swift
 //  EarlyBird
 //
-//  Created by Eunji Hwang on 24/12/2023.
+//  Created by Eunji Hwang on 30/12/2023.
 //
 
 import SwiftUI
 
-struct RoutineSettingView: View {
+struct HabitDetailView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var vm: RoutineSettingViewModel
+    @StateObject var vm: HabitDetailViewModel
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -32,13 +32,15 @@ struct RoutineSettingView: View {
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button(action: {
-                    print("Save button tapped")
+                    vm.saveButtonTapped()
+                    dismiss()
                 }, label: {
                     Text("Save")
-                }).disabled(vm.saveDisabled)
+                }).disabled(vm.title.isEmpty || vm.standardLabel.isEmpty || vm.calculatedLabel.isEmpty)
             }
         }
     }
+    
     var titleSection: some View {
         VStack(spacing: .miniSize) {
             HStack {
@@ -159,12 +161,8 @@ struct RoutineSettingView: View {
         }
     }
     
-    
 }
+
 #Preview {
-    RoutineSettingView(vm: RoutineSettingViewModel(routine: nil, saveRoutine: { routine in
-    }))
-
+    HabitDetailView(vm: HabitDetailViewModel())
 }
-
-

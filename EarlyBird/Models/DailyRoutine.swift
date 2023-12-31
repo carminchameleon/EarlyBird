@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Routine: Identifiable, Hashable, Equatable {
-    var id = UUID().uuidString
+    var id = UUID()
     var title: String = ""
     var standardTime = Date()
     var standardLabel = "✅ End Time"
@@ -19,7 +19,7 @@ struct Routine: Identifiable, Hashable, Equatable {
     var activities: [Activity] = []
     var color: Color = .accentColor
     
-    init(id: String = UUID().uuidString, title: String, standardTime: Date, standardLabel: String, calculatedTime: String, calculatedLabel: String, startTimeMode: Bool, activities: [Activity], color: Color = .accentColor) {
+    init(id: UUID = UUID(), title: String, standardTime: Date, standardLabel: String, calculatedTime: String, calculatedLabel: String, startTimeMode: Bool, activities: [Activity], color: Color = .accentColor) {
         self.id = id
         self.title = title
         self.standardLabel = standardLabel
@@ -60,7 +60,7 @@ extension Routine {
         Activity(title: "Take a shower", duration: 2400),
     ])
     
-    static var mockedRoutine = Routine(id: "1",
+    static var mockedRoutine = Routine(id: UUID(),
                                        title: "Weekly Routine",
                                        standardTime: Date(),
                                        standardLabel: "✅ End Time",

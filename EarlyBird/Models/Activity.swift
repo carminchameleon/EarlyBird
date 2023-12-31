@@ -8,12 +8,12 @@
 import Foundation
 
 struct Activity: Identifiable {
-    let id: String
+    let id: UUID
     var title: String
     var duration: Double
     var isOn: Bool
     
-    init(id: String = UUID().uuidString, title: String, duration: Double, isOn: Bool = true) {
+    init(id: UUID = UUID(), title: String, duration: Double, isOn: Bool = true) {
         self.id = id
         self.title = title
         self.duration = duration
