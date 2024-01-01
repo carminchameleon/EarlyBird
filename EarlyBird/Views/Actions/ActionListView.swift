@@ -16,12 +16,28 @@ struct ActionListView: View {
     @State private var isShowToggle = false
     var menuList = SortOption.allCases
     
+    init(habit: Habit) {
+        vm = ActionListViewModel(habit: habit)
+    }
+    
     var body: some View {
         // for time line button
         ZStack(alignment: .bottomTrailing) {
-            VStack(spacing: .superLargeSize) {
-                TimelineSummaryView(vm: vm)
+            VStack(spacing: .regularSize) {
+                
+                // 상단 부분
+                VStack {
+                    TimelineSummaryView(vm: vm)
+                    TimelineController(vm: vm)
+                }
+                .padding()
+                .onTapGesture {
+                    print("tapped")
+                }
+                Divider()
+                
                 if vm.actions.isEmpty { emptyList }
+                // 리스트
                 List {
                     ForEach(vm.actions) { item in
                         Button(action: {
@@ -34,9 +50,8 @@ struct ActionListView: View {
                     }
                     .onDelete(perform: vm.deleteItem)
                     .onMove(perform: vm.moveItem)
-                    
-                }
-            }            
+                }.listStyle(.plain)
+            }
             addRoutineButton
         }
         .padding(.vertical, .regularSize)
@@ -66,7 +81,6 @@ struct ActionListView: View {
         ContentUnavailableView("Add New Action", systemImage: "pencil.and.scribble", description: Text("add your routine!"))
     }
     
-    
     var addRoutineButton: some View {
         Button {
             showAddAction.toggle()
@@ -86,12 +100,4 @@ struct ActionListView: View {
         vm.selectedItem = item
         showEdit.toggle()
     }
-//    func editAction(item: Binding<Action>) {
-//        vm.selectedItem = item.wrappedValue
-//        showEdit.toggle()
-//    }
 }
-
-//#Preview {
-//    ActionListView()
-//}

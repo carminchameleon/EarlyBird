@@ -32,7 +32,7 @@ class ActionListViewModel: ObservableObject {
     var cancelBag = CancelBag()
     
     init(habit: Habit) {
-        self.habit = habit        
+        self.habit = habit
         self.title = habit.title
         self.standardTime = habit.standardTime
         self.standardLabel = habit.standardLabel

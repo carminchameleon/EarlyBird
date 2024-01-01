@@ -15,24 +15,10 @@ struct TimelineSummaryView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: .largeSize) {
-            VStack {
-                calculatedTitle
-                calculatedTime
-            }
-    
-            HStack {
-                duration
-                Spacer()
-                standard
-            }
-            .font(.subheadline)
-            .scaledToFit()
-            .minimumScaleFactor(0.5)
-            .lineLimit(1)
-        }
-        .padding(.horizontal)
-    
+        VStack {
+            calculatedTitle
+            calculatedTime
+        }.frame(maxWidth: .infinity)
     }
     
     var calculatedTitle: some View {
@@ -49,7 +35,6 @@ struct TimelineSummaryView: View {
                     .font(.caption)
                 Text("Switch")
             }
-            .foregroundColor(.accentColor)
         }
     }
     
@@ -64,26 +49,7 @@ struct TimelineSummaryView: View {
             .padding()
         }
         .frame(maxWidth: .infinity)
+        .tint(vm.color)
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 8))
-    }
-    
-    var duration: some View {
-        HStack {
-            Text("⏳ Duration")
-                .foregroundStyle(Color(uiColor: .systemGray))
-            Text(vm.duration.getString())
-        }
-    }
-    
-    var standard: some View {
-        HStack {
-            Text(vm.startTimeMode ? "🏁": "🚀" )
-            Text(vm.standardLabel)
-                .foregroundStyle(Color(uiColor: .systemGray))
-            DatePicker("",selection: $vm.standardTime, displayedComponents: .hourAndMinute)
-                .datePickerStyle(CompactDatePickerStyle())
-                .clipped()
-                .labelsHidden()
-        }
     }
 }

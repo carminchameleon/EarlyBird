@@ -25,7 +25,7 @@ struct HabitListView: View {
                     ZStack {
                         HabitRow(habit: habit)
                         NavigationLink {
-                            ActionListView(vm: ActionListViewModel(habit: habit))
+                            ActionListView(habit: habit)
                         } label: {
                             EmptyView()
                         }.opacity(0.0)
