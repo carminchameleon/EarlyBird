@@ -44,12 +44,6 @@ struct TimelineView: View {
             }
             .frame(maxWidth: .infinity)
             .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 8))
-
-//            .overlay(
-//                RoundedRectangle(cornerRadius: .mediumSize)
-//                    .inset(by: 1)
-//                    .stroke(Color(UIColor.secondarySystemBackground), lineWidth: 3)
-//            )
         }.padding(.horizontal)
     }
 }

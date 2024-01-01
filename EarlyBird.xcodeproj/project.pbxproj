@@ -51,6 +51,14 @@
 		F0CBC7962B401A180092A7AA /* HabitRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7952B401A180092A7AA /* HabitRow.swift */; };
 		F0CBC7982B401AA40092A7AA /* RoutineListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7972B401AA40092A7AA /* RoutineListRow.swift */; };
 		F0CBC79B2B401EF30092A7AA /* ActionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC79A2B401EF20092A7AA /* ActionListView.swift */; };
+		F0CBC79D2B4103640092A7AA /* ActionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC79C2B4103640092A7AA /* ActionListViewModel.swift */; };
+		F0CBC79F2B4105F80092A7AA /* TimelineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC79E2B4105F80092A7AA /* TimelineSummaryView.swift */; };
+		F0CBC7A12B410F4B0092A7AA /* ActionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7A02B410F4B0092A7AA /* ActionRow.swift */; };
+		F0CBC7A32B4131390092A7AA /* ToolBarPresetTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7A22B4131390092A7AA /* ToolBarPresetTime.swift */; };
+		F0CBC7A52B4139650092A7AA /* ActionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7A42B4139650092A7AA /* ActionDetailView.swift */; };
+		F0CBC7A72B4139760092A7AA /* ActionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7A62B4139760092A7AA /* ActionDetailViewModel.swift */; };
+		F0CBC7AB2B4168740092A7AA /* ActionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7AA2B4168740092A7AA /* ActionStorage.swift */; };
+		F0CBC7AD2B42B0FF0092A7AA /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7AC2B42B0FF0092A7AA /* LazyView.swift */; };
 		F0FD9C932B207C63008D4428 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C922B207C63008D4428 /* TimelineView.swift */; };
 		F0FD9C952B208630008D4428 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9C942B208630008D4428 /* AddActivityView.swift */; };
 /* End PBXBuildFile section */
@@ -101,6 +109,14 @@
 		F0CBC7952B401A180092A7AA /* HabitRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRow.swift; sourceTree = "<group>"; };
 		F0CBC7972B401AA40092A7AA /* RoutineListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineListRow.swift; sourceTree = "<group>"; };
 		F0CBC79A2B401EF20092A7AA /* ActionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionListView.swift; sourceTree = "<group>"; };
+		F0CBC79C2B4103640092A7AA /* ActionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionListViewModel.swift; sourceTree = "<group>"; };
+		F0CBC79E2B4105F80092A7AA /* TimelineSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineSummaryView.swift; sourceTree = "<group>"; };
+		F0CBC7A02B410F4B0092A7AA /* ActionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRow.swift; sourceTree = "<group>"; };
+		F0CBC7A22B4131390092A7AA /* ToolBarPresetTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarPresetTime.swift; sourceTree = "<group>"; };
+		F0CBC7A42B4139650092A7AA /* ActionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDetailView.swift; sourceTree = "<group>"; };
+		F0CBC7A62B4139760092A7AA /* ActionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDetailViewModel.swift; sourceTree = "<group>"; };
+		F0CBC7AA2B4168740092A7AA /* ActionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionStorage.swift; sourceTree = "<group>"; };
+		F0CBC7AC2B42B0FF0092A7AA /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		F0FD9C922B207C63008D4428 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		F0FD9C942B208630008D4428 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +233,7 @@
 				F0A186072B11C392009A2829 /* CustomTimePickers.swift */,
 				F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */,
 				F0CBC70F2B3B038B0092A7AA /* DebounceTextField.swift */,
+				F0CBC7AC2B42B0FF0092A7AA /* LazyView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -249,6 +266,7 @@
 			children = (
 				F0CBC7802B3FEC8E0092A7AA /* PersistentController.swift */,
 				F0CBC7862B3FFF780092A7AA /* HabitStorage.swift */,
+				F0CBC7AA2B4168740092A7AA /* ActionStorage.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -269,6 +287,12 @@
 			isa = PBXGroup;
 			children = (
 				F0CBC79A2B401EF20092A7AA /* ActionListView.swift */,
+				F0CBC79C2B4103640092A7AA /* ActionListViewModel.swift */,
+				F0CBC79E2B4105F80092A7AA /* TimelineSummaryView.swift */,
+				F0CBC7A02B410F4B0092A7AA /* ActionRow.swift */,
+				F0CBC7A22B4131390092A7AA /* ToolBarPresetTime.swift */,
+				F0CBC7A42B4139650092A7AA /* ActionDetailView.swift */,
+				F0CBC7A62B4139760092A7AA /* ActionDetailViewModel.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -346,6 +370,7 @@
 				F0CBC7982B401AA40092A7AA /* RoutineListRow.swift in Sources */,
 				F0A186062B11B56A009A2829 /* ActivityListViewModel.swift in Sources */,
 				F0256F122B289B3A00487995 /* TimeControlView.swift in Sources */,
+				F0CBC7A52B4139650092A7AA /* ActionDetailView.swift in Sources */,
 				F0CBC78C2B4014E00092A7AA /* HabitListViewModel.swift in Sources */,
 				F08C86F32B36ACCF0090B55B /* PresetList.swift in Sources */,
 				F05ED9232B116C6C00948809 /* Activity.swift in Sources */,
@@ -355,10 +380,12 @@
 				F0CBC77E2B3FEA880092A7AA /* EarlyBird.xcdatamodeld in Sources */,
 				F0CBC6FF2B3853D70092A7AA /* RoutineListViewModel.swift in Sources */,
 				F001656D2B38139F00F7F992 /* RoutineSettingView.swift in Sources */,
+				F0CBC7AB2B4168740092A7AA /* ActionStorage.swift in Sources */,
 				F05ED92B2B117F1E00948809 /* Theme.swift in Sources */,
 				F0CBC78A2B4014A30092A7AA /* HabitListView.swift in Sources */,
 				F0CBC7812B3FEC8E0092A7AA /* PersistentController.swift in Sources */,
 				F0CBC7062B38565E0092A7AA /* EditActivityViewModel.swift in Sources */,
+				F0CBC7A72B4139760092A7AA /* ActionDetailViewModel.swift in Sources */,
 				F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */,
 				F0CBC7102B3B038B0092A7AA /* DebounceTextField.swift in Sources */,
 				F071CB4A2B2EA78D00663A61 /* EditActivityView.swift in Sources */,
@@ -367,9 +394,12 @@
 				F0256F102B288DAE00487995 /* Extension+Date.swift in Sources */,
 				F0CBC6F92B384FE90092A7AA /* RoutineSettingViewModel.swift in Sources */,
 				F05ED90E2B1167EE00948809 /* EarlyBirdApp.swift in Sources */,
+				F0CBC7A12B410F4B0092A7AA /* ActionRow.swift in Sources */,
 				F0CBC7872B3FFF780092A7AA /* HabitStorage.swift in Sources */,
+				F0CBC79D2B4103640092A7AA /* ActionListViewModel.swift in Sources */,
 				F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */,
 				F05ED91F2B11687200948809 /* ActivityListView.swift in Sources */,
+				F0CBC7AD2B42B0FF0092A7AA /* LazyView.swift in Sources */,
 				F05ED9262B11775100948809 /* Extensions+String.swift in Sources */,
 				F0CBC7852B3FEF3D0092A7AA /* Extension+Action.swift in Sources */,
 				F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */,
@@ -380,6 +410,8 @@
 				F0CBC7962B401A180092A7AA /* HabitRow.swift in Sources */,
 				F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */,
 				F0A1860A2B11C923009A2829 /* Presets.swift in Sources */,
+				F0CBC7A32B4131390092A7AA /* ToolBarPresetTime.swift in Sources */,
+				F0CBC79F2B4105F80092A7AA /* TimelineSummaryView.swift in Sources */,
 				F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */,
 				F0CBC7922B4017C10092A7AA /* Extension+Color.swift in Sources */,
 				F05ED9212B116B6700948809 /* ActivityRow.swift in Sources */,

@@ -30,7 +30,6 @@ struct PersistenceController {
             habit.calculatedLabel =  "⏰ Wake Up"
             habit.hexColor = "#0000ff"
             habit.startTimeMode = false
-            habit.duration = 0
         }
 
         return controller

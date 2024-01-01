@@ -29,7 +29,7 @@ class HabitStorage: NSObject, ObservableObject {
                                                           sectionNameKeyPath: nil, cacheName: nil)
     
         super.init()
-        
+    
         habitFetchController.delegate = self
         
         do {
@@ -51,7 +51,6 @@ class HabitStorage: NSObject, ObservableObject {
         newHabit.calculatedTime = "" // default
         newHabit.color = color // "#0000ff"
         newHabit.startTimeMode = startTimeMode
-        newHabit.duration = 0 // default
         
         persistenceController.save()
     }
@@ -72,6 +71,29 @@ class HabitStorage: NSObject, ObservableObject {
             print("fail to update data")
         }
     }
+    
+    func updateDetail(habit: Habit, standardLabel: String? = nil, standardTime: Date? = nil, calculatedLabel: String? = nil, calculatedTime: String? = nil, startTimeMode: Bool? = nil, duration: Double? = nil) {
+        
+        if let standardLabel = standardLabel {
+            habit.standardLabel = standardLabel
+        }
+        if let standardTime = standardTime {
+            habit.standardTime = standardTime
+        }
+
+        if let calculatedLabel = calculatedLabel {
+            habit.calculatedLabel = calculatedLabel
+        }
+
+        if let calculatedTime = calculatedTime {
+            habit.calculatedTime = calculatedTime
+        }
+
+        if let startTimeMode = startTimeMode {
+            habit.startTimeMode = startTimeMode
+        }
+        persistenceController.save()
+    }
         
     func delete(withId id: UUID) {
         if let habit = fetchEntityWithId(id) {
@@ -80,10 +102,9 @@ class HabitStorage: NSObject, ObservableObject {
         } else {
             print("fail to delete data")
         }
-            
     }
     
-    private func fetchEntityWithId(_ id: UUID) -> Habit? {
+    func fetchEntityWithId(_ id: UUID) -> Habit? {
         let fetchRequest: NSFetchRequest<Habit> = Habit.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id_ == %@", id as CVarArg)
         fetchRequest.sortDescriptors = []

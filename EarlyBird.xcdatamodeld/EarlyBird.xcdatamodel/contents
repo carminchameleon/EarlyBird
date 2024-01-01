@@ -10,7 +10,6 @@
     <entity name="Habit" representedClassName="Habit" syncable="YES" codeGenerationType="class">
         <attribute name="calculatedLabel_" optional="YES" attributeType="String"/>
         <attribute name="calculatedTime_" optional="YES" attributeType="String"/>
-        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="hexColor" optional="YES" attributeType="String"/>
         <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="standardLabel_" optional="YES" attributeType="String"/>

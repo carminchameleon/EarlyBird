@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct HabitRow: View {
-    @ObservedObject var habit: Habit
+    @ObservedObject var habit: Habit {
+        didSet {
+            print("habit", habit)
+            dump(habit)
+        }
+    }
     
     var body: some View {
         VStack {
@@ -40,9 +45,11 @@ struct HabitRow: View {
                 Text(habit.standardLabel)
                 Text(habit.standardTime.convertToString())
                 
-                if habit.duration > 0 {
-                    Text("\(habit.duration)")
+                if let actions = habit.actions?.allObjects as? [Action] {
+                    let duration = actions.filter { $0.isOn }.reduce(0,{ $0 + $1.duration }).getString()
+                    Text("\(duration)")
                 }
+                
                 Spacer()
             }
             .font(.caption)
