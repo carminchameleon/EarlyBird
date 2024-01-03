@@ -31,8 +31,7 @@ struct TimelineSummaryView: View {
                     vm.switchButtonTapped()
                 }
             } label: {
-                Image(systemName: "arrow.left.arrow.right")
-                    .font(.caption)
+                Symbols.switchMode
                 Text("Switch")
             }
         }

@@ -16,7 +16,7 @@ struct RadioButton: View {
         Button {
             isTapped(value)
         } label: {
-            Image(systemName: value ? "checkmark.circle.fill" : "circle")
+            value ? Symbols.radioCheckmark : Symbols.radioCircle
         }
     }
 }

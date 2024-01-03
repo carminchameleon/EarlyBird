@@ -39,13 +39,13 @@ struct HabitListView: View {
                         Button(role: .destructive) {
                             vm.deleteItem(habit.id)
                         } label: {
-                            Image(systemName: "trash")
+                            Symbols.trash
                         }
                         Button {
                             vm.handleShowDetail(habit)
                             showEditView.toggle()
                         } label: {
-                            Image(systemName: "info.circle.fill")
+                            Symbols.info
                         }
                     }
                     .contextMenu {
@@ -88,7 +88,7 @@ struct HabitListView: View {
                 Button(action: {
                    print("setting button tapped")
                 }, label: {
-                    Image(systemName: "gearshape")
+                    Symbols.gear
                         .font(.callout)
                 })
             }

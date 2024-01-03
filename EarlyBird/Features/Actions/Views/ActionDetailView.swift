@@ -34,7 +34,7 @@ struct ActionDetailView: View {
                             .bold()
                     })
                 }
-                PresetList(isShowingSheet: $isShowingSheet, isShowingAlert: $showAlert, textFieldValue: $vm.textFieldValue, hours: $vm.hours, mins: $vm.mins) { _ in
+                PresetList(isShowingSheet: $isShowingSheet, isShowingAlert: $showAlert, textFieldValue: $vm.textFieldValue, hours: $vm.hours, mins: $vm.mins) {
                     vm.handleSaveButtonTapped()
                 }
             }

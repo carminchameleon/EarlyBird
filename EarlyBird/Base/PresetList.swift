@@ -31,7 +31,7 @@ struct PresetList: View {
         SelectableTime(type: .hours, number: 2),
     ]
     
-    var addActivity: (Activity) -> Void
+    var addActivity: () -> Void
     
     var body: some View {
         VStack {
@@ -62,14 +62,11 @@ struct PresetList: View {
     }
     
     func presetButtonTapped(_ item: SelectableTime) {
-        var duration: Double = 0
         switch item.type {
         case .hours:
-            duration = Double(item.number) * 3600
             hours = item.number
             mins = 0
         case .minutes:
-            duration = Double(item.number) * 60
             hours = 0
             mins = item.number
         case .seconds:
@@ -81,16 +78,12 @@ struct PresetList: View {
             isShowingAlert.toggle()
             return
         }
-        
-        let activity = Activity(title: title, duration: duration)
-        addActivity(activity)
-        isShowingSheet.toggle()
     }
     
 }
 
 #Preview {
-    PresetList(isShowingSheet: .constant(false), isShowingAlert: .constant(false), textFieldValue: .constant(""), hours: .constant(0), mins: .constant(10)) { _ in
+    PresetList(isShowingSheet: .constant(false), isShowingAlert: .constant(false), textFieldValue: .constant(""), hours: .constant(0), mins: .constant(10)) { 
         
     }
 }

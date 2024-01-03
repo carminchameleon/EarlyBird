@@ -110,7 +110,7 @@ struct ActionListView: View {
         Button {
             showAddAction.toggle()
         } label: {
-            Image(systemName: "plus")
+            Symbols.plus
                 .font(.headline)
                 .bold()
                 .padding(.regularSize)
