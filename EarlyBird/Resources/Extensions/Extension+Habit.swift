@@ -39,11 +39,9 @@ extension Habit {
         set { calculatedLabel_ = newValue }
     }
 
-    var color: UIColor {
-        get { UIColor(hexString: hexColor ?? "#0000ff")}
-        set { hexColor = newValue.hexString }
+    var sortBy: String {
+        get { sortBy_ ?? "" }
+        set { sortBy_ = newValue }
     }
-    
-    // startTimeMode , Duration doesn't come with Optional
 }
 

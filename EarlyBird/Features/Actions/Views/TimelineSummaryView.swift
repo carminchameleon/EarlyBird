@@ -23,7 +23,7 @@ struct TimelineSummaryView: View {
     
     var calculatedTitle: some View {
         HStack {
-            Text(vm.startTimeMode ? "🚀" : "🏁")
+            Text(vm.startTimeMode ? "🏁" : "🚀")
             Text(vm.calculatedLabel)
             Spacer()
             Button {
@@ -49,7 +49,6 @@ struct TimelineSummaryView: View {
             .padding()
         }
         .frame(maxWidth: .infinity)
-        .tint(vm.color)
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 8))
     }
 }

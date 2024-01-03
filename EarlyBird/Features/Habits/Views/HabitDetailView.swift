@@ -42,28 +42,15 @@ struct HabitDetailView: View {
     }
     
     var titleSection: some View {
-        VStack(spacing: .miniSize) {
-            HStack {
-                Spacer()
-                Label("Color", systemImage: "pencil.tip.crop.circle")
-                    .font(.callout)
-                    .foregroundColor(vm.color)
-                    .overlay {
-                        ColorPicker("", selection: $vm.color)
-                            .labelsHidden()
-                            .opacity(0.015)
-                    }
-            }
-            TextField("Routine name", text: $vm.title)
-                .font(.title3)
-                .bold()
-                .multilineTextAlignment(.center)
-                .foregroundColor(vm.color)
-                .padding(.horizontal)
-                .frame(height: 55)
-                .background(Color(UIColor.secondarySystemBackground))
-                .cornerRadius(.smallSize)
-        }
+        TextField("Routine name", text: $vm.title)
+            .font(.title3)
+            .bold()
+            .multilineTextAlignment(.center)
+            .foregroundColor(vm.color)
+            .padding(.horizontal)
+            .frame(height: 55)
+            .background(Color(UIColor.secondarySystemBackground))
+            .cornerRadius(.smallSize)
     }
     
     var modeSection: some View {
@@ -83,7 +70,7 @@ struct HabitDetailView: View {
                             VStack {
                                 Text("🏁")
                                     .font(.largeTitle)
-                                    .frame(width:100)
+                                    .frame(width:120)
                                 Text("When It Finished")
                             }
                             .font(.caption)
@@ -99,7 +86,7 @@ struct HabitDetailView: View {
                             VStack {
                                 Text("🚀")
                                     .font(.largeTitle)
-                                    .frame(width:100)
+                                    .frame(width:120)
                                 Text("When to start")
 
                             }

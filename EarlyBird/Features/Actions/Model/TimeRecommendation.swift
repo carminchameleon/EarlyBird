@@ -9,11 +9,7 @@ import Foundation
 
 struct SelectableTime:Identifiable {
     var id = UUID().uuidString
-//    var label: String {
-//        return "\(number)\(type)"
-//    }
     var type: UnitsOfTime
-    
     var number: Int
 }
 

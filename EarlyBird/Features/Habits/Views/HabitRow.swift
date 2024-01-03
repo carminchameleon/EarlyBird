@@ -8,19 +8,15 @@
 import SwiftUI
 
 struct HabitRow: View {
-    @ObservedObject var habit: Habit {
-        didSet {
-            print("habit", habit)
-            dump(habit)
-        }
-    }
+    @ObservedObject var habit: Habit 
     
     var body: some View {
         VStack {
             HStack {
                 ZStack {
                     Circle()
-                        .fill(Color(habit.color).opacity(0.2))
+                        .fill(Color.accentColor.opacity(0.2))
+//                        .fill(Color(habit.color).opacity(0.2))
                         .frame(width:30)
                     Text(habit.startTimeMode ? "🏁": "🚀")
                         .font(.caption)
@@ -29,8 +25,8 @@ struct HabitRow: View {
                 Text(habit.title)
                     .font(.title3)
                     .bold()
-                    .fontDesign(.rounded)
-                    .foregroundColor(Color(habit.color))
+                    .fontDesign(.serif)
+                    .foregroundColor(Color.accentColor)
                 Spacer()
                 if let actions = habit.actions?.allObjects as? [Action] {
                     Text("\(actions.count)")

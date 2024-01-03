@@ -18,17 +18,6 @@ struct SortOptionItem {
     }
 }
 
-
-enum Car: CaseIterable {
-    static var allCases: [Car] {
-        return [.ford, .toyota, .jaguar, .bmw, .porsche(convertible: false), .porsche(convertible: true)]
-    }
-
-    case ford, toyota, jaguar, bmw
-    case porsche(convertible: Bool)
-}
-
-
 enum SortOrder: String {
     case ascend
     case descend

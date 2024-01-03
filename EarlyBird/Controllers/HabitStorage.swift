@@ -49,9 +49,9 @@ class HabitStorage: NSObject, ObservableObject {
         newHabit.standardTime = standardTime
         newHabit.calculatedLabel =  calculatedLabel
         newHabit.calculatedTime = "" // default
-        newHabit.color = color // "#0000ff"
         newHabit.startTimeMode = startTimeMode
-        
+        newHabit.sortBy = SortOption.manual.rawValue
+        newHabit.isAscending = true
         persistenceController.save()
     }
         
@@ -63,7 +63,6 @@ class HabitStorage: NSObject, ObservableObject {
             habit.standardLabel = standardLabel
             habit.standardTime = standardTime
             habit.calculatedLabel =  calculatedLabel
-            habit.color = color // "#0000ff"
             habit.startTimeMode = startTimeMode
             
             persistenceController.save()
@@ -72,7 +71,7 @@ class HabitStorage: NSObject, ObservableObject {
         }
     }
     
-    func updateDetail(habit: Habit, standardLabel: String? = nil, standardTime: Date? = nil, calculatedLabel: String? = nil, calculatedTime: String? = nil, startTimeMode: Bool? = nil, duration: Double? = nil) {
+    func updateDetail(habit: Habit, standardLabel: String? = nil, standardTime: Date? = nil, calculatedLabel: String? = nil, calculatedTime: String? = nil, startTimeMode: Bool? = nil, sortBy: String? = nil, isAscending: Bool? = nil) {
         
         if let standardLabel = standardLabel {
             habit.standardLabel = standardLabel
@@ -92,6 +91,15 @@ class HabitStorage: NSObject, ObservableObject {
         if let startTimeMode = startTimeMode {
             habit.startTimeMode = startTimeMode
         }
+
+        if let sortBy = sortBy {
+            habit.sortBy = sortBy
+        }
+        
+        if let isAscending = isAscending {
+            habit.isAscending = isAscending
+        }
+        
         persistenceController.save()
     }
         

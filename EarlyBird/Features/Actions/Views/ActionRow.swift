@@ -23,8 +23,6 @@ struct ActionRow: View {
         self.updateToggleStatus = updateToggleStatus
     }
 
-    
-    
     var body: some View {
         HStack {
             if isShowToggle {
@@ -32,9 +30,13 @@ struct ActionRow: View {
                     actionContent
                 })
                 .onChange(of: item.isOn, {
-                    withAnimation(.easeInOut(duration: 20)) {
-                        updateToggleStatus(item)
+                    DispatchQueue.main.async {
+                        withAnimation(.easeInOut(duration: 20)) {
+                            updateToggleStatus(item)
+                        }
                     }
+                    
+                    
                 })
             } else {
                 actionContent

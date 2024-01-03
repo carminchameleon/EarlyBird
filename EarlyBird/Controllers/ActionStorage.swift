@@ -43,10 +43,13 @@ class ActionStorage: NSObject, ObservableObject {
     // pass only relative make new Actions
     func add(title: String, duration: Double, isOn: Bool, habit: Habit) {
         let newAction = Action(context: persistenceController.container.viewContext)
+        
+        let currentActions = fetchActionDatas(habit: habit)
         newAction.id = UUID()
         newAction.title = title
         newAction.duration = duration
         newAction.isOn = true
+        newAction.order = Int64(currentActions.count)
         newAction.habit = habit
         persistenceController.save()
     }
@@ -67,6 +70,42 @@ class ActionStorage: NSObject, ObservableObject {
         }
     }
         
+    
+    
+    // update from detail view
+    func update(withId id: UUID, title: String? = nil, duration: Double? = nil, isOn: Bool? = nil, order: Int64? = nil, habit: Habit? = nil) {
+        if let action = fetchEntityWithId(id) {
+            action.id = id
+            
+            if let title = title {
+                action.title = title
+            }
+            
+            if let duration = duration {
+                action.duration = duration
+            }
+            
+            if let isOn = isOn {
+                action.isOn = isOn
+            }
+            
+            if let order = order {
+                action.order = order
+            }
+            
+            if let habit = habit {
+                action.habit = habit
+            }
+            
+            persistenceController.save()
+            
+        } else {
+            print("fail to update data")
+        }
+    }
+        
+    
+    
     func delete(withId id: UUID) {
         if let action = fetchEntityWithId(id) {
             persistenceController.container.viewContext.delete(action)
@@ -85,6 +124,19 @@ class ActionStorage: NSObject, ObservableObject {
         do {
             let entities = try persistenceController.container.viewContext.fetch(fetchRequest)
             return entities.first
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolve error \(nsError), \(nsError.userInfo)")
+        }
+    }
+    
+    func fetchActionDatas(habit: Habit) -> [Action] {
+        let fetchRequest: NSFetchRequest<Action> = Action.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "habit == %@", habit)
+        fetchRequest.sortDescriptors = []
+        do {
+            let entities = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
+            return entities
         } catch {
             let nsError = error as NSError
             fatalError("Unresolve error \(nsError), \(nsError.userInfo)")

@@ -34,7 +34,6 @@ class HabitDetailViewModel: ObservableObject {
             self.standardTime = habit.standardTime
             self.calculatedLabel = habit.calculatedLabel
             self.startTimeMode = habit.startTimeMode
-            self.color = Color(habit.color)
             self.habit = habit
         }
         addModeSubscriber()

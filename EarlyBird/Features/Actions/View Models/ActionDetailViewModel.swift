@@ -38,7 +38,7 @@ class ActionDetailViewModel: ObservableObject {
 
         // update
         if let action = action {
-            print("action is updated")
+    
             ActionStorage.shared.update(withId: action.id, title: title, duration: duration, isOn: isOn, habit: habit)
         } else {
             ActionStorage.shared.add(title: title, duration: duration, isOn: isOn, habit: habit)

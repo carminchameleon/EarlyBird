@@ -31,7 +31,6 @@ public extension CGFloat {
     
     /// Ultra large size, suitable for both padding and radius. - 28
     static let ultraLargeSize = CGFloat(32)
-    
 }
 
 

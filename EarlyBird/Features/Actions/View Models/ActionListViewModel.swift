@@ -14,14 +14,22 @@ import UIKit
 
 class ActionListViewModel: ObservableObject {
     var habit: Habit
+    
     @Published var title: String = ""
+    
     @Published var standardTime = Date()
+    
     @Published var standardLabel = "✅ End Time"
+    
     @Published var calculatedTime = ""
+    
     @Published var calculatedLabel = "⏰ Wake Up"
+    
     @Published var startTimeMode: Bool = false
+    
     @Published var actions: [Action] = []
-    var color: Color = .accentColor
+    
+    @Published var seperateMode: Bool = false
     
     var sortOption = SortOption.manual
     var sortOrder = SortOrder.ascend
@@ -31,6 +39,7 @@ class ActionListViewModel: ObservableObject {
     
     var cancelBag = CancelBag()
     
+    // init habit
     init(habit: Habit) {
         self.habit = habit
         self.title = habit.title
@@ -40,11 +49,14 @@ class ActionListViewModel: ObservableObject {
         self.calculatedLabel = habit.calculatedLabel
         self.startTimeMode = habit.startTimeMode
         
+        sortOption = SortOption(rawValue: habit.sortBy) ?? .manual
+        sortOrder = habit.isAscending ? .ascend : .descend
+        
         if let actions = habit.actions?.allObjects as? [Action] {
             self.actions = actions
+            self.actions = getSortedList(sortOption, sortOrder)
+
         }
-        
-        self.color = Color(habit.color)
         addActivitiesSubscriber()
         addDurationSubscriber()
     }
@@ -59,39 +71,28 @@ class ActionListViewModel: ObservableObject {
             self.calculatedTime = habit.calculatedTime
             self.calculatedLabel = habit.calculatedLabel
             self.startTimeMode = habit.startTimeMode
+            self.sortOption = SortOption(rawValue: habit.sortBy) ?? .manual
+            self.sortOrder = habit.isAscending ? .ascend : .descend
             
-            let actions = fetchActionData(habit: habit)
+            let actions = ActionStorage.shared.fetchActionDatas(habit: habit)
             self.actions = actions
-        }
-    }
-    
-    func fetchActionData(habit: Habit) -> [Action] {
-        print("FETCH ACTION DATA")
-        let fetchRequest: NSFetchRequest<Action> = Action.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "habit == %@", habit)
-        fetchRequest.sortDescriptors = []
-        do {
-            let entities = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
-            return entities
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolve error \(nsError), \(nsError.userInfo)")
         }
     }
     
     // MARK: - Subscribers
     func addActivitiesSubscriber() {
         $actions.map { action in
-            // activities 리스트를 전체 다 받을 예정임
             let duration = self.actions.filter { $0.isOn }.reduce(0,{ $0 + $1.duration })
             return duration
-        }.sink {[weak self] returnedValue in
+        }
+        .receive(on: DispatchQueue.main)
+        .sink {[weak self] returnedValue in
             guard let self = self else { return }
             self.duration = returnedValue
+            seperateMode = returnedValue > 3600
         }.store(in: cancelBag)
     }
 
-    
     func addDurationSubscriber() {
         $duration.combineLatest($standardTime, $startTimeMode)
             .receive(on: DispatchQueue.main)
@@ -107,12 +108,11 @@ class ActionListViewModel: ObservableObject {
             formatter.timeStyle = .short
             return formatter
         }
-        
         let resultDate = standardTime.addingTimeInterval( startTimeMode ? duration : -duration )
         calculatedTime = dateFormmater.string(from: resultDate)
     }
-    
-    // MARK: - Switch Mode
+
+    // MARK: - Change Switch Mode
     func switchButtonTapped() {
         guard let existCalculatedTime = calculatedTime.convertToDate() else { return }
         standardTime = existCalculatedTime
@@ -125,21 +125,23 @@ class ActionListViewModel: ObservableObject {
         calculatedLabel = existStandardLabel
     }
     
+    // MARK: - CRUD
     func backButtonTapped() {
-    
         HabitStorage.shared.updateDetail(habit: habit,
                                          standardLabel: standardLabel,
                                          standardTime: standardTime,
                                          calculatedLabel: calculatedLabel,
                                          calculatedTime: calculatedTime,
                                          startTimeMode: startTimeMode,
-                                         duration: duration)
-    }
-    
-    
-    func deleteItem(indexSet: IndexSet) {
-        print("delete item")
+                                         sortBy: sortOption.rawValue,
+                                         isAscending: sortOrder == .ascend)
         
+        for (index, action) in actions.enumerated() {
+            ActionStorage.shared.update(withId: action.id, isOn: action.isOn, order: Int64(index))
+        }
+    }
+
+    func deleteItem(indexSet: IndexSet) {
         if let firstIndex = indexSet.first {
             let id = actions[firstIndex].id
             ActionStorage.shared.delete(withId: id)
@@ -152,29 +154,10 @@ class ActionListViewModel: ObservableObject {
         actions.move(fromOffsets: from, toOffset: to)
     }
         
+       
+    // MARK: - Sortings
     func updateToggleState(item: Action) {
-//        if let index = activities.firstIndex(where: { $0.id == item.id }) {
-//            activities[index] = item.updateToggle()
-//        }
-//        sortActivityList()
-    }
-    
-    func addItem(item: Action) {
-//        activities.append(item)
-//        sortActivityList()
-    }
-    
-    func presetButtonTapped(_ item: SelectableTime) {
-        var duration: Double = 0
-        switch item.type {
-        case .hours:
-            duration = Double(item.number) * 3600
-        case .minutes:
-            duration = Double(item.number) * 60
-        case .seconds:
-            break
-        }
-        print(duration)
+        sortActionList()
     }
     
     func updateSortOption(_ newOption: SortOption) {
@@ -187,12 +170,16 @@ class ActionListViewModel: ObservableObject {
         actions = getSortedList(sortOption, newOrder)
     }
     
+    func sortActionList() {
+        let newList = getSortedList(sortOption, sortOrder)
+        actions = newList
+    }
     
     func getSortedList(_ sortOption: SortOption,_ sortOrder: SortOrder ) -> [Action] {
         var list = actions
         switch sortOption {
         case .manual:
-            break
+            list = list.sorted { $0.order < $1.order }
         case .title:
             switch sortOrder {
             case .ascend:

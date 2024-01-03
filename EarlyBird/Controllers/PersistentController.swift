@@ -8,7 +8,15 @@
 import Foundation
 import CoreData
 
-struct PersistenceController {
+protocol PersistenceControllerProtocol {
+    
+}
+
+struct SimulatorPersistenceController: PersistenceControllerProtocol {
+    static let shared = SimulatorPersistenceController()
+}
+
+struct PersistenceController: PersistenceControllerProtocol {
     // A singleton for our entire app to use
     static let shared = PersistenceController()
 
@@ -28,7 +36,6 @@ struct PersistenceController {
             habit.standardLabel = "✅ End Time"
             habit.calculatedTime = ""
             habit.calculatedLabel =  "⏰ Wake Up"
-            habit.hexColor = "#0000ff"
             habit.startTimeMode = false
         }
 
@@ -59,7 +66,6 @@ struct PersistenceController {
         if context.hasChanges {
             do {
                 try context.save()
-                print("✅ Successfully saved Core Data")
             } catch let error {
                 print("Error saving Core Data. \(error.localizedDescription)")
             }
