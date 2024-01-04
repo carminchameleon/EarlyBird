@@ -16,7 +16,7 @@
 		F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */; };
 		F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED92A2B117F1E00948809 /* Extensions+CGFloat.swift */; };
 		F062D9AC2B456773000342F2 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AB2B456773000342F2 /* Symbols.swift */; };
-		F062D9AE2B45677D000342F2 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AD2B45677D000342F2 /* ColorTheme.swift */; };
+		F062D9AE2B45677D000342F2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AD2B45677D000342F2 /* Theme.swift */; };
 		F08C86F32B36ACCF0090B55B /* PresetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F22B36ACCF0090B55B /* PresetList.swift */; };
 		F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F42B37B3E60090B55B /* SortMenu.swift */; };
 		F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */; };
@@ -44,6 +44,7 @@
 		F0CBC7A72B4139760092A7AA /* ActionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7A62B4139760092A7AA /* ActionDetailViewModel.swift */; };
 		F0CBC7AB2B4168740092A7AA /* ActionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7AA2B4168740092A7AA /* ActionStorage.swift */; };
 		F0CBC7AF2B42CC070092A7AA /* TimelineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7AE2B42CC070092A7AA /* TimelineController.swift */; };
+		F0EBB7872B46A956006B5975 /* NewHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EBB7862B46A956006B5975 /* NewHabitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +58,7 @@
 		F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+TimeInterval.swift"; sourceTree = "<group>"; };
 		F05ED92A2B117F1E00948809 /* Extensions+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+CGFloat.swift"; sourceTree = "<group>"; };
 		F062D9AB2B456773000342F2 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
-		F062D9AD2B45677D000342F2 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
+		F062D9AD2B45677D000342F2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F08C86F22B36ACCF0090B55B /* PresetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetList.swift; sourceTree = "<group>"; };
 		F08C86F42B37B3E60090B55B /* SortMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMenu.swift; sourceTree = "<group>"; };
 		F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CancelBag.swift"; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		F0CBC7A62B4139760092A7AA /* ActionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDetailViewModel.swift; sourceTree = "<group>"; };
 		F0CBC7AA2B4168740092A7AA /* ActionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionStorage.swift; sourceTree = "<group>"; };
 		F0CBC7AE2B42CC070092A7AA /* TimelineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineController.swift; sourceTree = "<group>"; };
+		F0EBB7862B46A956006B5975 /* NewHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,9 +158,9 @@
 		F062D9A92B456748000342F2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F05ED9242B11774600948809 /* Extensions */,
 				F062D9AB2B456773000342F2 /* Symbols.swift */,
-				F062D9AD2B45677D000342F2 /* ColorTheme.swift */,
+				F062D9AD2B45677D000342F2 /* Theme.swift */,
+				F05ED9242B11774600948809 /* Extensions */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -216,6 +218,7 @@
 				F0CBC7952B401A180092A7AA /* HabitRow.swift */,
 				F0CBC78D2B40163D0092A7AA /* HabitDetailView.swift */,
 				F0CBC7892B4014A30092A7AA /* HabitListView.swift */,
+				F0EBB7862B46A956006B5975 /* NewHabitView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,11 +262,11 @@
 		F062D9B82B4567DB000342F2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F0CBC79A2B401EF20092A7AA /* ActionListView.swift */,
 				F0CBC7A42B4139650092A7AA /* ActionDetailView.swift */,
 				F0CBC7AE2B42CC070092A7AA /* TimelineController.swift */,
 				F0CBC7A02B410F4B0092A7AA /* ActionRow.swift */,
 				F0CBC79E2B4105F80092A7AA /* TimelineSummaryView.swift */,
-				F0CBC79A2B401EF20092A7AA /* ActionListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -354,12 +357,13 @@
 				F0CBC78E2B40163D0092A7AA /* HabitDetailView.swift in Sources */,
 				F018B5172B369CEB00099C88 /* TimeRecommendation.swift in Sources */,
 				F0CBC7832B3FEE7A0092A7AA /* Extension+Habit.swift in Sources */,
+				F0EBB7872B46A956006B5975 /* NewHabitView.swift in Sources */,
 				F0CBC77E2B3FEA880092A7AA /* EarlyBird.xcdatamodeld in Sources */,
 				F0CBC7AB2B4168740092A7AA /* ActionStorage.swift in Sources */,
 				F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */,
 				F0CBC78A2B4014A30092A7AA /* HabitListView.swift in Sources */,
 				F0CBC7812B3FEC8E0092A7AA /* PersistentController.swift in Sources */,
-				F062D9AE2B45677D000342F2 /* ColorTheme.swift in Sources */,
+				F062D9AE2B45677D000342F2 /* Theme.swift in Sources */,
 				F0CBC7A72B4139760092A7AA /* ActionDetailViewModel.swift in Sources */,
 				F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */,
 				F062D9AC2B456773000342F2 /* Symbols.swift in Sources */,

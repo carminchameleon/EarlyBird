@@ -23,51 +23,50 @@ struct ActionListView: View {
     }
     
     var body: some View {
-        // for time line button
-//        ZStack(alignment: .bottomTrailing) {
-            VStack(spacing: .regularSize) {
-                // 상단 부분
-                VStack {
-                    TimelineSummaryView(vm: vm)
-                    TimelineController(vm: vm)
-                }
-                .padding(.horizontal)
-                .onTapGesture {
-                    showDetail.toggle()
-                }
-                Divider()
-                
-                if vm.actions.isEmpty { emptyList }
-                // 리스트
-                List {
-                    ForEach(vm.actions) { item in
-                        Button(action: {
-                            editAction(item: item)
-                        }, label: {
-                            ActionRow(item: item, isShowToggle: $isShowToggle) { item in
-                                vm.updateToggleState(item: item)
-                            }
-                        })
-                    }
-                    .onDelete(perform: vm.deleteItem)
-                    .onMove(perform: vm.moveItem)
-                }.listStyle(.plain)
-            }
-        
+        VStack(spacing: .regularSize) {
             VStack {
-                Button(action: {
-                    showAddAction.toggle()
-                }, label: {
-                    Label("New Action", systemImage: "plus.circle.fill")
-                        .bold()
-                        .fontDesign(.rounded)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(.accentColor)
-                })
+                TimelineSummaryView(vm: vm)
+                TimelineController(vm: vm)
             }
-            .padding()
+            .padding(.horizontal)
+            .onTapGesture {
+                showDetail.toggle()
+            }
+            Divider()
+            
+            if vm.actions.isEmpty { emptyList }
+            // 리스트
+            List {
+                ForEach(vm.actions) { item in
+                    Button(action: {
+                        editAction(item: item)
+                    }, label: {
+                        ActionRow(item: item, isShowToggle: $isShowToggle) { item in
+                            vm.updateToggleState(item: item)
+                        }
+                    })
+                }
+                .onDelete(perform: vm.deleteItem)
+                .onMove(perform: vm.moveItem)
+            }.listStyle(.plain)
+        }
+        
+        VStack {
+            Button(action: {
+                showAddAction.toggle()
+            }, label: {
+                Label("New Action", systemImage: "plus.circle.fill")
+                    .bold()
+                    .fontDesign(.serif)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(Theme.pill)
+            })
+        }
+        .tint(Theme.pill)
+        .padding()
         .navigationTitle(vm.title)
         .navigationBarTitleDisplayMode(.inline)
+        
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 toolItem
@@ -91,7 +90,7 @@ struct ActionListView: View {
             NavigationStack {
                 HabitDetailView(vm: HabitDetailViewModel(habit: vm.habit))
                     .navigationTitle("Edit Routine")
-
+                
             }
         })
         .onDisappear {
@@ -101,7 +100,7 @@ struct ActionListView: View {
             vm.updateHabitData()
         })
     }
-
+    
     var emptyList: some View {
         ContentUnavailableView("Add New Action", systemImage: "pencil.and.scribble", description: Text("add your routine!"))
     }
@@ -127,7 +126,9 @@ struct ActionListView: View {
                 showDetail.toggle()
             }) {
                 Label("Show List Info", systemImage: "info.circle")
+                
             }
+            
             Button(action: {
                 withAnimation(.smooth) {
                     isShowToggle.toggle()
@@ -137,7 +138,7 @@ struct ActionListView: View {
             }) {
                 Label("\(isShowToggle ? "Hide" : "Show") Toggle Button", systemImage: "slider.horizontal.3")
             }
-
+            
             
             Menu {
                 ForEach(SortOption.allCases, id: \.id) { item in
@@ -159,7 +160,7 @@ struct ActionListView: View {
                             withAnimation(.easeInOut(duration: 20)) {
                                 vm.updateSortOrder(.ascend)
                             }
-
+                            
                         }) {
                             if vm.sortOrder == .ascend {
                                 Label("\(vm.sortOption.ascend)", systemImage: "checkmark")
@@ -170,9 +171,9 @@ struct ActionListView: View {
                         Button(action: {
                             withAnimation(.easeInOut(duration: 20)) {
                                 vm.updateSortOrder(.descend)
-
+                                
                             }
-
+                            
                         }) {
                             if vm.sortOrder == .descend {
                                 Label("\(vm.sortOption.descend)", systemImage: "checkmark")

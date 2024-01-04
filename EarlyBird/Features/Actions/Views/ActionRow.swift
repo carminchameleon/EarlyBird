@@ -35,14 +35,13 @@ struct ActionRow: View {
                             updateToggleStatus(item)
                         }
                     }
-                    
-                    
                 })
             } else {
                 actionContent
             }
             
         }
+        .tint(Theme.pill)
         .padding(.vertical, .smallSize)
     }
     
@@ -50,11 +49,13 @@ struct ActionRow: View {
         VStack(alignment: .leading) {
             Text(item.title)
                 .font(.callout)
+                .fontDesign(.serif)
                 .bold()
             Text(item.duration.getString())
-                .font(.callout)
-                .foregroundStyle(Color(uiColor: .systemGray))
-        }.opacity(item.isOn ? 1 : 0.3)
+                .font(.caption)
+                .tint(.detailText)
+                .foregroundStyle(Theme.detailText)
+        }.opacity(item.isOn ? 1 : 0.2)
 
     }
 }

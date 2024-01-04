@@ -16,7 +16,7 @@ struct CustomTimePickers: View {
             VStack {
                 Text("Hours")
                     .font(.subheadline)
-                    .fontDesign(.rounded)
+                    .fontDesign(.serif)
                     .padding(.horizontal, .largeSize)
                     .foregroundStyle(Color(uiColor: UIColor.systemGray))
                     
@@ -29,7 +29,7 @@ struct CustomTimePickers: View {
             VStack {
                 Text("Minutes")
                     .font(.subheadline)
-                    .fontDesign(.rounded)
+                    .fontDesign(.serif)
                     .padding(.horizontal, .largeSize)
                     .foregroundStyle(Color(uiColor: UIColor.systemGray))
                 Picker("", selection: $mins){

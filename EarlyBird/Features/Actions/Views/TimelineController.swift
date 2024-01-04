@@ -16,7 +16,10 @@ struct TimelineController: View {
                 HStack {
                     Text(vm.startTimeMode ? "🚀": "🏁" )
                     Text(vm.standardLabel)
-                        .font(.subheadline)
+                        .font(.callout)
+                        .fontDesign(.serif)
+                        .tint(Theme.detailText)
+                        .bold()
                         .scaledToFit()
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
@@ -29,19 +32,12 @@ struct TimelineController: View {
                         .labelsHidden()
                 }
                 HStack {
-                    Text("⏳ Duration")
-                        .foregroundStyle(Color(uiColor: .systemGray))
-                    Text(vm.duration.getString())
-                        .bold()
+                   duration
                 }
             }
         } else {
             HStack {
-                Text("⏳ Duration")
-                    .foregroundStyle(Color(uiColor: .systemGray))
-                Text(vm.duration.getString())
-                    .bold()
-                
+                duration
                 Spacer()
                 
                 Text(vm.startTimeMode ? "🚀": "🏁" )
@@ -51,6 +47,17 @@ struct TimelineController: View {
                     .clipped()
                     .labelsHidden()
             }
+        }
+    }
+    
+    var duration: some View {
+        Group {
+            Text("⏳")
+            Text(vm.duration.getString())
+                .font(.callout)
+                .fontDesign(.serif)
+                .bold()
+
         }
     }
 }

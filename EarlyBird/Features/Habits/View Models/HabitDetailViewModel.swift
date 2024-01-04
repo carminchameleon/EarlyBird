@@ -22,7 +22,6 @@ class HabitDetailViewModel: ObservableObject {
     @Published var calculatedGuide: String = RoutineField.end.calculatedGuide
     @Published var startPlaceholder: String = RoutineField.start.standardPlaceholder
     @Published var calculatedPlaceholder: String = RoutineField.start.calculatedPlaceholder
-    @Published var color: Color = .accentColor
     
     private var cancelBag = CancelBag()
     
@@ -69,16 +68,14 @@ class HabitDetailViewModel: ObservableObject {
                                        standardLabel: standardLabel,
                                        standardTime: standardTime,
                                        calculatedLabel: calculatedLabel,
-                                       startTimeMode: startTimeMode,
-                                       color: color.toUIColor())
+                                       startTimeMode: startTimeMode)
         } else {
             // add new habit
             HabitStorage.shared.add(title: title, 
                                     standardLabel: standardLabel,
                                     standardTime: standardTime,
                                     calculatedLabel: calculatedLabel,
-                                    startTimeMode: startTimeMode,
-                                    color: color.toUIColor())
+                                    startTimeMode: startTimeMode)
         }
     }
 }

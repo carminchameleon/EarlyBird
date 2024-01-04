@@ -18,13 +18,19 @@ struct TimelineSummaryView: View {
         VStack {
             calculatedTitle
             calculatedTime
-        }.frame(maxWidth: .infinity)
+        }
+        .tint(Theme.pill)
+        .frame(maxWidth: .infinity)
     }
     
     var calculatedTitle: some View {
         HStack {
             Text(vm.startTimeMode ? "🏁" : "🚀")
             Text(vm.calculatedLabel)
+                .fontDesign(.serif)
+                .font(.title3)
+                .bold()
+            
             Spacer()
             Button {
                 withAnimation(.snappy) {
@@ -33,7 +39,7 @@ struct TimelineSummaryView: View {
             } label: {
                 Symbols.switchMode
                 Text("Switch")
-            }
+            }.font(.caption)
         }
     }
     

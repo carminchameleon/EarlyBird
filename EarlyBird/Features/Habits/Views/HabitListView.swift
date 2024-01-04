@@ -64,6 +64,7 @@ struct HabitListView: View {
                 }
                 .onMove(perform: vm.moveItem)
             }
+            .tint(Theme.pill)
             .listStyle(.insetGrouped)
             .listRowSpacing(.largeSize)
             .scrollContentBackground(.hidden)
@@ -74,9 +75,9 @@ struct HabitListView: View {
                 }, label: {
                     Label("New Routine", systemImage: "plus.circle.fill")
                         .bold()
-                        .fontDesign(.rounded)
+                        .fontDesign(.serif)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Theme.pill)
                 })
             }
             .padding()
@@ -90,6 +91,7 @@ struct HabitListView: View {
                 }, label: {
                     Symbols.gear
                         .font(.callout)
+                        .tint(Theme.pill)
                 })
             }
 

@@ -41,7 +41,7 @@ class HabitStorage: NSObject, ObservableObject {
     }
     
     // pass only relative make new habits
-    func add(title: String, standardLabel: String, standardTime: Date, calculatedLabel: String, startTimeMode: Bool, color: UIColor) {
+    func add(title: String, standardLabel: String, standardTime: Date, calculatedLabel: String, startTimeMode: Bool) {
         let newHabit = Habit(context: persistenceController.container.viewContext)
         newHabit.id = UUID()
         newHabit.title = title
@@ -57,7 +57,7 @@ class HabitStorage: NSObject, ObservableObject {
         
     
     // update from detail view
-    func update(withId id: UUID, title: String, standardLabel: String, standardTime: Date, calculatedLabel: String, startTimeMode: Bool, color: UIColor) {
+    func update(withId id: UUID, title: String, standardLabel: String, standardTime: Date, calculatedLabel: String, startTimeMode: Bool) {
         if let habit = fetchEntityWithId(id) {
             habit.title = title
             habit.standardLabel = standardLabel

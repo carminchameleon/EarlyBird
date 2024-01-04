@@ -46,7 +46,7 @@ struct HabitDetailView: View {
             .font(.title3)
             .bold()
             .multilineTextAlignment(.center)
-            .foregroundColor(vm.color)
+            .foregroundColor(Theme.pill)
             .padding(.horizontal)
             .frame(height: 55)
             .background(Color(UIColor.secondarySystemBackground))
@@ -58,7 +58,7 @@ struct HabitDetailView: View {
             Text("Need to know")
                 .font(.callout)
                 .bold()
-                .fontDesign(.rounded)
+                .fontDesign(.serif)
             
                 .frame(maxWidth: .infinity, alignment: .leading)
             
@@ -75,7 +75,7 @@ struct HabitDetailView: View {
                             }
                             .font(.caption)
                             .bold()
-                            .fontDesign(.rounded)
+                            .fontDesign(.serif)
                             
                             RadioButton(value: $vm.startTimeMode) { result in
                                 vm.startTimeMode = true
@@ -92,7 +92,7 @@ struct HabitDetailView: View {
                             }
                             .font(.caption)
                             .bold()
-                            .fontDesign(.rounded)
+                            .fontDesign(.serif)
                             RadioButton(value: .constant(vm.startTimeMode == false)) { result in
                                 vm.startTimeMode = false
                             }
@@ -110,7 +110,7 @@ struct HabitDetailView: View {
             Text(vm.standardGuide)
                 .font(.callout)
                 .bold()
-                .fontDesign(.rounded)
+                .fontDesign(.serif)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             TextField(vm.startPlaceholder, text: $vm.standardLabel)
@@ -134,7 +134,7 @@ struct HabitDetailView: View {
             Text(vm.calculatedGuide)
                 .font(.callout)
                 .bold()
-                .fontDesign(.rounded)
+                .fontDesign(.serif)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             TextField(vm.calculatedPlaceholder, text: $vm.calculatedLabel)
