@@ -11,11 +11,11 @@ struct TimelineController: View {
     @ObservedObject var vm: ActionListViewModel
     
     var body: some View {
-        if vm.standardLabel.count >  10 || vm.duration > 3600 {
+        if vm.startLabel.count >  10 || vm.duration > 3600 {
             VStack(alignment: .leading) {
                 HStack {
                     Text(vm.startTimeMode ? "🚀": "🏁" )
-                    Text(vm.standardLabel)
+                    Text(vm.startLabel)
                         .font(.callout)
                         .fontDesign(.serif)
                         .tint(Theme.detailText)
@@ -26,7 +26,7 @@ struct TimelineController: View {
                     
                     Spacer()
                  
-                    DatePicker("",selection: $vm.standardTime, displayedComponents: .hourAndMinute)
+                    DatePicker("",selection: $vm.startTime, displayedComponents: .hourAndMinute)
                         .datePickerStyle(CompactDatePickerStyle())
                         .clipped()
                         .labelsHidden()
@@ -41,8 +41,8 @@ struct TimelineController: View {
                 Spacer()
                 
                 Text(vm.startTimeMode ? "🚀": "🏁" )
-                Text(vm.standardLabel)
-                DatePicker("",selection: $vm.standardTime, displayedComponents: .hourAndMinute)
+                Text(vm.startLabel)
+                DatePicker("",selection: $vm.startTime, displayedComponents: .hourAndMinute)
                     .datePickerStyle(CompactDatePickerStyle())
                     .clipped()
                     .labelsHidden()

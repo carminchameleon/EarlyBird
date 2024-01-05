@@ -7,12 +7,40 @@
 
 import SwiftUI
 
-struct NewHabitView: View {
-    @State var showAdjust = false
-    @State var startTimeMode = false
-    @State var standardTime = Date.now
+class NewHabitViewModel: ObservableObject {
+    @Published var habit: Habit
     
+    @Published var title: String
+    @Published var startLabel: String
+    @Published var startTime: Date?
+    @Published var finishLabel: String
+    @Published var finishTime: Date?
+    @Published var startTimeMode: Bool
 
+    init(habit: Habit) {
+        self.title = habit.title
+        self.startLabel = habit.startLabel
+        self.startTime = habit.startTime
+        self.finishTime = habit.finishTime
+        self.finishLabel = habit.finishLabel
+        self.startTimeMode = habit.startTimeMode
+        self.habit = habit
+    }
+}
+
+struct NewHabitView: View {
+    @ObservedObject var vm: HabitDetailViewModel
+    @State private var showAdjust = false
+    @State private var showDetail = false
+    
+    @State private var longPressGestureActive = false
+    @State private var feedbackGenerator: UINotificationFeedbackGenerator? = nil
+
+    
+    init(habit: Habit) {
+        self.vm = HabitDetailViewModel(habit: habit)
+    }
+    
     enum startTimeMode: String, CaseIterable, Identifiable {
         case start = "Start Time"
         case finish = "Finish Time"
@@ -26,33 +54,42 @@ struct NewHabitView: View {
                 GeometryReader(content: { geometry in
                     VStack(spacing: .largeSize) {
                         VStack {
-                            Text("6:00")
-                                .font(.system(size: 70))
+                            Text(vm.startTime.convertToString())
+                                .font(.system(size: 45))
                                 .fontDesign(.serif)
                                 .bold()
-                            Text("Waking Up")
+                            Text(vm.startLabel)
                                 .font(.headline)
-                        }.overlay(alignment: .top) {
+                        }
+                        .overlay(alignment: .top) {
                             ArcShape(startAngle: .degrees(0), endAngle: .degrees(180))
                                 .stroke(Theme.subText, style: StrokeStyle(lineWidth: 8, lineCap: .round))
                                 .frame(width: 280, height: 280)
-                                .padding(.top, -40)
+                                .padding(.top, -80)
                         }
                         
                         Divider()
                         
                         VStack(spacing: .smallSize) {
-                            Text("Morning Routine")
+                            Text(vm.title)
                                 .bold()
-                            Text("for 140 mins")
-                                .foregroundColor(.accentColor)
-                        }.font(.title3)
-                            .fontDesign(.serif)
+                            if let actions = vm.habit?.actions?.allObjects as? [Action] {
+                                let duration = actions.filter { $0.isOn }.reduce(0,{ $0 + $1.duration }).getString()
+                                Text("\(duration)")
+                                    .foregroundStyle(Theme.subText)
+                            }
+                        }
+                        .font(.title3)
+                        .fontDesign(.serif)
                         
-                        Text("Start work 8:00 am")
+                        if let actions = vm.habit?.actions?.allObjects as? [Action], !actions.isEmpty {
+                            HStack {
+                                Text(vm.finishLabel)
+                                Text(vm.finishTime.convertToString())
+                            }
                             .font(.callout)
+                        }
                     }
-                    
                     .padding(.top, geometry.size.width * 0.5)
                     .padding(.horizontal, 50)
                 })
@@ -63,15 +100,37 @@ struct NewHabitView: View {
                 }, label: {
                     Text("ADJUST TIME")
                 })
-                
             }
-        }.sheet(isPresented: $showAdjust, content: {
+        }.gesture (
+            LongPressGesture(minimumDuration: 0.3)
+                                   .onChanged { _ in
+                                       feedbackGenerator = UINotificationFeedbackGenerator()
+                                       feedbackGenerator?.prepare()
+                                       feedbackGenerator?.notificationOccurred(.error)
+                                       longPressGestureActive = true
+                                   }
+                                   .onEnded { _ in
+                                       if longPressGestureActive {
+                                           showDetail.toggle()
+                                       }
+                                       feedbackGenerator = nil
+                                       longPressGestureActive = false
+                                   })
+
+        .fullScreenCover(isPresented: $showDetail) {
+            if let habit = vm.habit {
+                NavigationStack {
+                    ActionListView(habit: habit)
+                }
+            }
+        }
+        .sheet(isPresented: $showAdjust, content: {
             VStack (alignment: .center, spacing: 20) {
                 HStack(spacing: 20) {
                     Text("STANDARD OF TIME")
                         .fontDesign(.serif)
                         .bold()
-                    Picker("", selection: $startTimeMode){
+                    Picker("", selection: $vm.startTimeMode){
                         Text("Start time").tag(true)
                         Text("Finish time").tag(false)
                     }
@@ -79,7 +138,7 @@ struct NewHabitView: View {
                     .pickerStyle(.menu)
                 }
                 Divider()
-                DatePicker("",selection: $standardTime, displayedComponents: .hourAndMinute)
+                DatePicker("",selection: vm.startTimeMode ? $vm.startTime : $vm.finishTime , displayedComponents: .hourAndMinute)
                 .labelsHidden()
                 .frame(maxWidth: .infinity, alignment: .center)
                 .frame(height: 120, alignment: .center)
@@ -90,6 +149,7 @@ struct NewHabitView: View {
             .padding(.horizontal, .largeSize)
             .presentationDetents([.small])
         })
+     
     }
 }
 
@@ -106,25 +166,3 @@ private struct BarDetent: CustomPresentationDetent {
     }
 }
 
-#Preview {
-    NewHabitView()
-}
-
-struct ArcShape: Shape {
-    var startAngle: Angle
-    var endAngle: Angle
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        // Define the center of the circle
-        let center = CGPoint(x: rect.midX, y: rect.midY)
-        // Define the radius based on the rect
-        let radius = min(rect.width, rect.height) / 2
-        
-        // Create the arc
-        path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        
-        return path
-    }
-}

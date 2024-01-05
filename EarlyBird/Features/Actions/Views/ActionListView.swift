@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ActionListView: View {
+    @Environment (\.dismiss) var dismiss
     @ObservedObject var vm: ActionListViewModel
     @State private var showAddAction = false
     @State private var showInfo = false
@@ -25,8 +26,9 @@ struct ActionListView: View {
     var body: some View {
         VStack(spacing: .regularSize) {
             VStack {
-                TimelineSummaryView(vm: vm)
-                TimelineController(vm: vm)
+                HabitTimeView(vm: vm)
+//                TimelineSummaryView(vm: vm)
+//                TimelineController(vm: vm)
             }
             .padding(.horizontal)
             .onTapGesture {
@@ -65,14 +67,20 @@ struct ActionListView: View {
         .tint(Theme.pill)
         .padding()
         .navigationTitle(vm.title)
-        .navigationBarTitleDisplayMode(.inline)
+//        .navigationBarTitleDisplayMode(.inline)
         
         .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                }
+            }
             ToolbarItem(placement: .primaryAction) {
                 toolItem
             }
         }
-        
         
         .sheet(isPresented: $showAddAction, content: {
             NavigationStack {
@@ -80,12 +88,14 @@ struct ActionListView: View {
                     .navigationTitle("Add Routine")
             }
         })
+        
         .sheet(isPresented: $showEdit, content: {
             NavigationStack {
                 ActionDetailView(isShowingSheet: $showEdit, vm: ActionDetailViewModel(action: vm.selectedItem, habit: vm.habit))
                     .navigationTitle("Edit Routine")
             }
         })
+        
         .sheet(isPresented: $showDetail, content: {
             NavigationStack {
                 HabitDetailView(vm: HabitDetailViewModel(habit: vm.habit))

@@ -58,7 +58,8 @@ struct ActionDetailView: View {
                 })
                 .disabled((vm.textFieldValue.count == 0) || (vm.mins == 0 && vm.hours == 00))
             }
-        }.tint(.orange)
+        }
+        .tint(Theme.pill)
     }
 }
 

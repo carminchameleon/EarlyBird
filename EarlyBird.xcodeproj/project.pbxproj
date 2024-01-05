@@ -17,6 +17,8 @@
 		F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED92A2B117F1E00948809 /* Extensions+CGFloat.swift */; };
 		F062D9AC2B456773000342F2 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AB2B456773000342F2 /* Symbols.swift */; };
 		F062D9AE2B45677D000342F2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AD2B45677D000342F2 /* Theme.swift */; };
+		F070D1E72B48312D007934F8 /* ArcShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D1E62B48312D007934F8 /* ArcShape.swift */; };
+		F070D1E92B4838C7007934F8 /* HabitTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D1E82B4838C7007934F8 /* HabitTimeView.swift */; };
 		F08C86F32B36ACCF0090B55B /* PresetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F22B36ACCF0090B55B /* PresetList.swift */; };
 		F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F42B37B3E60090B55B /* SortMenu.swift */; };
 		F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */; };
@@ -59,6 +61,8 @@
 		F05ED92A2B117F1E00948809 /* Extensions+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+CGFloat.swift"; sourceTree = "<group>"; };
 		F062D9AB2B456773000342F2 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		F062D9AD2B45677D000342F2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		F070D1E62B48312D007934F8 /* ArcShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcShape.swift; sourceTree = "<group>"; };
+		F070D1E82B4838C7007934F8 /* HabitTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTimeView.swift; sourceTree = "<group>"; };
 		F08C86F22B36ACCF0090B55B /* PresetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetList.swift; sourceTree = "<group>"; };
 		F08C86F42B37B3E60090B55B /* SortMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMenu.swift; sourceTree = "<group>"; };
 		F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CancelBag.swift"; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				F08C86F22B36ACCF0090B55B /* PresetList.swift */,
 				F0A186072B11C392009A2829 /* CustomTimePickers.swift */,
 				F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */,
+				F070D1E62B48312D007934F8 /* ArcShape.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 				F0CBC7AE2B42CC070092A7AA /* TimelineController.swift */,
 				F0CBC7A02B410F4B0092A7AA /* ActionRow.swift */,
 				F0CBC79E2B4105F80092A7AA /* TimelineSummaryView.swift */,
+				F070D1E82B4838C7007934F8 /* HabitTimeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 				F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */,
 				F0CBC78A2B4014A30092A7AA /* HabitListView.swift in Sources */,
 				F0CBC7812B3FEC8E0092A7AA /* PersistentController.swift in Sources */,
+				F070D1E92B4838C7007934F8 /* HabitTimeView.swift in Sources */,
 				F062D9AE2B45677D000342F2 /* Theme.swift in Sources */,
 				F0CBC7A72B4139760092A7AA /* ActionDetailViewModel.swift in Sources */,
 				F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */,
@@ -379,6 +386,7 @@
 				F0CBC7AF2B42CC070092A7AA /* TimelineController.swift in Sources */,
 				F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */,
 				F0CBC77B2B3FEA3D0092A7AA /* Extension+UIColor.swift in Sources */,
+				F070D1E72B48312D007934F8 /* ArcShape.swift in Sources */,
 				F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */,
 				F0CBC7962B401A180092A7AA /* HabitRow.swift in Sources */,
 				F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */,

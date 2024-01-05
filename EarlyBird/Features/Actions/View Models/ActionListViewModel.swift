@@ -17,13 +17,13 @@ class ActionListViewModel: ObservableObject {
     
     @Published var title: String = ""
     
-    @Published var standardTime = Date()
+    @Published var startTime = Date()
     
-    @Published var standardLabel = "✅ End Time"
+    @Published var startLabel = "✅ End Time"
     
-    @Published var calculatedTime = ""
+    @Published var finishTime = Date()
     
-    @Published var calculatedLabel = "⏰ Wake Up"
+    @Published var finishLabel = "⏰ Wake Up"
     
     @Published var startTimeMode: Bool = false
     
@@ -43,10 +43,10 @@ class ActionListViewModel: ObservableObject {
     init(habit: Habit) {
         self.habit = habit
         self.title = habit.title
-        self.standardTime = habit.standardTime
-        self.standardLabel = habit.standardLabel
-        self.calculatedTime = habit.calculatedTime
-        self.calculatedLabel = habit.calculatedLabel
+        self.startTime = habit.startTime ?? Date()
+        self.startLabel = habit.startLabel
+        self.finishTime = habit.finishTime ?? Date()
+        self.finishLabel = habit.finishLabel
         self.startTimeMode = habit.startTimeMode
         
         sortOption = SortOption(rawValue: habit.sortBy) ?? .manual
@@ -66,10 +66,10 @@ class ActionListViewModel: ObservableObject {
         if let habit = HabitStorage.shared.fetchEntityWithId(habit.id) {
             self.habit = habit
             self.title = habit.title
-            self.standardTime = habit.standardTime
-            self.standardLabel = habit.standardLabel
-            self.calculatedTime = habit.calculatedTime
-            self.calculatedLabel = habit.calculatedLabel
+            self.startTime = habit.startTime ?? Date()
+            self.startLabel = habit.startLabel
+            self.finishTime = habit.finishTime ?? Date()
+            self.finishLabel = habit.finishLabel
             self.startTimeMode = habit.startTimeMode
             self.sortOption = SortOption(rawValue: habit.sortBy) ?? .manual
             self.sortOrder = habit.isAscending ? .ascend : .descend
@@ -94,51 +94,52 @@ class ActionListViewModel: ObservableObject {
     }
 
     func addDurationSubscriber() {
-        $duration.combineLatest($standardTime, $startTimeMode)
+        $duration.combineLatest($startTime, $startTimeMode)
             .receive(on: DispatchQueue.main)
-            .sink {[weak self] (duration, standardTime, startTimeMode) in
-                self?.updateCalculateTime(standardTime: standardTime, duration: duration, startTimeMode: startTimeMode)
+            .sink {[weak self] (duration, startTime, startTimeMode) in
+                self?.updateCalculateTime(startTime: startTime, duration: duration, startTimeMode: startTimeMode)
             }.store(in: cancelBag)
     }
     
-    func updateCalculateTime(standardTime: Date, duration: TimeInterval, startTimeMode: Bool) {
+    func updateCalculateTime(startTime: Date, duration: TimeInterval, startTimeMode: Bool) {
         var dateFormmater: DateFormatter {
             let formatter = DateFormatter()
             formatter.dateStyle = .none
             formatter.timeStyle = .short
             return formatter
         }
-        let resultDate = standardTime.addingTimeInterval( startTimeMode ? duration : -duration )
-        calculatedTime = dateFormmater.string(from: resultDate)
+        let resultDate = startTime.addingTimeInterval( startTimeMode ? duration : -duration )
+//        finishTime = dateFormmater.string(from: resultDate)
     }
 
     // MARK: - Change Switch Mode
     func switchButtonTapped() {
-        guard let existCalculatedTime = calculatedTime.convertToDate() else { return }
-        standardTime = existCalculatedTime
-        startTimeMode.toggle()
-        
-        let existCalculatedLabel = calculatedLabel
-        let existStandardLabel = standardLabel
-        
-        standardLabel = existCalculatedLabel
-        calculatedLabel = existStandardLabel
+//        guard let existCalculatedTime = finishTime.convertToDate() else { return }
+//        startTime = existCalculatedTime
+//        startTimeMode.toggle()
+//        
+//        let existCalculatedLabel = finishLabel
+//        let existStandardLabel = startLabel
+//        
+//        startLabel = existCalculatedLabel
+//        finishLabel = existStandardLabel
     }
     
     // MARK: - CRUD
     func backButtonTapped() {
-        HabitStorage.shared.updateDetail(habit: habit,
-                                         standardLabel: standardLabel,
-                                         standardTime: standardTime,
-                                         calculatedLabel: calculatedLabel,
-                                         calculatedTime: calculatedTime,
-                                         startTimeMode: startTimeMode,
-                                         sortBy: sortOption.rawValue,
-                                         isAscending: sortOrder == .ascend)
-        
-        for (index, action) in actions.enumerated() {
-            ActionStorage.shared.update(withId: action.id, isOn: action.isOn, order: Int64(index))
-        }
+//        HabitStorage.shared.updateDetail(habit: habit,
+//                                         startLabel: startLabel,
+//                                         startTime: startTime,
+//                                         finishLabel: finishLabel,
+//                                         finishTime: finishTime,
+//
+//                                         startTimeMode: startTimeMode,
+//                                         sortBy: sortOption.rawValue,
+//                                         isAscending: sortOrder == .ascend)
+//        
+//        for (index, action) in actions.enumerated() {
+//            ActionStorage.shared.update(withId: action.id, isOn: action.isOn, order: Int64(index))
+//        }
     }
 
     func deleteItem(indexSet: IndexSet) {

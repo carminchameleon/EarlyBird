@@ -17,7 +17,7 @@ struct TimelineSummaryView: View {
     var body: some View {
         VStack {
             calculatedTitle
-            calculatedTime
+            finishTime
         }
         .tint(Theme.pill)
         .frame(maxWidth: .infinity)
@@ -26,7 +26,7 @@ struct TimelineSummaryView: View {
     var calculatedTitle: some View {
         HStack {
             Text(vm.startTimeMode ? "🏁" : "🚀")
-            Text(vm.calculatedLabel)
+            Text(vm.finishLabel)
                 .fontDesign(.serif)
                 .font(.title3)
                 .bold()
@@ -43,13 +43,13 @@ struct TimelineSummaryView: View {
         }
     }
     
-    var calculatedTime: some View {
+    var finishTime: some View {
         Group {
             HStack(alignment: .center, spacing: 0) {
-                Text(vm.calculatedTime.getNumberOfTime())
-                    .font(.largeTitle.weight(.semibold))
-                Text(vm.calculatedTime.getDayOfTime())
-                    .font(.title2.weight(.semibold))
+//                Text(vm.finishTime.getNumberOfTime())
+//                    .font(.largeTitle.weight(.semibold))
+//                Text(vm.finishTime.getDayOfTime())
+//                    .font(.title2.weight(.semibold))
             }
             .padding()
         }

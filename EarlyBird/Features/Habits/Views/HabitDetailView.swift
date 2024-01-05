@@ -36,7 +36,7 @@ struct HabitDetailView: View {
                     dismiss()
                 }, label: {
                     Text("Save")
-                }).disabled(vm.title.isEmpty || vm.standardLabel.isEmpty || vm.calculatedLabel.isEmpty)
+                }).disabled(vm.title.isEmpty || vm.startLabel.isEmpty || vm.finishLabel.isEmpty)
             }
         }
     }
@@ -55,7 +55,7 @@ struct HabitDetailView: View {
     
     var modeSection: some View {
         VStack {
-            Text("Need to know")
+            Text("Which one you want to set first?")
                 .font(.callout)
                 .bold()
                 .fontDesign(.serif)
@@ -68,10 +68,10 @@ struct HabitDetailView: View {
               
                         VStack(spacing: .smallSize) {
                             VStack {
-                                Text("🏁")
+                                Text("🚀")
                                     .font(.largeTitle)
                                     .frame(width:120)
-                                Text("When It Finished")
+                                Text("Start Time")
                             }
                             .font(.caption)
                             .bold()
@@ -84,10 +84,10 @@ struct HabitDetailView: View {
                         
                         VStack(spacing: .smallSize) {
                             VStack {
-                                Text("🚀")
+                                Text("🏁")
                                     .font(.largeTitle)
                                     .frame(width:120)
-                                Text("When to start")
+                                Text("Finish Time")
 
                             }
                             .font(.caption)
@@ -113,7 +113,7 @@ struct HabitDetailView: View {
                 .fontDesign(.serif)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            TextField(vm.startPlaceholder, text: $vm.standardLabel)
+            TextField(vm.startPlaceholder, text: vm.startTimeMode ? $vm.startLabel : $vm.finishLabel)
                 .font(.title3)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -122,7 +122,7 @@ struct HabitDetailView: View {
                 .background(Color(UIColor.secondarySystemBackground))
                 .cornerRadius(.smallSize)
             GroupBox {
-                DatePicker("",selection: $vm.standardTime, displayedComponents: .hourAndMinute)
+                DatePicker("",selection: vm.startTimeMode ? $vm.startTime : $vm.finishTime, displayedComponents: .hourAndMinute)
                     .frame(height: 180)
                     .datePickerStyle(.wheel)
             }
@@ -137,7 +137,7 @@ struct HabitDetailView: View {
                 .fontDesign(.serif)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            TextField(vm.calculatedPlaceholder, text: $vm.calculatedLabel)
+            TextField(vm.calculatedPlaceholder, text: vm.startTimeMode ? $vm.finishLabel : $vm.startLabel)
                 .font(.title3)
                 .bold()
                 .multilineTextAlignment(.center)

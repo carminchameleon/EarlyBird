@@ -37,12 +37,8 @@ struct HabitRow: View {
             }
             Spacer()
             HStack {
-                Text(habit.standardTime.convertToString())
-                if !habit.calculatedTime.isEmpty {
-                    Text("-")
-                    Text(habit.calculatedTime)
-                }
-                
+                Text(habit.startTime.convertToString())
+                Text(habit.finishTime.convertToString())
                 if let actions = habit.actions?.allObjects as? [Action] {
                     let duration = actions.filter { $0.isOn }.reduce(0,{ $0 + $1.duration }).getString()
                     Text("\(duration)")

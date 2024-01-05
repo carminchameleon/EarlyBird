@@ -9,13 +9,13 @@
         <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="actions" inverseEntity="Habit"/>
     </entity>
     <entity name="Habit" representedClassName="Habit" syncable="YES" codeGenerationType="class">
-        <attribute name="calculatedLabel_" optional="YES" attributeType="String"/>
-        <attribute name="calculatedTime_" optional="YES" attributeType="String"/>
+        <attribute name="finishLabel_" optional="YES" attributeType="String"/>
+        <attribute name="finishTime_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isAscending" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="sortBy_" optional="YES" attributeType="String"/>
-        <attribute name="standardLabel_" optional="YES" attributeType="String"/>
-        <attribute name="standardTime_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startLabel_" optional="YES" attributeType="String"/>
+        <attribute name="startTime_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="startTimeMode" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title_" optional="YES" attributeType="String"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Action" inverseName="habit" inverseEntity="Action"/>

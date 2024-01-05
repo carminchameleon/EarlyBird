@@ -32,10 +32,10 @@ struct PersistenceController: PersistenceControllerProtocol {
             let habit = Habit(context: controller.container.viewContext)
             habit.id = UUID()
             habit.title = "Weekly Routine"
-            habit.standardTime = Date()
-            habit.standardLabel = "✅ End Time"
-            habit.calculatedTime = ""
-            habit.calculatedLabel =  "⏰ Wake Up"
+            habit.startTime = Date()
+            habit.startLabel = "✅ End Time"
+            habit.finishTime = Date()
+            habit.finishLabel =  "⏰ Wake Up"
             habit.startTimeMode = false
         }
 

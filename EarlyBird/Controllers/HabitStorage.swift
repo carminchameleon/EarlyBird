@@ -41,14 +41,14 @@ class HabitStorage: NSObject, ObservableObject {
     }
     
     // pass only relative make new habits
-    func add(title: String, standardLabel: String, standardTime: Date, calculatedLabel: String, startTimeMode: Bool) {
+    func add(title: String, startLabel: String, startTime: Date, finishLabel: String, finishTime: Date, startTimeMode: Bool) {
         let newHabit = Habit(context: persistenceController.container.viewContext)
         newHabit.id = UUID()
         newHabit.title = title
-        newHabit.standardLabel = standardLabel
-        newHabit.standardTime = standardTime
-        newHabit.calculatedLabel =  calculatedLabel
-        newHabit.calculatedTime = "" // default
+        newHabit.startLabel = startLabel
+        newHabit.startTime = startTime
+        newHabit.finishLabel =  finishLabel
+        newHabit.finishTime = finishTime
         newHabit.startTimeMode = startTimeMode
         newHabit.sortBy = SortOption.manual.rawValue
         newHabit.isAscending = true
@@ -57,12 +57,13 @@ class HabitStorage: NSObject, ObservableObject {
         
     
     // update from detail view
-    func update(withId id: UUID, title: String, standardLabel: String, standardTime: Date, calculatedLabel: String, startTimeMode: Bool) {
+    func update(withId id: UUID, title: String, startLabel: String, startTime: Date, finishLabel: String, finishTime: Date, startTimeMode: Bool) {
         if let habit = fetchEntityWithId(id) {
             habit.title = title
-            habit.standardLabel = standardLabel
-            habit.standardTime = standardTime
-            habit.calculatedLabel =  calculatedLabel
+            habit.startLabel = startLabel
+            habit.startTime = startTime
+            habit.finishLabel =  finishLabel
+            habit.finishTime = finishTime
             habit.startTimeMode = startTimeMode
             
             persistenceController.save()
@@ -71,21 +72,21 @@ class HabitStorage: NSObject, ObservableObject {
         }
     }
     
-    func updateDetail(habit: Habit, standardLabel: String? = nil, standardTime: Date? = nil, calculatedLabel: String? = nil, calculatedTime: String? = nil, startTimeMode: Bool? = nil, sortBy: String? = nil, isAscending: Bool? = nil) {
+    func updateDetail(habit: Habit, startLabel: String? = nil, startTime: Date? = nil, finishLabel: String? = nil, finishTime: Date? = nil, startTimeMode: Bool? = nil, sortBy: String? = nil, isAscending: Bool? = nil) {
         
-        if let standardLabel = standardLabel {
-            habit.standardLabel = standardLabel
+        if let startLabel = startLabel {
+            habit.startLabel = startLabel
         }
-        if let standardTime = standardTime {
-            habit.standardTime = standardTime
-        }
-
-        if let calculatedLabel = calculatedLabel {
-            habit.calculatedLabel = calculatedLabel
+        if let startTime = startTime {
+            habit.startTime = startTime
         }
 
-        if let calculatedTime = calculatedTime {
-            habit.calculatedTime = calculatedTime
+        if let finishLabel = finishLabel {
+            habit.finishLabel = finishLabel
+        }
+        
+        if let finishTime = finishTime {
+            habit.finishTime = finishTime
         }
 
         if let startTimeMode = startTimeMode {
