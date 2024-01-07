@@ -27,8 +27,6 @@ struct ActionListView: View {
         VStack(spacing: .regularSize) {
             VStack {
                 HabitTimeView(vm: vm)
-//                TimelineSummaryView(vm: vm)
-//                TimelineController(vm: vm)
             }
             .padding(.horizontal)
             .onTapGesture {
@@ -67,7 +65,7 @@ struct ActionListView: View {
         .tint(Theme.pill)
         .padding()
         .navigationTitle(vm.title)
-//        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.automatic)
         
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
@@ -109,6 +107,7 @@ struct ActionListView: View {
         .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave), perform: { output in
             vm.updateHabitData()
         })
+        .tint(Theme.pill)
     }
     
     var emptyList: some View {

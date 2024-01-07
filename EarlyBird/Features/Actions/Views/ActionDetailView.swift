@@ -34,8 +34,8 @@ struct ActionDetailView: View {
                             .bold()
                     })
                 }
-                PresetList(isShowingSheet: $isShowingSheet, isShowingAlert: $showAlert, textFieldValue: $vm.textFieldValue, hours: $vm.hours, mins: $vm.mins) {
-                    vm.handleSaveButtonTapped()
+                PresetList(isShowingSheet: $isShowingSheet, isShowingAlert: $showAlert, textFieldValue: $vm.textFieldValue, hours: $vm.hours, mins: $vm.mins) { title, hours, mins in
+                        presetButtonTapped(title, hours, mins)
                 }
             }
             
@@ -60,6 +60,13 @@ struct ActionDetailView: View {
             }
         }
         .tint(Theme.pill)
+    }
+    
+    func presetButtonTapped(_ title: String,_ hours: Int,_ mins: Int) {
+        vm.hours = hours
+        vm.mins = mins
+        vm.action?.title = title
+        vm.handleSaveButtonTapped()
     }
 }
 

@@ -15,77 +15,42 @@ struct HabitTimeView: View {
     }
     
     var body: some View {
-        VStack(alignment: .trailing, spacing: .regularSize) {
-            VStack(alignment: .leading, spacing: .miniSize) {
+        VStack(alignment: .trailing, spacing: .smallSize) {
+            VStack(alignment: .center, spacing: .smallSize) {
                 Text("\(vm.startLabel) - \(vm.finishLabel)")
-                    .font(.title3)
+                    .font(.headline)
                     .bold()
-                    .fontDesign(.serif)
-                    .foregroundColor(Theme.detailText)
                 HStack {
                     Text("\(vm.startTime.convertToString())")
-                        .font(.title)
+                        .font(.title2)
+                        .fontDesign(.serif)
                         .bold()
                     Image(systemName:"arrow.right")
                         .font(.caption)
                         .foregroundColor(Theme.detailText)
                     Text("\(vm.finishTime.convertToString())")
-                        .font(.title)
+                        .font(.title2)
+                        .fontDesign(.serif)
                         .bold()
                 }
             }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.largeSize)
+            .frame(maxWidth: .infinity, alignment: .center)
             .background(.ultraThickMaterial, in: RoundedRectangle(cornerRadius: .regularSize))
-            HStack {
-                Text("Duration")
-                    .fontDesign(.serif)
-                    .foregroundColor(Theme.detailText)
-                if let actions = vm.habit.actions?.allObjects as? [Action] {
-                    let duration = actions.filter { $0.isOn }.reduce(0,{ $0 + $1.duration }).getString()
-                    Text("\(duration)")
+            
+            if let actions = vm.habit.actions?.allObjects as? [Action] {
+                let duration = actions.filter { $0.isOn }.reduce(0,{ $0 + $1.duration }).getString()
+                if duration != "0" {
+                    HStack {
+                        Image(systemName: "hourglass.circle.fill")
+
+                        Text(duration)
+                    }
+                    .foregroundStyle(Theme.detailText)
+                    .font(.callout)
+                    .bold()
                 }
             }
-            .font(.callout)
-            .bold()
-        }
+        }.padding(.top, .regularSize)
     }
 }
-//
-//#Preview {
-//    HabitTimeView()
-//}
-
-//try 1
-//GeometryReader(content: { geometry in
-//    HStack {
-//        Spacer()
-//        VStack {
-//            Text("Wake Up")
-//            Button {
-//                
-//            } label: {
-//                Text("6: 00 am")
-//                    .frame(width: (geometry.size.width - 24) / 3 )
-//            }
-//            .padding(.vertical, .smallSize)
-//            .padding(.horizontal, .largeSize)
-//            .background(.ultraThickMaterial, in: RoundedRectangle(cornerRadius: .regularSize))
-//        }
-//        .frame(width: geometry.size.width / 2.5)
-//        VStack {
-//            Text("Start Working")
-//            Button { } label: {
-//                Text("6: 00 am")
-//                    .frame(width: (geometry.size.width - 24) / 3 )
-//            }
-//            .padding(.vertical, .smallSize)
-//            .padding(.horizontal, .largeSize)
-//            .background(.ultraThickMaterial, in: RoundedRectangle(cornerRadius: .regularSize))
-//        }
-//        .frame(width: geometry.size.width / 2.5)
-//        Spacer()
-//    }
-//
-//        .frame(maxWidth: .infinity, alignment: .center)
-//    })

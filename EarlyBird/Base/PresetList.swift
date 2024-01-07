@@ -31,7 +31,7 @@ struct PresetList: View {
         SelectableTime(type: .hours, number: 2),
     ]
     
-    var addActivity: () -> Void
+    var addActivity: (String, Int, Int) -> Void
     
     var body: some View {
         VStack {
@@ -49,7 +49,7 @@ struct PresetList: View {
                                     Text("\(item.number)")
                                         .font(.title)
                                     Text("\(item.type.rawValue)")
-                                        .foregroundStyle(.orange)
+                                        .foregroundStyle(Theme.pill)
                                 }
                             }
                             .onTapGesture {
@@ -78,12 +78,13 @@ struct PresetList: View {
             isShowingAlert.toggle()
             return
         }
+        // title / duration
     }
     
 }
 
 #Preview {
-    PresetList(isShowingSheet: .constant(false), isShowingAlert: .constant(false), textFieldValue: .constant(""), hours: .constant(0), mins: .constant(10)) { 
+    PresetList(isShowingSheet: .constant(false), isShowingAlert: .constant(false), textFieldValue: .constant(""), hours: .constant(0), mins: .constant(10)) { _, _, _ in
         
     }
 }

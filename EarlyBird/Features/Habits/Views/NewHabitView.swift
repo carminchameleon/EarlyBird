@@ -54,8 +54,8 @@ struct NewHabitView: View {
                 GeometryReader(content: { geometry in
                     VStack(spacing: .largeSize) {
                         VStack {
-                            Text(vm.startTime.convertToString())
-                                .font(.system(size: 45))
+                            Text(vm.startTime.convertToSimpleString())
+                                .font(.system(size: 60))
                                 .fontDesign(.serif)
                                 .bold()
                             Text(vm.startLabel)
@@ -65,7 +65,7 @@ struct NewHabitView: View {
                             ArcShape(startAngle: .degrees(0), endAngle: .degrees(180))
                                 .stroke(Theme.subText, style: StrokeStyle(lineWidth: 8, lineCap: .round))
                                 .frame(width: 280, height: 280)
-                                .padding(.top, -80)
+                                .padding(.top, -44)
                         }
                         
                         Divider()
@@ -102,7 +102,7 @@ struct NewHabitView: View {
                 })
             }
         }.gesture (
-            LongPressGesture(minimumDuration: 0.3)
+            LongPressGesture(minimumDuration: 0.1)
                                    .onChanged { _ in
                                        feedbackGenerator = UINotificationFeedbackGenerator()
                                        feedbackGenerator?.prepare()

@@ -43,9 +43,9 @@ class ActionListViewModel: ObservableObject {
     init(habit: Habit) {
         self.habit = habit
         self.title = habit.title
-        self.startTime = habit.startTime ?? Date()
+        self.startTime = habit.startTime
         self.startLabel = habit.startLabel
-        self.finishTime = habit.finishTime ?? Date()
+        self.finishTime = habit.finishTime
         self.finishLabel = habit.finishLabel
         self.startTimeMode = habit.startTimeMode
         
@@ -66,9 +66,9 @@ class ActionListViewModel: ObservableObject {
         if let habit = HabitStorage.shared.fetchEntityWithId(habit.id) {
             self.habit = habit
             self.title = habit.title
-            self.startTime = habit.startTime ?? Date()
+            self.startTime = habit.startTime
             self.startLabel = habit.startLabel
-            self.finishTime = habit.finishTime ?? Date()
+            self.finishTime = habit.finishTime
             self.finishLabel = habit.finishLabel
             self.startTimeMode = habit.startTimeMode
             self.sortOption = SortOption(rawValue: habit.sortBy) ?? .manual
@@ -108,8 +108,7 @@ class ActionListViewModel: ObservableObject {
             formatter.timeStyle = .short
             return formatter
         }
-        let resultDate = startTime.addingTimeInterval( startTimeMode ? duration : -duration )
-//        finishTime = dateFormmater.string(from: resultDate)
+        finishTime = startTime.addingTimeInterval(duration)
     }
 
     // MARK: - Change Switch Mode
@@ -127,19 +126,18 @@ class ActionListViewModel: ObservableObject {
     
     // MARK: - CRUD
     func backButtonTapped() {
-//        HabitStorage.shared.updateDetail(habit: habit,
-//                                         startLabel: startLabel,
-//                                         startTime: startTime,
-//                                         finishLabel: finishLabel,
-//                                         finishTime: finishTime,
-//
-//                                         startTimeMode: startTimeMode,
-//                                         sortBy: sortOption.rawValue,
-//                                         isAscending: sortOrder == .ascend)
-//        
-//        for (index, action) in actions.enumerated() {
-//            ActionStorage.shared.update(withId: action.id, isOn: action.isOn, order: Int64(index))
-//        }
+        HabitStorage.shared.updateDetail(habit: habit,
+                                         startLabel: startLabel,
+                                         startTime: startTime,
+                                         finishLabel: finishLabel,
+                                         finishTime: finishTime,
+                                         startTimeMode: startTimeMode,
+                                         sortBy: sortOption.rawValue,
+                                         isAscending: sortOrder == .ascend)
+        
+        for (index, action) in actions.enumerated() {
+            ActionStorage.shared.update(withId: action.id, isOn: action.isOn, order: Int64(index))
+        }
     }
 
     func deleteItem(indexSet: IndexSet) {

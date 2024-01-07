@@ -44,6 +44,4 @@ class ActionDetailViewModel: ObservableObject {
             ActionStorage.shared.add(title: title, duration: duration, isOn: isOn, habit: habit)
         }
     }
-    
-
 }
