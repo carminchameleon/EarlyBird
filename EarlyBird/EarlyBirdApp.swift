@@ -9,15 +9,14 @@ import SwiftUI
 
 @main
 struct EarlyBirdApp: App {
-    @StateObject var listViewModel = RoutineListViewModel()
+    let persistenceController: PersistenceControllerProtocol = SimulatorPersistenceController.shared
 
-    
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-//                ListView()
-                RoutineListView()
+//                HabitListView()
+                CycleView()
             }
-        }.environmentObject(listViewModel)
+        }
     }
 }
