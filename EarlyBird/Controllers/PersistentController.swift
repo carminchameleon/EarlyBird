@@ -26,10 +26,11 @@ struct PersistenceController: PersistenceControllerProtocol {
     // A test configuration for SwiftUI previews
     static var preview: PersistenceController = {
         let controller = PersistenceController(inMemory: true)
+        let context = controller.container.viewContext        
 
         // Create 10 example programming languages.
         for _ in 0..<10 {
-            let habit = Habit(context: controller.container.viewContext)
+            let habit = Habit(context: context)
             habit.id = UUID()
             habit.title = "Weekly Routine"
             habit.standardTime = Date()
@@ -39,6 +40,11 @@ struct PersistenceController: PersistenceControllerProtocol {
             habit.startTimeMode = false
         }
 
+        do {
+            try context.save()
+        } catch {
+            print("Error to make preview Data")
+        }
         return controller
     }()
 

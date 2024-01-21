@@ -10,12 +10,12 @@ import SwiftUI
 struct ActionDetailView: View {
     @Binding var isShowingSheet: Bool
     @StateObject var vm: ActionDetailViewModel
-    @State var showAlert: Bool = false
+    @State private var showAlert: Bool = false
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: .largeSize) {
-                TextField("Routine Name", text: $vm.textFieldValue)
+                TextField("Action Name", text: $vm.textFieldValue)
                     .font(.title3)
                     .bold()
                     .multilineTextAlignment(.center)
@@ -40,10 +40,10 @@ struct ActionDetailView: View {
             }
             
         }
+        .tint(Color.theme.accent)
         .padding()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            
             ToolbarItem(placement: .topBarLeading) {
                 Button("Cancel") {
                     isShowingSheet.toggle()
@@ -58,7 +58,7 @@ struct ActionDetailView: View {
                 })
                 .disabled((vm.textFieldValue.count == 0) || (vm.mins == 0 && vm.hours == 00))
             }
-        }.tint(.orange)
+        }
     }
 }
 

@@ -17,6 +17,7 @@
 		F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED92A2B117F1E00948809 /* Extensions+CGFloat.swift */; };
 		F062D9AC2B456773000342F2 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AB2B456773000342F2 /* Symbols.swift */; };
 		F062D9AE2B45677D000342F2 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AD2B45677D000342F2 /* ColorTheme.swift */; };
+		F070D2262B52BFAE007934F8 /* newView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D2252B52BFAE007934F8 /* newView.swift */; };
 		F08C86F32B36ACCF0090B55B /* PresetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F22B36ACCF0090B55B /* PresetList.swift */; };
 		F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F42B37B3E60090B55B /* SortMenu.swift */; };
 		F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */; };
@@ -24,7 +25,6 @@
 		F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1860B2B11C9AE009A2829 /* Time.swift */; };
 		F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70B2B3AF66B0092A7AA /* RoutineField.swift */; };
 		F0CBC70E2B3AFA000092A7AA /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */; };
-		F0CBC77B2B3FEA3D0092A7AA /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC77A2B3FEA3D0092A7AA /* Extension+UIColor.swift */; };
 		F0CBC77E2B3FEA880092A7AA /* EarlyBird.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC77C2B3FEA880092A7AA /* EarlyBird.xcdatamodeld */; };
 		F0CBC7812B3FEC8E0092A7AA /* PersistentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7802B3FEC8E0092A7AA /* PersistentController.swift */; };
 		F0CBC7832B3FEE7A0092A7AA /* Extension+Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7822B3FEE7A0092A7AA /* Extension+Habit.swift */; };
@@ -59,6 +59,7 @@
 		F062D9AB2B456773000342F2 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		F062D9AD2B45677D000342F2 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		F070D2242B52467B007934F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F070D2252B52BFAE007934F8 /* newView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newView.swift; sourceTree = "<group>"; };
 		F08C86F22B36ACCF0090B55B /* PresetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetList.swift; sourceTree = "<group>"; };
 		F08C86F42B37B3E60090B55B /* SortMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMenu.swift; sourceTree = "<group>"; };
 		F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CancelBag.swift"; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		F0A1860B2B11C9AE009A2829 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		F0CBC70B2B3AF66B0092A7AA /* RoutineField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineField.swift; sourceTree = "<group>"; };
 		F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
-		F0CBC77A2B3FEA3D0092A7AA /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		F0CBC77D2B3FEA880092A7AA /* EarlyBird.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarlyBird.xcdatamodel; sourceTree = "<group>"; };
 		F0CBC7802B3FEC8E0092A7AA /* PersistentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentController.swift; sourceTree = "<group>"; };
 		F0CBC7822B3FEE7A0092A7AA /* Extension+Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Habit.swift"; sourceTree = "<group>"; };
@@ -146,7 +146,6 @@
 				F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */,
 				F0256F0F2B288DAE00487995 /* Extension+Date.swift */,
 				F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */,
-				F0CBC77A2B3FEA3D0092A7AA /* Extension+UIColor.swift */,
 				F0CBC7822B3FEE7A0092A7AA /* Extension+Habit.swift */,
 				F0CBC7842B3FEF3D0092A7AA /* Extension+Action.swift */,
 				F0CBC7912B4017C10092A7AA /* Extension+Color.swift */,
@@ -266,6 +265,7 @@
 				F0CBC7A02B410F4B0092A7AA /* ActionRow.swift */,
 				F0CBC79E2B4105F80092A7AA /* TimelineSummaryView.swift */,
 				F0CBC79A2B401EF20092A7AA /* ActionListView.swift */,
+				F070D2252B52BFAE007934F8 /* newView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -375,8 +375,8 @@
 				F05ED9262B11775100948809 /* Extensions+String.swift in Sources */,
 				F0CBC7852B3FEF3D0092A7AA /* Extension+Action.swift in Sources */,
 				F0CBC7AF2B42CC070092A7AA /* TimelineController.swift in Sources */,
+				F070D2262B52BFAE007934F8 /* newView.swift in Sources */,
 				F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */,
-				F0CBC77B2B3FEA3D0092A7AA /* Extension+UIColor.swift in Sources */,
 				F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */,
 				F0CBC7962B401A180092A7AA /* HabitRow.swift in Sources */,
 				F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */,

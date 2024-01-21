@@ -8,13 +8,12 @@
 import SwiftUI
 
 extension Color {
-    
-    func toUIColor() -> UIColor {
-            if #available(iOS 14.0, *) {
-                return UIColor(self)
-            } else {
-                let components = UIColor(self).cgColor.components!
-                return UIColor(red: components[0], green: components[1], blue: components[2], alpha: components[3])
-            }
-    }
+    static let theme = ColorTheme()
+}
+
+
+struct ColorTheme {
+    let accent = Color("AccentColor")
+    let background = Color("BackgroundColor")
+    let secondaryText = Color("SecondaryTextColor")
 }

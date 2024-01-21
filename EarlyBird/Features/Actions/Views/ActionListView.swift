@@ -23,14 +23,13 @@ struct ActionListView: View {
     }
     
     var body: some View {
-        // for time line button
-//        ZStack(alignment: .bottomTrailing) {
             VStack(spacing: .regularSize) {
                 // 상단 부분
                 VStack {
                     TimelineSummaryView(vm: vm)
                     TimelineController(vm: vm)
                 }
+                .padding(.top, 12)
                 .padding(.horizontal)
                 .onTapGesture {
                     showDetail.toggle()
@@ -38,7 +37,6 @@ struct ActionListView: View {
                 Divider()
                 
                 if vm.actions.isEmpty { emptyList }
-                // 리스트
                 List {
                     ForEach(vm.actions) { item in
                         Button(action: {
@@ -48,10 +46,18 @@ struct ActionListView: View {
                                 vm.updateToggleState(item: item)
                             }
                         })
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                vm.deleteItem(id: item.id)
+                            } label: {
+                                Symbols.trash
+                            }
+                        }
                     }
-                    .onDelete(perform: vm.deleteItem)
                     .onMove(perform: vm.moveItem)
-                }.listStyle(.plain)
+                }
+                .tint(Color.theme.accent)
+                .listStyle(.plain)
             }
         
             VStack {
@@ -78,13 +84,13 @@ struct ActionListView: View {
         .sheet(isPresented: $showAddAction, content: {
             NavigationStack {
                 ActionDetailView(isShowingSheet: $showAddAction, vm: ActionDetailViewModel(habit: vm.habit))
-                    .navigationTitle("Add Routine")
+                    .navigationTitle("Add Action")
             }
         })
         .sheet(isPresented: $showEdit, content: {
             NavigationStack {
                 ActionDetailView(isShowingSheet: $showEdit, vm: ActionDetailViewModel(action: vm.selectedItem, habit: vm.habit))
-                    .navigationTitle("Edit Routine")
+                    .navigationTitle("Edit Action")
             }
         })
         .sheet(isPresented: $showDetail, content: {
@@ -103,7 +109,7 @@ struct ActionListView: View {
     }
 
     var emptyList: some View {
-        ContentUnavailableView("Add New Action", systemImage: "pencil.and.scribble", description: Text("add your routine!"))
+        ContentUnavailableView("Add New Action", systemImage: "pencil.and.scribble", description: Text("add your action"))
     }
     
     var addRoutineButton: some View {
@@ -131,8 +137,6 @@ struct ActionListView: View {
             Button(action: {
                 withAnimation(.smooth) {
                     isShowToggle.toggle()
-                    vm.updateSortOption(.active)
-                    vm.updateSortOrder(.ascend)
                 }
             }) {
                 Label("\(isShowToggle ? "Hide" : "Show") Toggle Button", systemImage: "slider.horizontal.3")

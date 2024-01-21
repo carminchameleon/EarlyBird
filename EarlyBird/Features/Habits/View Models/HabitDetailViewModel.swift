@@ -69,16 +69,14 @@ class HabitDetailViewModel: ObservableObject {
                                        standardLabel: standardLabel,
                                        standardTime: standardTime,
                                        calculatedLabel: calculatedLabel,
-                                       startTimeMode: startTimeMode,
-                                       color: color.toUIColor())
+                                       startTimeMode: startTimeMode)
         } else {
             // add new habit
             HabitStorage.shared.add(title: title, 
                                     standardLabel: standardLabel,
                                     standardTime: standardTime,
                                     calculatedLabel: calculatedLabel,
-                                    startTimeMode: startTimeMode,
-                                    color: color.toUIColor())
+                                    startTimeMode: startTimeMode)
         }
     }
 }

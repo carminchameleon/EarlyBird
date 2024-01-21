@@ -34,9 +34,7 @@ struct ActionRow: View {
                         withAnimation(.easeInOut(duration: 20)) {
                             updateToggleStatus(item)
                         }
-                    }
-                    
-                    
+                    }                    
                 })
             } else {
                 actionContent

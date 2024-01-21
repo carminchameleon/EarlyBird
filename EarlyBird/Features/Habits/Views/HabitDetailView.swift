@@ -151,5 +151,7 @@ struct HabitDetailView: View {
 }
 
 #Preview {
-    HabitDetailView(vm: HabitDetailViewModel())
+    HabitDetailView(vm: HabitDetailViewModel(habit: Habit.example))
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+
 }
