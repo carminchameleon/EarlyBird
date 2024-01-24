@@ -25,7 +25,7 @@ struct HabitListView: View {
                     ZStack {
                         HabitRow(habit: habit)
                         NavigationLink {
-                            NewHabitView(habit: habit)
+                            ActionListView(habit: habit)
                         } label: {
                             EmptyView()
                         }.opacity(0.0)
@@ -64,7 +64,7 @@ struct HabitListView: View {
                 }
                 .onMove(perform: vm.moveItem)
             }
-            .tint(Theme.pill)
+            .tint(Color.accentColor)
             .listStyle(.insetGrouped)
             .listRowSpacing(.largeSize)
             .scrollContentBackground(.hidden)
@@ -113,4 +113,7 @@ struct HabitListView: View {
 
 #Preview {
     HabitListView()
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
+
+

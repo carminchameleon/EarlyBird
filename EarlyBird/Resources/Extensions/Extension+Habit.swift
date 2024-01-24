@@ -42,5 +42,20 @@ extension Habit {
         get { sortBy_ ?? "" }
         set { sortBy_ = newValue }
     }
+    
+    
+    static var example: Habit {
+        let context = PersistenceController.preview.container.viewContext
+        let habit = Habit(context: context)
+        habit.id = UUID()
+        habit.title = "Weekly Routine"
+        habit.standardTime = Date()
+        habit.standardLabel = "✅ End Time"
+        habit.calculatedTime = ""
+        habit.calculatedLabel =  "⏰ Wake Up"
+        habit.startTimeMode = false
+        
+        return habit
+    }
 }
 

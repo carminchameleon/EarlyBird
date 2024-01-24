@@ -21,7 +21,6 @@ class ActionDetailViewModel: ObservableObject {
     @Published var isOn = true
         
     init(action: Action? = nil, habit: Habit) {
-        
         if let action = action {
             self.action = action
             self.textFieldValue = action.title
@@ -38,7 +37,6 @@ class ActionDetailViewModel: ObservableObject {
 
         // update
         if let action = action {
-    
             ActionStorage.shared.update(withId: action.id, title: title, duration: duration, isOn: isOn, habit: habit)
         } else {
             ActionStorage.shared.add(title: title, duration: duration, isOn: isOn, habit: habit)

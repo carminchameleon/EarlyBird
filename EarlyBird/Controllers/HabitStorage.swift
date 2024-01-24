@@ -41,7 +41,7 @@ class HabitStorage: NSObject, ObservableObject {
     }
     
     // pass only relative make new habits
-    func add(title: String, startLabel: String, startTime: Date, finishLabel: String, finishTime: Date, startTimeMode: Bool) {
+    func add(title: String, standardLabel: String, standardTime: Date, calculatedLabel: String, startTimeMode: Bool) {
         let newHabit = Habit(context: persistenceController.container.viewContext)
         newHabit.id = UUID()
         newHabit.title = title
@@ -57,7 +57,7 @@ class HabitStorage: NSObject, ObservableObject {
         
     
     // update from detail view
-    func update(withId id: UUID, title: String, startLabel: String, startTime: Date, finishLabel: String, finishTime: Date, startTimeMode: Bool) {
+    func update(withId id: UUID, title: String, standardLabel: String, standardTime: Date, calculatedLabel: String, startTimeMode: Bool) {
         if let habit = fetchEntityWithId(id) {
             habit.title = title
             habit.startLabel = startLabel
@@ -72,21 +72,21 @@ class HabitStorage: NSObject, ObservableObject {
         }
     }
     
-    func updateDetail(habit: Habit, startLabel: String? = nil, startTime: Date? = nil, finishLabel: String? = nil, finishTime: Date? = nil, startTimeMode: Bool? = nil, sortBy: String? = nil, isAscending: Bool? = nil) {
+    func updateDetail(habit: Habit, standardLabel: String? = nil, standardTime: Date? = nil, calculatedLabel: String? = nil, calculatedTime: String? = nil, startTimeMode: Bool? = nil, sortBy: String? = nil, isAscending: Bool? = nil) {
         
-        if let startLabel = startLabel {
-            habit.startLabel = startLabel
+        if let standardLabel = standardLabel {
+            habit.standardLabel = standardLabel
         }
-        if let startTime = startTime {
-            habit.startTime = startTime
+        if let standardTime = standardTime {
+            habit.standardTime = standardTime
         }
 
-        if let finishLabel = finishLabel {
-            habit.finishLabel = finishLabel
+        if let calculatedLabel = calculatedLabel {
+            habit.calculatedLabel = calculatedLabel
         }
-        
-        if let finishTime = finishTime {
-            habit.finishTime = finishTime
+
+        if let calculatedTime = calculatedTime {
+            habit.calculatedTime = calculatedTime
         }
 
         if let startTimeMode = startTimeMode {

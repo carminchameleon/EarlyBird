@@ -16,13 +16,8 @@
 		F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */; };
 		F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED92A2B117F1E00948809 /* Extensions+CGFloat.swift */; };
 		F062D9AC2B456773000342F2 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AB2B456773000342F2 /* Symbols.swift */; };
-		F062D9AE2B45677D000342F2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AD2B45677D000342F2 /* Theme.swift */; };
-		F070D1E72B48312D007934F8 /* ArcShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D1E62B48312D007934F8 /* ArcShape.swift */; };
-		F070D1E92B4838C7007934F8 /* HabitTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D1E82B4838C7007934F8 /* HabitTimeView.swift */; };
-		F070D1EB2B4AB480007934F8 /* newExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D1EA2B4AB480007934F8 /* newExample.swift */; };
-		F070D1EE2B4ABA16007934F8 /* CycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D1ED2B4ABA16007934F8 /* CycleView.swift */; };
-		F070D1F02B4ABA1F007934F8 /* CycleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D1EF2B4ABA1F007934F8 /* CycleViewModel.swift */; };
-		F070D1F32B4AC65A007934F8 /* CycleTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D1F22B4AC65A007934F8 /* CycleTime.swift */; };
+		F062D9AE2B45677D000342F2 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AD2B45677D000342F2 /* ColorTheme.swift */; };
+		F070D2262B52BFAE007934F8 /* newView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D2252B52BFAE007934F8 /* newView.swift */; };
 		F08C86F32B36ACCF0090B55B /* PresetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F22B36ACCF0090B55B /* PresetList.swift */; };
 		F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F42B37B3E60090B55B /* SortMenu.swift */; };
 		F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */; };
@@ -30,7 +25,6 @@
 		F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1860B2B11C9AE009A2829 /* Time.swift */; };
 		F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70B2B3AF66B0092A7AA /* RoutineField.swift */; };
 		F0CBC70E2B3AFA000092A7AA /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */; };
-		F0CBC77B2B3FEA3D0092A7AA /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC77A2B3FEA3D0092A7AA /* Extension+UIColor.swift */; };
 		F0CBC77E2B3FEA880092A7AA /* EarlyBird.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC77C2B3FEA880092A7AA /* EarlyBird.xcdatamodeld */; };
 		F0CBC7812B3FEC8E0092A7AA /* PersistentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7802B3FEC8E0092A7AA /* PersistentController.swift */; };
 		F0CBC7832B3FEE7A0092A7AA /* Extension+Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC7822B3FEE7A0092A7AA /* Extension+Habit.swift */; };
@@ -64,13 +58,9 @@
 		F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+TimeInterval.swift"; sourceTree = "<group>"; };
 		F05ED92A2B117F1E00948809 /* Extensions+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+CGFloat.swift"; sourceTree = "<group>"; };
 		F062D9AB2B456773000342F2 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
-		F062D9AD2B45677D000342F2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		F070D1E62B48312D007934F8 /* ArcShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcShape.swift; sourceTree = "<group>"; };
-		F070D1E82B4838C7007934F8 /* HabitTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTimeView.swift; sourceTree = "<group>"; };
-		F070D1EA2B4AB480007934F8 /* newExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newExample.swift; sourceTree = "<group>"; };
-		F070D1ED2B4ABA16007934F8 /* CycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleView.swift; sourceTree = "<group>"; };
-		F070D1EF2B4ABA1F007934F8 /* CycleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleViewModel.swift; sourceTree = "<group>"; };
-		F070D1F22B4AC65A007934F8 /* CycleTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleTime.swift; sourceTree = "<group>"; };
+		F062D9AD2B45677D000342F2 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
+		F070D2242B52467B007934F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F070D2252B52BFAE007934F8 /* newView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newView.swift; sourceTree = "<group>"; };
 		F08C86F22B36ACCF0090B55B /* PresetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetList.swift; sourceTree = "<group>"; };
 		F08C86F42B37B3E60090B55B /* SortMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMenu.swift; sourceTree = "<group>"; };
 		F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CancelBag.swift"; sourceTree = "<group>"; };
@@ -78,7 +68,6 @@
 		F0A1860B2B11C9AE009A2829 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		F0CBC70B2B3AF66B0092A7AA /* RoutineField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineField.swift; sourceTree = "<group>"; };
 		F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
-		F0CBC77A2B3FEA3D0092A7AA /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		F0CBC77D2B3FEA880092A7AA /* EarlyBird.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarlyBird.xcdatamodel; sourceTree = "<group>"; };
 		F0CBC7802B3FEC8E0092A7AA /* PersistentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentController.swift; sourceTree = "<group>"; };
 		F0CBC7822B3FEE7A0092A7AA /* Extension+Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Habit.swift"; sourceTree = "<group>"; };
@@ -132,6 +121,7 @@
 		F05ED90C2B1167EE00948809 /* EarlyBird */ = {
 			isa = PBXGroup;
 			children = (
+				F070D2242B52467B007934F8 /* Info.plist */,
 				F062D9A92B456748000342F2 /* Resources */,
 				F0CBC77F2B3FEC5B0092A7AA /* Controllers */,
 				F062D9AA2B45674E000342F2 /* Base */,
@@ -158,7 +148,6 @@
 				F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */,
 				F0256F0F2B288DAE00487995 /* Extension+Date.swift */,
 				F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */,
-				F0CBC77A2B3FEA3D0092A7AA /* Extension+UIColor.swift */,
 				F0CBC7822B3FEE7A0092A7AA /* Extension+Habit.swift */,
 				F0CBC7842B3FEF3D0092A7AA /* Extension+Action.swift */,
 				F0CBC7912B4017C10092A7AA /* Extension+Color.swift */,
@@ -281,28 +270,10 @@
 				F0CBC7AE2B42CC070092A7AA /* TimelineController.swift */,
 				F0CBC7A02B410F4B0092A7AA /* ActionRow.swift */,
 				F0CBC79E2B4105F80092A7AA /* TimelineSummaryView.swift */,
-				F070D1E82B4838C7007934F8 /* HabitTimeView.swift */,
-				F070D1EA2B4AB480007934F8 /* newExample.swift */,
+				F0CBC79A2B401EF20092A7AA /* ActionListView.swift */,
+				F070D2252B52BFAE007934F8 /* newView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		F070D1EC2B4AB9E7007934F8 /* Cycles */ = {
-			isa = PBXGroup;
-			children = (
-				F070D1F12B4AC64E007934F8 /* Model */,
-				F070D1ED2B4ABA16007934F8 /* CycleView.swift */,
-				F070D1EF2B4ABA1F007934F8 /* CycleViewModel.swift */,
-			);
-			path = Cycles;
-			sourceTree = "<group>";
-		};
-		F070D1F12B4AC64E007934F8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F070D1F22B4AC65A007934F8 /* CycleTime.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		F0CBC77F2B3FEC5B0092A7AA /* Controllers */ = {
@@ -391,15 +362,12 @@
 				F0CBC78E2B40163D0092A7AA /* HabitDetailView.swift in Sources */,
 				F018B5172B369CEB00099C88 /* TimeRecommendation.swift in Sources */,
 				F0CBC7832B3FEE7A0092A7AA /* Extension+Habit.swift in Sources */,
-				F0EBB7872B46A956006B5975 /* NewHabitView.swift in Sources */,
 				F0CBC77E2B3FEA880092A7AA /* EarlyBird.xcdatamodeld in Sources */,
 				F0CBC7AB2B4168740092A7AA /* ActionStorage.swift in Sources */,
 				F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */,
 				F0CBC78A2B4014A30092A7AA /* HabitListView.swift in Sources */,
 				F0CBC7812B3FEC8E0092A7AA /* PersistentController.swift in Sources */,
-				F070D1E92B4838C7007934F8 /* HabitTimeView.swift in Sources */,
-				F070D1EE2B4ABA16007934F8 /* CycleView.swift in Sources */,
-				F062D9AE2B45677D000342F2 /* Theme.swift in Sources */,
+				F062D9AE2B45677D000342F2 /* ColorTheme.swift in Sources */,
 				F0CBC7A72B4139760092A7AA /* ActionDetailViewModel.swift in Sources */,
 				F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */,
 				F062D9AC2B456773000342F2 /* Symbols.swift in Sources */,
@@ -414,6 +382,7 @@
 				F070D1F02B4ABA1F007934F8 /* CycleViewModel.swift in Sources */,
 				F0CBC7852B3FEF3D0092A7AA /* Extension+Action.swift in Sources */,
 				F0CBC7AF2B42CC070092A7AA /* TimelineController.swift in Sources */,
+				F070D2262B52BFAE007934F8 /* newView.swift in Sources */,
 				F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */,
 				F0CBC77B2B3FEA3D0092A7AA /* Extension+UIColor.swift in Sources */,
 				F070D1E72B48312D007934F8 /* ArcShape.swift in Sources */,
@@ -563,6 +532,8 @@
 				DEVELOPMENT_TEAM = VMTM6Y63VB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EarlyBird/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -572,8 +543,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.carminido.EarlyBird;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carminido.earlybird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -592,6 +563,8 @@
 				DEVELOPMENT_TEAM = VMTM6Y63VB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EarlyBird/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -601,8 +574,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.carminido.EarlyBird;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carminido.earlybird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

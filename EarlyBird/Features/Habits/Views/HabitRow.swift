@@ -15,11 +15,10 @@ struct HabitRow: View {
             HStack {
                 ZStack {
                     Circle()
-                        .fill(Theme.pill.opacity(0.2))
+                        .fill(Color.accentColor.opacity(0.2))
                         .frame(width:30)
                     Text(habit.startTimeMode ? "🏁": "🚀")
                         .font(.caption)
-
                 }
                 Text(habit.title)
                     .font(.title3)
@@ -37,8 +36,8 @@ struct HabitRow: View {
             }
             Spacer()
             HStack {
-                Text(habit.startTime.convertToString())
-                Text(habit.finishTime.convertToString())
+                Text(habit.standardLabel)
+                Text(habit.standardTime.convertToString())
                 if let actions = habit.actions?.allObjects as? [Action] {
                     let duration = actions.filter { $0.isOn }.reduce(0,{ $0 + $1.duration }).getString()
                     Text("\(duration)")
@@ -54,3 +53,10 @@ struct HabitRow: View {
     }
 }
 
+
+
+
+
+#Preview {
+    HabitRow(habit: Habit.example)
+}

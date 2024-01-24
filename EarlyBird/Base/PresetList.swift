@@ -20,18 +20,16 @@ struct PresetList: View {
     
     @State var presetList = [
         SelectableTime(type: .minutes, number: 1),
-        SelectableTime(type: .minutes, number: 2),
-        SelectableTime(type: .minutes, number: 3),
-        SelectableTime(type: .minutes, number: 4),
         SelectableTime(type: .minutes, number: 5),
         SelectableTime(type: .minutes, number: 10),
-        SelectableTime(type: .minutes, number: 15),
         SelectableTime(type: .minutes, number: 20),
+        SelectableTime(type: .minutes, number: 30),
+        SelectableTime(type: .minutes, number: 45),
         SelectableTime(type: .hours, number: 1),
         SelectableTime(type: .hours, number: 2),
     ]
     
-    var addActivity: (String, Int, Int) -> Void
+    var addActivity: () -> Void
     
     var body: some View {
         VStack {
@@ -49,7 +47,7 @@ struct PresetList: View {
                                     Text("\(item.number)")
                                         .font(.title)
                                     Text("\(item.type.rawValue)")
-                                        .foregroundStyle(Theme.pill)
+                                        .foregroundStyle(Color.theme.accent)
                                 }
                             }
                             .onTapGesture {
@@ -84,7 +82,7 @@ struct PresetList: View {
 }
 
 #Preview {
-    PresetList(isShowingSheet: .constant(false), isShowingAlert: .constant(false), textFieldValue: .constant(""), hours: .constant(0), mins: .constant(10)) { _, _, _ in
+    PresetList(isShowingSheet: .constant(false), isShowingAlert: .constant(false), textFieldValue: .constant(""), hours: .constant(0), mins: .constant(10)) { 
         
     }
 }

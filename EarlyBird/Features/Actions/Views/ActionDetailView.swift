@@ -10,12 +10,12 @@ import SwiftUI
 struct ActionDetailView: View {
     @Binding var isShowingSheet: Bool
     @StateObject var vm: ActionDetailViewModel
-    @State var showAlert: Bool = false
+    @State private var showAlert: Bool = false
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: .largeSize) {
-                TextField("Routine Name", text: $vm.textFieldValue)
+                TextField("Action Name", text: $vm.textFieldValue)
                     .font(.title3)
                     .bold()
                     .multilineTextAlignment(.center)
@@ -34,16 +34,16 @@ struct ActionDetailView: View {
                             .bold()
                     })
                 }
-                PresetList(isShowingSheet: $isShowingSheet, isShowingAlert: $showAlert, textFieldValue: $vm.textFieldValue, hours: $vm.hours, mins: $vm.mins) { title, hours, mins in
-                        presetButtonTapped(title, hours, mins)
+                PresetList(isShowingSheet: $isShowingSheet, isShowingAlert: $showAlert, textFieldValue: $vm.textFieldValue, hours: $vm.hours, mins: $vm.mins) {
+                    vm.handleSaveButtonTapped()
                 }
             }
             
         }
+        .tint(Color.theme.accent)
         .padding()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            
             ToolbarItem(placement: .topBarLeading) {
                 Button("Cancel") {
                     isShowingSheet.toggle()
@@ -59,14 +59,6 @@ struct ActionDetailView: View {
                 .disabled((vm.textFieldValue.count == 0) || (vm.mins == 0 && vm.hours == 00))
             }
         }
-        .tint(Theme.pill)
-    }
-    
-    func presetButtonTapped(_ title: String,_ hours: Int,_ mins: Int) {
-        vm.hours = hours
-        vm.mins = mins
-        vm.action?.title = title
-        vm.handleSaveButtonTapped()
     }
 }
 

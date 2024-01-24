@@ -13,6 +13,7 @@ import UIKit
 
 
 class ActionListViewModel: ObservableObject {
+    
     var habit: Habit
     
     @Published var title: String = ""
@@ -48,7 +49,7 @@ class ActionListViewModel: ObservableObject {
         self.finishTime = habit.finishTime
         self.finishLabel = habit.finishLabel
         self.startTimeMode = habit.startTimeMode
-        
+    
         sortOption = SortOption(rawValue: habit.sortBy) ?? .manual
         sortOrder = habit.isAscending ? .ascend : .descend
         
@@ -57,6 +58,7 @@ class ActionListViewModel: ObservableObject {
             self.actions = getSortedList(sortOption, sortOrder)
 
         }
+        
         addActivitiesSubscriber()
         addDurationSubscriber()
     }
@@ -147,6 +149,10 @@ class ActionListViewModel: ObservableObject {
         }        
     }
     
+    func deleteItem(id: UUID) {
+        ActionStorage.shared.delete(withId: id)
+    }
+    
     func moveItem(from: IndexSet, to: Int) {
         sortOption = .manual
         sortOrder = .ascend
@@ -162,16 +168,20 @@ class ActionListViewModel: ObservableObject {
     func updateSortOption(_ newOption: SortOption) {
         self.sortOption = newOption
         actions = getSortedList(newOption, sortOrder)
+        updateActionsOrder()
     }
     
     func updateSortOrder(_ newOrder: SortOrder) {
         self.sortOrder = newOrder
         actions = getSortedList(sortOption, newOrder)
+        updateActionsOrder()
     }
     
+
     func sortActionList() {
         let newList = getSortedList(sortOption, sortOrder)
         actions = newList
+        updateActionsOrder()
     }
     
     func getSortedList(_ sortOption: SortOption,_ sortOrder: SortOrder ) -> [Action] {
@@ -205,5 +215,12 @@ class ActionListViewModel: ObservableObject {
         }
         
         return list
+    }
+    
+    
+    func updateActionsOrder() {
+        for (index, action) in actions.enumerated() {
+            action.order = Int64(index)
+        }
     }
 }
