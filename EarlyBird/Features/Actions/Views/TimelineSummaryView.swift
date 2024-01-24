@@ -17,20 +17,14 @@ struct TimelineSummaryView: View {
     var body: some View {
         VStack {
             calculatedTitle
-            finishTime
-        }
-        .tint(Theme.pill)
-        .frame(maxWidth: .infinity)
+            calculatedTime
+        }.frame(maxWidth: .infinity)
     }
     
     var calculatedTitle: some View {
         HStack {
             Text(vm.startTimeMode ? "🏁" : "🚀")
-            Text(vm.finishLabel)
-                .fontDesign(.serif)
-                .font(.title3)
-                .bold()
-            
+            Text(vm.calculatedLabel)
             Spacer()
             Button {
                 withAnimation(.snappy) {
@@ -39,17 +33,17 @@ struct TimelineSummaryView: View {
             } label: {
                 Symbols.switchMode
                 Text("Switch")
-            }.font(.caption)
+            }
         }
     }
     
-    var finishTime: some View {
+    var calculatedTime: some View {
         Group {
             HStack(alignment: .center, spacing: 0) {
-//                Text(vm.finishTime.getNumberOfTime())
-//                    .font(.largeTitle.weight(.semibold))
-//                Text(vm.finishTime.getDayOfTime())
-//                    .font(.title2.weight(.semibold))
+                Text(vm.calculatedTime.getNumberOfTime())
+                    .font(.largeTitle.weight(.semibold))
+                Text(vm.calculatedTime.getDayOfTime())
+                    .font(.title2.weight(.semibold))
             }
             .padding()
         }

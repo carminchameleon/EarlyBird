@@ -27,6 +27,7 @@ class HabitDetailViewModel: ObservableObject {
     private var cancelBag = CancelBag()
     
     init(habit: Habit? = nil) {
+        print("Habit detail view model is initilized")
         if let habit = habit {
             self.title = habit.title
             self.standardLabel = habit.standardLabel
@@ -37,13 +38,15 @@ class HabitDetailViewModel: ObservableObject {
         }
         addModeSubscriber()
     }
+    
 
+    
     func addModeSubscriber() {
         $startTimeMode
             .receive(on: DispatchQueue.main)
             .sink {[weak self] isStartMode in
+                
                 if isStartMode {
-                    
                     self?.standardGuide = RoutineField.start.standardGuide
                     self?.calculatedGuide = RoutineField.start.calculatedGuide
                     self?.startPlaceholder = RoutineField.start.standardPlaceholder
@@ -69,7 +72,7 @@ class HabitDetailViewModel: ObservableObject {
                                        startTimeMode: startTimeMode)
         } else {
             // add new habit
-            HabitStorage.shared.add(title: title, 
+            HabitStorage.shared.add(title: title,
                                     standardLabel: standardLabel,
                                     standardTime: standardTime,
                                     calculatedLabel: calculatedLabel,

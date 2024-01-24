@@ -36,7 +36,7 @@ struct HabitDetailView: View {
                     dismiss()
                 }, label: {
                     Text("Save")
-                }).disabled(vm.title.isEmpty || vm.startLabel.isEmpty || vm.finishLabel.isEmpty)
+                }).disabled(vm.title.isEmpty || vm.standardLabel.isEmpty || vm.calculatedLabel.isEmpty)
             }
         }
     }
@@ -46,7 +46,7 @@ struct HabitDetailView: View {
             .font(.title3)
             .bold()
             .multilineTextAlignment(.center)
-            .foregroundColor(Theme.pill)
+            .foregroundColor(vm.color)
             .padding(.horizontal)
             .frame(height: 55)
             .background(Color(UIColor.secondarySystemBackground))
@@ -55,10 +55,10 @@ struct HabitDetailView: View {
     
     var modeSection: some View {
         VStack {
-            Text("Which one you want to set first?")
+            Text("Need to know")
                 .font(.callout)
                 .bold()
-                .fontDesign(.serif)
+                .fontDesign(.rounded)
             
                 .frame(maxWidth: .infinity, alignment: .leading)
             
@@ -68,14 +68,14 @@ struct HabitDetailView: View {
               
                         VStack(spacing: .smallSize) {
                             VStack {
-                                Text("🚀")
+                                Text("🏁")
                                     .font(.largeTitle)
                                     .frame(width:120)
-                                Text("Start Time")
+                                Text("When It Finished")
                             }
                             .font(.caption)
                             .bold()
-                            .fontDesign(.serif)
+                            .fontDesign(.rounded)
                             
                             RadioButton(value: $vm.startTimeMode) { result in
                                 vm.startTimeMode = true
@@ -84,15 +84,15 @@ struct HabitDetailView: View {
                         
                         VStack(spacing: .smallSize) {
                             VStack {
-                                Text("🏁")
+                                Text("🚀")
                                     .font(.largeTitle)
                                     .frame(width:120)
-                                Text("Finish Time")
+                                Text("When to start")
 
                             }
                             .font(.caption)
                             .bold()
-                            .fontDesign(.serif)
+                            .fontDesign(.rounded)
                             RadioButton(value: .constant(vm.startTimeMode == false)) { result in
                                 vm.startTimeMode = false
                             }
@@ -110,10 +110,10 @@ struct HabitDetailView: View {
             Text(vm.standardGuide)
                 .font(.callout)
                 .bold()
-                .fontDesign(.serif)
+                .fontDesign(.rounded)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            TextField(vm.startPlaceholder, text: vm.startTimeMode ? $vm.startLabel : $vm.finishLabel)
+            TextField(vm.startPlaceholder, text: $vm.standardLabel)
                 .font(.title3)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -122,7 +122,7 @@ struct HabitDetailView: View {
                 .background(Color(UIColor.secondarySystemBackground))
                 .cornerRadius(.smallSize)
             GroupBox {
-                DatePicker("",selection: vm.startTimeMode ? $vm.startTime : $vm.finishTime, displayedComponents: .hourAndMinute)
+                DatePicker("",selection: $vm.standardTime, displayedComponents: .hourAndMinute)
                     .frame(height: 180)
                     .datePickerStyle(.wheel)
             }
@@ -134,10 +134,10 @@ struct HabitDetailView: View {
             Text(vm.calculatedGuide)
                 .font(.callout)
                 .bold()
-                .fontDesign(.serif)
+                .fontDesign(.rounded)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            TextField(vm.calculatedPlaceholder, text: vm.startTimeMode ? $vm.finishLabel : $vm.startLabel)
+            TextField(vm.calculatedPlaceholder, text: $vm.calculatedLabel)
                 .font(.title3)
                 .bold()
                 .multilineTextAlignment(.center)

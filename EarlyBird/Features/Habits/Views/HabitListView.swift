@@ -77,7 +77,7 @@ struct HabitListView: View {
                         .bold()
                         .fontDesign(.serif)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(Theme.pill)
+                        .foregroundColor(Color.accent)
                 })
             }
             .padding()
@@ -91,7 +91,7 @@ struct HabitListView: View {
                 }, label: {
                     Symbols.gear
                         .font(.callout)
-                        .tint(Theme.pill)
+                        .tint(Color.accent)
                 })
             }
 

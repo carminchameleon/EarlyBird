@@ -11,53 +11,46 @@ struct TimelineController: View {
     @ObservedObject var vm: ActionListViewModel
     
     var body: some View {
-        if vm.startLabel.count >  10 || vm.duration > 3600 {
+        if vm.standardLabel.count >  10 || vm.duration > 3600 {
             VStack(alignment: .leading) {
                 HStack {
                     Text(vm.startTimeMode ? "🚀": "🏁" )
-                    Text(vm.startLabel)
-                        .font(.callout)
-                        .fontDesign(.serif)
-                        .tint(Theme.detailText)
-                        .bold()
+                    Text(vm.standardLabel)
+                        .font(.subheadline)
                         .scaledToFit()
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
                     
                     Spacer()
                  
-                    DatePicker("",selection: $vm.startTime, displayedComponents: .hourAndMinute)
+                    DatePicker("",selection: $vm.standardTime, displayedComponents: .hourAndMinute)
                         .datePickerStyle(CompactDatePickerStyle())
                         .clipped()
                         .labelsHidden()
                 }
                 HStack {
-                   duration
+                    Text("⏳ Duration")
+                        .foregroundStyle(Color(uiColor: .systemGray))
+                    Text(vm.duration.getString())
+                        .bold()
                 }
             }
         } else {
             HStack {
-                duration
+                Text("⏳ Duration")
+                    .foregroundStyle(Color(uiColor: .systemGray))
+                Text(vm.duration.getString())
+                    .bold()
+                
                 Spacer()
                 
                 Text(vm.startTimeMode ? "🚀": "🏁" )
-                Text(vm.startLabel)
-                DatePicker("",selection: $vm.startTime, displayedComponents: .hourAndMinute)
+                Text(vm.standardLabel)
+                DatePicker("",selection: $vm.standardTime, displayedComponents: .hourAndMinute)
                     .datePickerStyle(CompactDatePickerStyle())
                     .clipped()
                     .labelsHidden()
             }
-        }
-    }
-    
-    var duration: some View {
-        Group {
-            Text("⏳")
-            Text(vm.duration.getString())
-                .font(.callout)
-                .fontDesign(.serif)
-                .bold()
-
         }
     }
 }

@@ -24,7 +24,7 @@ struct HabitRow: View {
                     .font(.title3)
                     .bold()
                     .fontDesign(.serif)
-                    .foregroundColor(Theme.pill)
+                    .foregroundColor(Color.accent)
                 Spacer()
                 if let actions = habit.actions?.allObjects as? [Action] {
                     Text("\(actions.count)")

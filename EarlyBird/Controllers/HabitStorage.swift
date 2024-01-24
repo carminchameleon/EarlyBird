@@ -45,10 +45,10 @@ class HabitStorage: NSObject, ObservableObject {
         let newHabit = Habit(context: persistenceController.container.viewContext)
         newHabit.id = UUID()
         newHabit.title = title
-        newHabit.startLabel = startLabel
-        newHabit.startTime = startTime
-        newHabit.finishLabel =  finishLabel
-        newHabit.finishTime = finishTime
+        newHabit.standardLabel = standardLabel
+        newHabit.standardTime = standardTime
+        newHabit.calculatedLabel =  calculatedLabel
+        newHabit.calculatedTime = "" // default
         newHabit.startTimeMode = startTimeMode
         newHabit.sortBy = SortOption.manual.rawValue
         newHabit.isAscending = true
@@ -60,10 +60,9 @@ class HabitStorage: NSObject, ObservableObject {
     func update(withId id: UUID, title: String, standardLabel: String, standardTime: Date, calculatedLabel: String, startTimeMode: Bool) {
         if let habit = fetchEntityWithId(id) {
             habit.title = title
-            habit.startLabel = startLabel
-            habit.startTime = startTime
-            habit.finishLabel =  finishLabel
-            habit.finishTime = finishTime
+            habit.standardLabel = standardLabel
+            habit.standardTime = standardTime
+            habit.calculatedLabel =  calculatedLabel
             habit.startTimeMode = startTimeMode
             
             persistenceController.save()

@@ -61,59 +61,25 @@ struct ActionListView: View {
             }
         
             VStack {
-                HabitTimeView(vm: vm)
+                Button(action: {
+                    showAddAction.toggle()
+                }, label: {
+                    Label("New Action", systemImage: "plus.circle.fill")
+                        .bold()
+                        .fontDesign(.rounded)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.accentColor)
+                })
             }
-            .padding(.horizontal)
-            .onTapGesture {
-                showDetail.toggle()
-            }
-            Divider()
-            
-            if vm.actions.isEmpty { emptyList }
-            // 리스트
-            List {
-                ForEach(vm.actions) { item in
-                    Button(action: {
-                        editAction(item: item)
-                    }, label: {
-                        ActionRow(item: item, isShowToggle: $isShowToggle) { item in
-                            vm.updateToggleState(item: item)
-                        }
-                    })
-                }
-                .onDelete(perform: vm.deleteItem)
-                .onMove(perform: vm.moveItem)
-            }.listStyle(.plain)
-        }
-        
-        VStack {
-            Button(action: {
-                showAddAction.toggle()
-            }, label: {
-                Label("New Action", systemImage: "plus.circle.fill")
-                    .bold()
-                    .fontDesign(.serif)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundColor(Theme.pill)
-            })
-        }
-        .tint(Theme.pill)
-        .padding()
+            .padding()
         .navigationTitle(vm.title)
-        .navigationBarTitleDisplayMode(.automatic)
-        
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
-                }
-            }
             ToolbarItem(placement: .primaryAction) {
                 toolItem
             }
         }
+        
         
         .sheet(isPresented: $showAddAction, content: {
             NavigationStack {
@@ -121,19 +87,17 @@ struct ActionListView: View {
                     .navigationTitle("Add Action")
             }
         })
-        
         .sheet(isPresented: $showEdit, content: {
             NavigationStack {
                 ActionDetailView(isShowingSheet: $showEdit, vm: ActionDetailViewModel(action: vm.selectedItem, habit: vm.habit))
                     .navigationTitle("Edit Action")
             }
         })
-        
         .sheet(isPresented: $showDetail, content: {
             NavigationStack {
                 HabitDetailView(vm: HabitDetailViewModel(habit: vm.habit))
                     .navigationTitle("Edit Routine")
-                
+
             }
         })
         .onDisappear {
@@ -142,9 +106,8 @@ struct ActionListView: View {
         .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave), perform: { output in
             vm.updateHabitData()
         })
-        .tint(Theme.pill)
     }
-    
+
     var emptyList: some View {
         ContentUnavailableView("Add New Action", systemImage: "pencil.and.scribble", description: Text("add your action"))
     }
@@ -170,9 +133,7 @@ struct ActionListView: View {
                 showDetail.toggle()
             }) {
                 Label("Show List Info", systemImage: "info.circle")
-                
             }
-            
             Button(action: {
                 withAnimation(.smooth) {
                     isShowToggle.toggle()
@@ -180,7 +141,7 @@ struct ActionListView: View {
             }) {
                 Label("\(isShowToggle ? "Hide" : "Show") Toggle Button", systemImage: "slider.horizontal.3")
             }
-            
+
             
             Menu {
                 ForEach(SortOption.allCases, id: \.id) { item in
@@ -202,7 +163,7 @@ struct ActionListView: View {
                             withAnimation(.easeInOut(duration: 20)) {
                                 vm.updateSortOrder(.ascend)
                             }
-                            
+
                         }) {
                             if vm.sortOrder == .ascend {
                                 Label("\(vm.sortOption.ascend)", systemImage: "checkmark")
@@ -213,9 +174,9 @@ struct ActionListView: View {
                         Button(action: {
                             withAnimation(.easeInOut(duration: 20)) {
                                 vm.updateSortOrder(.descend)
-                                
+
                             }
-                            
+
                         }) {
                             if vm.sortOrder == .descend {
                                 Label("\(vm.sortOption.descend)", systemImage: "checkmark")

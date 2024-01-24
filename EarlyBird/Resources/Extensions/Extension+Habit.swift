@@ -18,24 +18,25 @@ extension Habit {
         get { title_ ?? "" }
         set { title_ = newValue }
     }
-    var startLabel: String {
-        get { startLabel_ ?? "" }
-        set { startLabel_ = newValue }
-    }
-
-    var startTime: Date {
-        get { startTime_ ?? Date.now }
-        set { startTime_ = newValue }
+    
+    var standardTime: Date {
+        get { standardTime_ ?? Date.now }
+        set { standardTime_ = newValue }
     }
     
-    var finishTime: Date {
-        get { finishTime_ ?? Date.now }
-        set { finishTime_ = newValue }
+    var standardLabel: String {
+        get { standardLabel_ ?? "" }
+        set { standardLabel_ = newValue }
     }
     
-    var finishLabel: String {
-        get { finishLabel_ ?? "" }
-        set { finishLabel_ = newValue }
+    var calculatedTime: String {
+        get { calculatedTime_ ?? "" }
+        set { calculatedTime_ = newValue }
+    }
+    
+    var calculatedLabel: String {
+        get { calculatedLabel_ ?? "" }
+        set { calculatedLabel_ = newValue }
     }
 
     var sortBy: String {
@@ -58,4 +59,3 @@ extension Habit {
         return habit
     }
 }
-
