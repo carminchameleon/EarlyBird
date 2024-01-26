@@ -17,6 +17,12 @@
 		F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED92A2B117F1E00948809 /* Extensions+CGFloat.swift */; };
 		F062D9AC2B456773000342F2 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AB2B456773000342F2 /* Symbols.swift */; };
 		F070D2262B52BFAE007934F8 /* newView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D2252B52BFAE007934F8 /* newView.swift */; };
+		F07CB81A2B61125C00201DB1 /* RoutineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB8192B61125C00201DB1 /* RoutineEntity.swift */; };
+		F07CB81C2B61132B00201DB1 /* RoutineRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB81B2B61132B00201DB1 /* RoutineRepositoryInterface.swift */; };
+		F07CB81E2B61133900201DB1 /* RoutineUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB81D2B61133900201DB1 /* RoutineUseCase.swift */; };
+		F07CB8212B611A5E00201DB1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB8202B611A5E00201DB1 /* CoreDataStack.swift */; };
+		F07CB8242B612A6F00201DB1 /* LazyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB8232B612A6F00201DB1 /* LazyList.swift */; };
+		F07CB82F2B63961500201DB1 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB82E2B63961500201DB1 /* CoreDataHelper.swift */; };
 		F08C86F32B36ACCF0090B55B /* PresetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F22B36ACCF0090B55B /* PresetList.swift */; };
 		F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F42B37B3E60090B55B /* SortMenu.swift */; };
 		F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */; };
@@ -58,6 +64,12 @@
 		F062D9AB2B456773000342F2 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		F070D2242B52467B007934F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F070D2252B52BFAE007934F8 /* newView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newView.swift; sourceTree = "<group>"; };
+		F07CB8192B61125C00201DB1 /* RoutineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineEntity.swift; sourceTree = "<group>"; };
+		F07CB81B2B61132B00201DB1 /* RoutineRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineRepositoryInterface.swift; sourceTree = "<group>"; };
+		F07CB81D2B61133900201DB1 /* RoutineUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUseCase.swift; sourceTree = "<group>"; };
+		F07CB8202B611A5E00201DB1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		F07CB8232B612A6F00201DB1 /* LazyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyList.swift; sourceTree = "<group>"; };
+		F07CB82E2B63961500201DB1 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		F08C86F22B36ACCF0090B55B /* PresetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetList.swift; sourceTree = "<group>"; };
 		F08C86F42B37B3E60090B55B /* SortMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMenu.swift; sourceTree = "<group>"; };
 		F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CancelBag.swift"; sourceTree = "<group>"; };
@@ -118,12 +130,17 @@
 		F05ED90C2B1167EE00948809 /* EarlyBird */ = {
 			isa = PBXGroup;
 			children = (
+				F07CB8222B612A6200201DB1 /* Utilities */,
+				F05ED90D2B1167EE00948809 /* EarlyBirdApp.swift */,
+				F07CB81F2B611A4C00201DB1 /* Persistence */,
+				F07CB8162B61121700201DB1 /* Presentation */,
+				F07CB8182B61122D00201DB1 /* Domain */,
+				F07CB8172B61121F00201DB1 /* Data */,
 				F070D2242B52467B007934F8 /* Info.plist */,
 				F062D9A92B456748000342F2 /* Resources */,
 				F0CBC77F2B3FEC5B0092A7AA /* Controllers */,
 				F062D9AA2B45674E000342F2 /* Base */,
 				F062D9AF2B45678F000342F2 /* Features */,
-				F05ED90D2B1167EE00948809 /* EarlyBirdApp.swift */,
 				F05ED9112B1167EF00948809 /* Assets.xcassets */,
 				F05ED9132B1167EF00948809 /* Preview Content */,
 			);
@@ -269,6 +286,47 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F07CB8162B61121700201DB1 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F07CB8172B61121F00201DB1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F07CB8182B61122D00201DB1 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F07CB8192B61125C00201DB1 /* RoutineEntity.swift */,
+				F07CB81B2B61132B00201DB1 /* RoutineRepositoryInterface.swift */,
+				F07CB81D2B61133900201DB1 /* RoutineUseCase.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F07CB81F2B611A4C00201DB1 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				F07CB8202B611A5E00201DB1 /* CoreDataStack.swift */,
+				F07CB82E2B63961500201DB1 /* CoreDataHelper.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		F07CB8222B612A6200201DB1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F07CB8232B612A6F00201DB1 /* LazyList.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		F0CBC77F2B3FEC5B0092A7AA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,9 +413,11 @@
 				F0CBC78E2B40163D0092A7AA /* HabitDetailView.swift in Sources */,
 				F018B5172B369CEB00099C88 /* TimeRecommendation.swift in Sources */,
 				F0CBC7832B3FEE7A0092A7AA /* Extension+Habit.swift in Sources */,
+				F07CB8242B612A6F00201DB1 /* LazyList.swift in Sources */,
 				F0CBC77E2B3FEA880092A7AA /* EarlyBird.xcdatamodeld in Sources */,
 				F0CBC7AB2B4168740092A7AA /* ActionStorage.swift in Sources */,
 				F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */,
+				F07CB82F2B63961500201DB1 /* CoreDataHelper.swift in Sources */,
 				F0CBC78A2B4014A30092A7AA /* HabitListView.swift in Sources */,
 				F0CBC7812B3FEC8E0092A7AA /* PersistentController.swift in Sources */,
 				F0CBC7A72B4139760092A7AA /* ActionDetailViewModel.swift in Sources */,
@@ -366,6 +426,7 @@
 				F0CBC7902B4016570092A7AA /* HabitDetailViewModel.swift in Sources */,
 				F0256F102B288DAE00487995 /* Extension+Date.swift in Sources */,
 				F05ED90E2B1167EE00948809 /* EarlyBirdApp.swift in Sources */,
+				F07CB81E2B61133900201DB1 /* RoutineUseCase.swift in Sources */,
 				F0CBC7A12B410F4B0092A7AA /* ActionRow.swift in Sources */,
 				F0CBC7872B3FFF780092A7AA /* HabitStorage.swift in Sources */,
 				F0CBC79D2B4103640092A7AA /* ActionListViewModel.swift in Sources */,
@@ -373,7 +434,10 @@
 				F05ED9262B11775100948809 /* Extensions+String.swift in Sources */,
 				F0CBC7852B3FEF3D0092A7AA /* Extension+Action.swift in Sources */,
 				F0CBC7AF2B42CC070092A7AA /* TimelineController.swift in Sources */,
+				F07CB81C2B61132B00201DB1 /* RoutineRepositoryInterface.swift in Sources */,
 				F070D2262B52BFAE007934F8 /* newView.swift in Sources */,
+				F07CB8212B611A5E00201DB1 /* CoreDataStack.swift in Sources */,
+				F07CB81A2B61125C00201DB1 /* RoutineEntity.swift in Sources */,
 				F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */,
 				F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */,
 				F0CBC7962B401A180092A7AA /* HabitRow.swift in Sources */,
