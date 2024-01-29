@@ -52,9 +52,34 @@ extension Habit {
         habit.title = "Weekly Routine"
         habit.standardTime = Date()
         habit.standardLabel = "✅ End Time"
-        habit.calculatedTime = ""
+        habit.calculatedTime = Date().convertToString()
         habit.calculatedLabel =  "⏰ Wake Up"
         habit.startTimeMode = false
+        
+        return habit
+    }
+    
+    
+    static var onboard: Habit {
+        
+        let startString = "7:00"
+        let timeString = "1:22"
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "H:mm"
+
+        let startDate = dateFormatter.date(from: startString) ?? Date()
+        let date = dateFormatter.date(from: timeString) ?? Date().addingTimeInterval(200)
+        
+        let context = PersistenceController.preview.container.viewContext
+        let habit = Habit(context: context)
+        habit.id = UUID()
+        habit.title = "Your brilliant Future"
+        habit.standardTime = startDate
+        habit.standardLabel = "FROM NOW"
+        habit.calculatedTime = date.convertToString()
+        habit.calculatedLabel =  "TIPPING POINT"
+        habit.startTimeMode = true
         
         return habit
     }

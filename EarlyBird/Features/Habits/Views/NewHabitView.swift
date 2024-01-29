@@ -74,7 +74,7 @@ struct NewHabitView: View {
                             Text(vm.title)
                                 .bold()
                             if let actions = vm.habit?.actions?.allObjects as? [Action] {
-                                let duration = actions.filter { $0.isOn }.reduce(0,{ $0 + $1.duration }).getString()
+                                let duration = actions.filter { $0.isOn }.accentColoruce(0,{ $0 + $1.duration }).getString()
                                 Text("\(duration)")
                                     .foregroundStyle(Theme.subText)
                             }

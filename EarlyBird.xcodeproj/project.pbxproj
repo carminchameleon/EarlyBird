@@ -17,6 +17,13 @@
 		F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED92A2B117F1E00948809 /* Extensions+CGFloat.swift */; };
 		F062D9AC2B456773000342F2 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AB2B456773000342F2 /* Symbols.swift */; };
 		F070D2262B52BFAE007934F8 /* newView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D2252B52BFAE007934F8 /* newView.swift */; };
+		F07CB8332B6632AE00201DB1 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB8322B6632AE00201DB1 /* Ticket.swift */; };
+		F07CB8352B663C5D00201DB1 /* LongArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB8342B663C5D00201DB1 /* LongArrow.swift */; };
+		F07CB8372B663F0600201DB1 /* RoutineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB8362B663F0600201DB1 /* RoutineListView.swift */; };
+		F07CB8452B67CE7C00201DB1 /* NewActionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB8442B67CE7C00201DB1 /* NewActionListView.swift */; };
+		F07CB8482B67E6E500201DB1 /* VerticalCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB8472B67E6E500201DB1 /* VerticalCenter.swift */; };
+		F07CB84A2B67E86D00201DB1 /* HorizontalCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB8492B67E86D00201DB1 /* HorizontalCenter.swift */; };
+		F07CB84C2B67E8BF00201DB1 /* AlignCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB84B2B67E8BF00201DB1 /* AlignCenter.swift */; };
 		F08C86F32B36ACCF0090B55B /* PresetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F22B36ACCF0090B55B /* PresetList.swift */; };
 		F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F42B37B3E60090B55B /* SortMenu.swift */; };
 		F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */; };
@@ -58,6 +65,13 @@
 		F062D9AB2B456773000342F2 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		F070D2242B52467B007934F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F070D2252B52BFAE007934F8 /* newView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newView.swift; sourceTree = "<group>"; };
+		F07CB8322B6632AE00201DB1 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		F07CB8342B663C5D00201DB1 /* LongArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongArrow.swift; sourceTree = "<group>"; };
+		F07CB8362B663F0600201DB1 /* RoutineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineListView.swift; sourceTree = "<group>"; };
+		F07CB8442B67CE7C00201DB1 /* NewActionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActionListView.swift; sourceTree = "<group>"; };
+		F07CB8472B67E6E500201DB1 /* VerticalCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCenter.swift; sourceTree = "<group>"; };
+		F07CB8492B67E86D00201DB1 /* HorizontalCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCenter.swift; sourceTree = "<group>"; };
+		F07CB84B2B67E8BF00201DB1 /* AlignCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignCenter.swift; sourceTree = "<group>"; };
 		F08C86F22B36ACCF0090B55B /* PresetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetList.swift; sourceTree = "<group>"; };
 		F08C86F42B37B3E60090B55B /* SortMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMenu.swift; sourceTree = "<group>"; };
 		F08C86F62B38005D0090B55B /* Extension+CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CancelBag.swift"; sourceTree = "<group>"; };
@@ -165,9 +179,12 @@
 		F062D9AA2B45674E000342F2 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				F07CB8462B67E6BA00201DB1 /* CustomModifier */,
 				F08C86F22B36ACCF0090B55B /* PresetList.swift */,
 				F0A186072B11C392009A2829 /* CustomTimePickers.swift */,
 				F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */,
+				F07CB8322B6632AE00201DB1 /* Ticket.swift */,
+				F07CB8342B663C5D00201DB1 /* LongArrow.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -216,6 +233,7 @@
 				F0CBC78D2B40163D0092A7AA /* HabitDetailView.swift */,
 				F0CBC7892B4014A30092A7AA /* HabitListView.swift */,
 				F0EBB7862B46A956006B5975 /* NewHabitView.swift */,
+				F07CB8362B663F0600201DB1 /* RoutineListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,8 +283,19 @@
 				F0CBC79E2B4105F80092A7AA /* TimelineSummaryView.swift */,
 				F0CBC79A2B401EF20092A7AA /* ActionListView.swift */,
 				F070D2252B52BFAE007934F8 /* newView.swift */,
+				F07CB8442B67CE7C00201DB1 /* NewActionListView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F07CB8462B67E6BA00201DB1 /* CustomModifier */ = {
+			isa = PBXGroup;
+			children = (
+				F07CB8472B67E6E500201DB1 /* VerticalCenter.swift */,
+				F07CB8492B67E86D00201DB1 /* HorizontalCenter.swift */,
+				F07CB84B2B67E8BF00201DB1 /* AlignCenter.swift */,
+			);
+			path = CustomModifier;
 			sourceTree = "<group>";
 		};
 		F0CBC77F2B3FEC5B0092A7AA /* Controllers */ = {
@@ -355,14 +384,19 @@
 				F0CBC78E2B40163D0092A7AA /* HabitDetailView.swift in Sources */,
 				F018B5172B369CEB00099C88 /* TimeRecommendation.swift in Sources */,
 				F0CBC7832B3FEE7A0092A7AA /* Extension+Habit.swift in Sources */,
+				F07CB84A2B67E86D00201DB1 /* HorizontalCenter.swift in Sources */,
 				F0CBC77E2B3FEA880092A7AA /* EarlyBird.xcdatamodeld in Sources */,
 				F0CBC7AB2B4168740092A7AA /* ActionStorage.swift in Sources */,
+				F07CB8372B663F0600201DB1 /* RoutineListView.swift in Sources */,
 				F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */,
+				F07CB8352B663C5D00201DB1 /* LongArrow.swift in Sources */,
 				F0CBC78A2B4014A30092A7AA /* HabitListView.swift in Sources */,
 				F0CBC7812B3FEC8E0092A7AA /* PersistentController.swift in Sources */,
 				F0CBC7A72B4139760092A7AA /* ActionDetailViewModel.swift in Sources */,
+				F07CB8332B6632AE00201DB1 /* Ticket.swift in Sources */,
 				F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */,
 				F062D9AC2B456773000342F2 /* Symbols.swift in Sources */,
+				F07CB8452B67CE7C00201DB1 /* NewActionListView.swift in Sources */,
 				F0CBC7902B4016570092A7AA /* HabitDetailViewModel.swift in Sources */,
 				F0256F102B288DAE00487995 /* Extension+Date.swift in Sources */,
 				F05ED90E2B1167EE00948809 /* EarlyBirdApp.swift in Sources */,
@@ -372,11 +406,13 @@
 				F0A1860C2B11C9AE009A2829 /* Time.swift in Sources */,
 				F05ED9262B11775100948809 /* Extensions+String.swift in Sources */,
 				F0CBC7852B3FEF3D0092A7AA /* Extension+Action.swift in Sources */,
+				F07CB84C2B67E8BF00201DB1 /* AlignCenter.swift in Sources */,
 				F0CBC7AF2B42CC070092A7AA /* TimelineController.swift in Sources */,
 				F070D2262B52BFAE007934F8 /* newView.swift in Sources */,
 				F0CBC70C2B3AF66B0092A7AA /* RoutineField.swift in Sources */,
 				F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */,
 				F0CBC7962B401A180092A7AA /* HabitRow.swift in Sources */,
+				F07CB8482B67E6E500201DB1 /* VerticalCenter.swift in Sources */,
 				F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */,
 				F0CBC79F2B4105F80092A7AA /* TimelineSummaryView.swift in Sources */,
 				F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */,
@@ -524,8 +560,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -555,8 +591,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

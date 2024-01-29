@@ -31,13 +31,27 @@ class HabitStorage: NSObject, ObservableObject {
         super.init()
     
         habitFetchController.delegate = self
-        
         do {
             try habitFetchController.performFetch()
             habits.value = habitFetchController.fetchedObjects ?? []
         } catch {
             NSLog("Error: Could not fetch habit object")
         }
+    }
+    
+    func fetchAll() -> [Habit] {
+        let fetchRequest: NSFetchRequest<Habit> = Habit.fetchRequest()
+        fetchRequest.sortDescriptors = []
+        let context = persistenceController.container.viewContext
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            return result
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolve error \(nsError), \(nsError.userInfo)")
+        }
+    
     }
     
     // pass only relative make new habits

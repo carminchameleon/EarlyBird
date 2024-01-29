@@ -14,7 +14,9 @@ class HabitListViewModel: ObservableObject {
     var selectedItem: Habit?
     
     init(habitPublisher: AnyPublisher<[Habit], Never> = HabitStorage.shared.habits.eraseToAnyPublisher()) {
-        cancellable = habitPublisher.sink { habits in
+        cancellable = habitPublisher
+            .removeDuplicates()
+            .sink { habits in
             print("✅ Update Habit List View")
             self.habits = habits
         }

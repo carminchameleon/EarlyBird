@@ -14,7 +14,8 @@ struct EarlyBirdApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                HabitListView()
+//                HabitListView()
+                RoutineListView()
             }
         }
     }
