@@ -8,53 +8,95 @@
 import SwiftUI
 
 struct NewActionListView: View {
-    @ObservedObject var vm: ActionListViewModel
+    @ObservedObject var vm: NewActionListViewModel
+    
+    @State private var showAddAction = false
+    @State private var showEditAction = false
+    @State private var isShowToggle = false
+    
     init(habit: Habit) {
-        vm = ActionListViewModel(habit: habit)
+        vm = NewActionListViewModel(habit: habit)
+        let appear = getCustomNavigation()
+        UINavigationBar.appearance().standardAppearance = appear
+        UINavigationBar.appearance().compactAppearance = appear
+        UINavigationBar.appearance().scrollEdgeAppearance = appear
     }
     
     var body: some View {
-        VStack(spacing: .regularSize) {
-            VStack {
-                Ticket(habit: vm.habit)
-                    .shadow(radius: 0.5)
-            }
-            Spacer()
-            VStack(spacing: .extraLargeSize) {
-                HStack(alignment: .firstTextBaseline) {
-                    Text("“")
-                        .font(.system(size: 30, weight: .ultraLight, design: .serif))
-                    Text("Actions speack \n louder than words.")
-                        .multilineTextAlignment(.center)
-                        .font(.system(size: 26, weight: .ultraLight, design: .serif))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    Text("”")
-                        .font(.system(size: 30, weight: .ultraLight, design: .serif))
-                }.padding(.horizontal,.extraLargeSize)
-                Text("Your journey begins with a single step. \n What's your first action?")
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                Button {
-                    
-                } label: {
-                    Text("Add Action")
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, .smallSize)
+        VStack {
+            ActionTicket(vm: vm)
+                .shadow(radius: 5)
+                .padding(.largeSize)
+
+            if vm.actions.isEmpty {
+                EmptyActionView {
+                    showAddAction.toggle()
+                    // add button tapped
                 }
-                .buttonStyle(.borderedProminent)
-                .buttonBorderShape(.roundedRectangle(radius: 12))
-            }.verticalCenter()
-            
-            
+            } else {
+                List {
+                    ForEach(vm.actions) { item in
+                        Button(action: {
+                            vm.selectedItem = item
+                            showEditAction.toggle()
+                        }, label: {
+                            ActionRow(item: item, isShowToggle: $isShowToggle, timeline: vm.timelines[item.id]) { item in
+//                                vm.updateToggleState(item: item)
+                            }
+                        })
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                vm.deleteItem(id: item.id)
+                            } label: {
+                                Symbols.trash
+                            }
+                        }
+                    }
+                    .onMove(perform: vm.moveItem)
+                }
+                .tint(Color.theme.accent)
+                .listStyle(.plain)
+            }
+            VStack {
+                Button(action: {
+                    showAddAction.toggle()
+                }, label: {
+                    Label("New Action", systemImage: "plus.circle.fill")
+                        .bold()
+                        .fontDesign(.rounded)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.accentColor)
+                })
+            }.padding(.regularSize)
         }
-        .navigationTitle("Start Now")
-        .padding()
+        .navigationTitle("Starting Now")
+        
+        .sheet(isPresented: $showAddAction, content: {
+            NavigationStack {
+                ActionDetailView(isShowingSheet: $showAddAction, vm: ActionDetailViewModel(habit: vm.habit))
+                    .navigationTitle("Add Action")
+            }
+        })
+        .sheet(isPresented: $showEditAction, content: {
+            NavigationStack {
+                ActionDetailView(isShowingSheet: $showEditAction, vm: ActionDetailViewModel(action: vm.selectedItem, habit: vm.habit))
+                    .navigationTitle("Edit Action")
+            }
+        })
+        // 바뀐 데이터 저장
+        .onDisappear {
+            vm.backButtonTapped()
+        }
+        // maybe action 바뀌었을 때
+        .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave), perform: { output in
+            vm.updateHabitData()
+        })
     }
 }
 
 #Preview {
     NavigationStack {
         NewActionListView(habit: Habit.example)
+        
     }
-
 }

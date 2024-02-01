@@ -120,7 +120,7 @@ struct NewHabitView: View {
         .fullScreenCover(isPresented: $showDetail) {
             if let habit = vm.habit {
                 NavigationStack {
-                    ActionListView(habit: habit)
+                    NewActionListView(habit: habit)
                 }
             }
         }

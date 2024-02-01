@@ -8,12 +8,6 @@
 import SwiftUI
 
 struct PresetList: View {
-    @Binding var isShowingSheet: Bool
-    
-    @Binding var isShowingAlert: Bool
-    
-    @Binding var textFieldValue: String
-    
     @Binding var hours: Int
     
     @Binding var mins: Int
@@ -28,8 +22,7 @@ struct PresetList: View {
         SelectableTime(type: .hours, number: 1),
         SelectableTime(type: .hours, number: 2),
     ]
-    
-    var addActivity: () -> Void
+    var buttonTapped: () -> Void
     
     var body: some View {
         VStack {
@@ -70,19 +63,20 @@ struct PresetList: View {
         case .seconds:
             break
         }
+        buttonTapped()
         
-        let title = textFieldValue.trimmingCharacters(in: .whitespaces)
-        if title.isEmpty {
-            isShowingAlert.toggle()
-            return
-        }
+//        let title = textFieldValue.trimmingCharacters(in: .whitespaces)
+//        if title.isEmpty {
+//            isShowingAlert.toggle()
+//            return
+//        }
         // title / duration
     }
     
 }
 
 #Preview {
-    PresetList(isShowingSheet: .constant(false), isShowingAlert: .constant(false), textFieldValue: .constant(""), hours: .constant(0), mins: .constant(10)) { 
+    PresetList(hours: .constant(10), mins: .constant(20)) {
         
     }
 }

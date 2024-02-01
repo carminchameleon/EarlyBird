@@ -1,14 +1,20 @@
 //
-//  Ticket.swift
+//  ActionTicket.swift
 //  EarlyBird
 //
-//  Created by Eunji Hwang on 28/1/2024.
+//  Created by Eunji Hwang on 1/2/2024.
 //
 
 import SwiftUI
 
-struct Ticket: View {
-    @ObservedObject var habit: Habit
+struct ActionTicket: View {
+    @ObservedObject var vm: NewActionListViewModel
+    var habit: Habit = Habit.example
+    
+    init(vm: NewActionListViewModel) {
+        self.vm = vm
+    }
+
     var padding: CGFloat = .largeSize
     
     var width: CGFloat {
@@ -18,7 +24,7 @@ struct Ticket: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
-                Text(habit.title)
+                Text(vm.title)
                     .font(.system(size: 14, weight: .semibold, design: .default))
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -27,17 +33,16 @@ struct Ticket: View {
             .padding(.vertical, .miniSize)
             .background(Color.accentColor)
             HStack(spacing: 0) {
-                if habit.startTimeMode {
-                    TicketTime(label: habit.standardLabel, timeLabel: habit.standardTime.convertToString(), size: width * 0.35)
+                if vm.startTimeMode {
+                    TicketTime(label: vm.standardLabel, timeLabel: vm.standardTime.convertToString(), size: width * 0.35)
                 } else {
-                    TicketTime(label: habit.calculatedLabel, timeLabel: habit.calculatedTime, size: width * 0.35)
+                    TicketTime(label: vm.calculatedLabel, timeLabel: vm.calculatedTime, size: width * 0.35)
                 }
                 Spacer()
-                if let actions = habit.actions?.allObjects as? [Action] {
-                    let duration = actions.filter { $0.isOn }.reduce(0,{ $0 + $1.duration }).getString()
+             
                     VStack(spacing: .miniSize) {
                         VStack {
-                            Text(duration)
+                            Text(vm.duration.getString())
                                 .font(.caption)
                             LongArrow()
                                 .stroke(Color.accentColor, lineWidth: 1)
@@ -47,13 +52,13 @@ struct Ticket: View {
                             .opacity(0)
                             .frame(height: 30)
                     }.foregroundColor(.accentColor)
-                }
+                
                 
                 Spacer()
                 if habit.startTimeMode {
-                    TicketTime(label: habit.calculatedLabel, timeLabel: habit.calculatedTime, size: width * 0.35)
+                    TicketTime(label: vm.calculatedLabel, timeLabel: vm.calculatedTime, size: width * 0.35)
                 } else {
-                    TicketTime(label: habit.standardLabel, timeLabel: habit.standardTime.convertToString(), size: width * 0.35)
+                    TicketTime(label: vm.standardLabel, timeLabel: vm.standardTime.convertToString(), size: width * 0.35)
                 }
             }
             .padding(.regularSize)
@@ -61,9 +66,10 @@ struct Ticket: View {
         .background(.white)
         .frame(maxWidth: .infinity)
         .cornerRadius(12)
+        .shadow(radius: 5)
     }
 }
 
 #Preview {
-    Ticket(habit: Habit.example)
+    ActionTicket(vm: NewActionListViewModel.init(habit: Habit.example))
 }

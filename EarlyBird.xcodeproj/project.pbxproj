@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F018B5172B369CEB00099C88 /* TimeRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018B5162B369CEB00099C88 /* TimeRecommendation.swift */; };
 		F0256F102B288DAE00487995 /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0256F0F2B288DAE00487995 /* Extension+Date.swift */; };
+		F050DA1E2B68EB24000EB48C /* CustomNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F050DA1D2B68EB24000EB48C /* CustomNavigation.swift */; };
+		F050DA202B690DD1000EB48C /* SelectableTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F050DA1F2B690DD1000EB48C /* SelectableTicketView.swift */; };
 		F05ED90E2B1167EE00948809 /* EarlyBirdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED90D2B1167EE00948809 /* EarlyBirdApp.swift */; };
 		F05ED9122B1167EF00948809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05ED9112B1167EF00948809 /* Assets.xcassets */; };
 		F05ED9152B1167EF00948809 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05ED9142B1167EF00948809 /* Preview Assets.xcassets */; };
@@ -16,6 +18,10 @@
 		F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */; };
 		F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05ED92A2B117F1E00948809 /* Extensions+CGFloat.swift */; };
 		F062D9AC2B456773000342F2 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062D9AB2B456773000342F2 /* Symbols.swift */; };
+		F070627D2B6B894F00577C75 /* NewActionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070627C2B6B894F00577C75 /* NewActionListViewModel.swift */; };
+		F07062802B6B8A0200577C75 /* EmptyActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070627F2B6B8A0200577C75 /* EmptyActionView.swift */; };
+		F07062822B6B8B8600577C75 /* ActionTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07062812B6B8B8600577C75 /* ActionTicket.swift */; };
+		F07062842B6B8BCE00577C75 /* TicketTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07062832B6B8BCE00577C75 /* TicketTime.swift */; };
 		F070D2262B52BFAE007934F8 /* newView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D2252B52BFAE007934F8 /* newView.swift */; };
 		F07CB8332B6632AE00201DB1 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB8322B6632AE00201DB1 /* Ticket.swift */; };
 		F07CB8352B663C5D00201DB1 /* LongArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07CB8342B663C5D00201DB1 /* LongArrow.swift */; };
@@ -55,6 +61,8 @@
 /* Begin PBXFileReference section */
 		F018B5162B369CEB00099C88 /* TimeRecommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRecommendation.swift; sourceTree = "<group>"; };
 		F0256F0F2B288DAE00487995 /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
+		F050DA1D2B68EB24000EB48C /* CustomNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigation.swift; sourceTree = "<group>"; };
+		F050DA1F2B690DD1000EB48C /* SelectableTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableTicketView.swift; sourceTree = "<group>"; };
 		F05ED90A2B1167EE00948809 /* EarlyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarlyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F05ED90D2B1167EE00948809 /* EarlyBirdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyBirdApp.swift; sourceTree = "<group>"; };
 		F05ED9112B1167EF00948809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,6 +71,10 @@
 		F05ED9272B1177CC00948809 /* Extensions+TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+TimeInterval.swift"; sourceTree = "<group>"; };
 		F05ED92A2B117F1E00948809 /* Extensions+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+CGFloat.swift"; sourceTree = "<group>"; };
 		F062D9AB2B456773000342F2 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		F070627C2B6B894F00577C75 /* NewActionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActionListViewModel.swift; sourceTree = "<group>"; };
+		F070627F2B6B8A0200577C75 /* EmptyActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyActionView.swift; sourceTree = "<group>"; };
+		F07062812B6B8B8600577C75 /* ActionTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTicket.swift; sourceTree = "<group>"; };
+		F07062832B6B8BCE00577C75 /* TicketTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTime.swift; sourceTree = "<group>"; };
 		F070D2242B52467B007934F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F070D2252B52BFAE007934F8 /* newView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newView.swift; sourceTree = "<group>"; };
 		F07CB8322B6632AE00201DB1 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
@@ -185,6 +197,8 @@
 				F0CBC70D2B3AFA000092A7AA /* RadioButton.swift */,
 				F07CB8322B6632AE00201DB1 /* Ticket.swift */,
 				F07CB8342B663C5D00201DB1 /* LongArrow.swift */,
+				F07062812B6B8B8600577C75 /* ActionTicket.swift */,
+				F07062832B6B8BCE00577C75 /* TicketTime.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -270,6 +284,7 @@
 			children = (
 				F0CBC7A62B4139760092A7AA /* ActionDetailViewModel.swift */,
 				F0CBC79C2B4103640092A7AA /* ActionListViewModel.swift */,
+				F070627C2B6B894F00577C75 /* NewActionListViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -277,6 +292,7 @@
 		F062D9B82B4567DB000342F2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F070627E2B6B89EA00577C75 /* NewViews */,
 				F0CBC7A42B4139650092A7AA /* ActionDetailView.swift */,
 				F0CBC7AE2B42CC070092A7AA /* TimelineController.swift */,
 				F0CBC7A02B410F4B0092A7AA /* ActionRow.swift */,
@@ -288,12 +304,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F070627E2B6B89EA00577C75 /* NewViews */ = {
+			isa = PBXGroup;
+			children = (
+				F070627F2B6B8A0200577C75 /* EmptyActionView.swift */,
+			);
+			path = NewViews;
+			sourceTree = "<group>";
+		};
 		F07CB8462B67E6BA00201DB1 /* CustomModifier */ = {
 			isa = PBXGroup;
 			children = (
 				F07CB8472B67E6E500201DB1 /* VerticalCenter.swift */,
 				F07CB8492B67E86D00201DB1 /* HorizontalCenter.swift */,
 				F07CB84B2B67E8BF00201DB1 /* AlignCenter.swift */,
+				F050DA1D2B68EB24000EB48C /* CustomNavigation.swift */,
+				F050DA1F2B690DD1000EB48C /* SelectableTicketView.swift */,
 			);
 			path = CustomModifier;
 			sourceTree = "<group>";
@@ -390,8 +416,10 @@
 				F07CB8372B663F0600201DB1 /* RoutineListView.swift in Sources */,
 				F05ED92B2B117F1E00948809 /* Extensions+CGFloat.swift in Sources */,
 				F07CB8352B663C5D00201DB1 /* LongArrow.swift in Sources */,
+				F07062802B6B8A0200577C75 /* EmptyActionView.swift in Sources */,
 				F0CBC78A2B4014A30092A7AA /* HabitListView.swift in Sources */,
 				F0CBC7812B3FEC8E0092A7AA /* PersistentController.swift in Sources */,
+				F050DA1E2B68EB24000EB48C /* CustomNavigation.swift in Sources */,
 				F0CBC7A72B4139760092A7AA /* ActionDetailViewModel.swift in Sources */,
 				F07CB8332B6632AE00201DB1 /* Ticket.swift in Sources */,
 				F0A186082B11C392009A2829 /* CustomTimePickers.swift in Sources */,
@@ -413,12 +441,16 @@
 				F08C86F52B37B3E60090B55B /* SortMenu.swift in Sources */,
 				F0CBC7962B401A180092A7AA /* HabitRow.swift in Sources */,
 				F07CB8482B67E6E500201DB1 /* VerticalCenter.swift in Sources */,
+				F050DA202B690DD1000EB48C /* SelectableTicketView.swift in Sources */,
+				F07062842B6B8BCE00577C75 /* TicketTime.swift in Sources */,
 				F05ED9282B1177CC00948809 /* Extensions+TimeInterval.swift in Sources */,
 				F0CBC79F2B4105F80092A7AA /* TimelineSummaryView.swift in Sources */,
 				F08C86F72B38005D0090B55B /* Extension+CancelBag.swift in Sources */,
 				F0CBC7922B4017C10092A7AA /* Extension+Color.swift in Sources */,
 				F0CBC79B2B401EF30092A7AA /* ActionListView.swift in Sources */,
 				F0CBC70E2B3AFA000092A7AA /* RadioButton.swift in Sources */,
+				F070627D2B6B894F00577C75 /* NewActionListViewModel.swift in Sources */,
+				F07062822B6B8B8600577C75 /* ActionTicket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,14 @@ struct ActionDetailView: View {
     @StateObject var vm: ActionDetailViewModel
     @State private var showAlert: Bool = false
     
+    func handlePresetButtonTapped() {
+        let title = vm.textFieldValue.trimmingCharacters(in: .whitespaces)
+        if !title.isEmpty {
+            self.isShowingSheet = false
+            vm.handleSaveButtonTapped()
+        }
+    }
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: .largeSize) {
@@ -23,7 +31,7 @@ struct ActionDetailView: View {
                     .frame(height: 55)
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(.mediumSize)
-                    
+
                 GroupBox {
                     CustomTimePickers(hours: $vm.hours, mins: $vm.mins)
                 }
@@ -34,8 +42,9 @@ struct ActionDetailView: View {
                             .bold()
                     })
                 }
-                PresetList(isShowingSheet: $isShowingSheet, isShowingAlert: $showAlert, textFieldValue: $vm.textFieldValue, hours: $vm.hours, mins: $vm.mins) {
-                    vm.handleSaveButtonTapped()
+                PresetList(hours: $vm.hours, mins: $vm.mins) {
+                    print("button tapped")
+                    handlePresetButtonTapped()
                 }
             }
             
@@ -62,6 +71,6 @@ struct ActionDetailView: View {
     }
 }
 
-//#Preview {
-//    ActionDetailView(isShowingSheet: .constant(false), vm: ActionDetailViewModel(item: <#Action?#>, habit: <#Habit#>, updateActivity: <#(Activity) -> Void#>))
-//}
+#Preview {
+    ActionDetailView(isShowingSheet: .constant(false), vm: ActionDetailViewModel(action: Action.example, habit: Habit.example))
+}

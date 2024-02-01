@@ -30,6 +30,10 @@ class ActionListViewModel: ObservableObject {
     
     @Published var actions: [Action] = []
     
+    var timeSet: ActionTimelineSet {
+        return getActionTime()
+    }
+    
     @Published var seperateMode: Bool = false
     
     var sortOption = SortOption.manual
@@ -56,9 +60,7 @@ class ActionListViewModel: ObservableObject {
         if let actions = habit.actions?.allObjects as? [Action] {
             self.actions = actions
             self.actions = getSortedList(sortOption, sortOrder)
-
         }
-        
         addActivitiesSubscriber()
         addDurationSubscriber()
     }
@@ -80,10 +82,46 @@ class ActionListViewModel: ObservableObject {
             self.actions = actions
         }
     }
+    typealias ActionTimelineSet = [UUID : (startDate: Date?, endDate: Date?)]
+    
+    func getActionTime() -> ActionTimelineSet {
+        let sorted = actions.sorted{ $0.order > $1.order }
+        let actionTimesWithId = calculateActionTimesWithId(actions: sorted, standardTime: standardTime)
+        
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        for (actionId, times) in actionTimesWithId {
+            let startTimeStr = times.startDate != nil ? formatter.string(from: times.startDate!) : "빈 값"
+            let endTimeStr = times.endDate != nil ? formatter.string(from: times.endDate!) : "빈 값"
+            print("Action ID \(actionId): 시작 \(startTimeStr), 종료 \(endTimeStr)")
+        }
+        return actionTimesWithId
+    }
+    
+    func calculateActionTimesWithId(actions: [Action], standardTime: Date) -> [UUID: (startDate: Date?, endDate: Date?)] {
+        var results = [UUID: (startDate: Date?, endDate: Date?)]()
+        var currentTime = standardTime
+
+        for action in actions {
+            if action.isOn {
+                let startTime = currentTime
+                let endTime = startTime.addingTimeInterval(habit.startTimeMode ? TimeInterval(action.duration) : -TimeInterval(action.duration)) // 분을 초로 변환
+                results[action.id] = (startDate: startTime, endDate: endTime)
+                currentTime = endTime
+            } else {
+                // isOn이 false인 경우, 딕셔너리에 빈 값으로 설정
+                results[action.id] = (startDate: nil, endDate: nil)
+                currentTime = currentTime.addingTimeInterval(habit.startTimeMode ? TimeInterval(action.duration) : -TimeInterval(action.duration))
+            }
+        }
+
+        return results
+    }
     
     // MARK: - Subscribers
     func addActivitiesSubscriber() {
-        $actions.map { action in
+        $actions
+            .map { action in
             let duration = self.actions.filter { $0.isOn }.reduce(0,{ $0 + $1.duration })
             return duration
         }
@@ -94,7 +132,7 @@ class ActionListViewModel: ObservableObject {
             seperateMode = returnedValue > 3600
         }.store(in: cancelBag)
     }
-
+    
     func addDurationSubscriber() {
         $duration.combineLatest($standardTime, $startTimeMode)
             .receive(on: DispatchQueue.main)
@@ -160,7 +198,6 @@ class ActionListViewModel: ObservableObject {
         actions.move(fromOffsets: from, toOffset: to)
     }
         
-       
     // MARK: - Sortings
     func updateToggleState(item: Action) {
         sortActionList()
